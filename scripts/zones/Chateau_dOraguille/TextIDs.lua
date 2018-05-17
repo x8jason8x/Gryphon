@@ -16,9 +16,5 @@ ITEM_CANNOT_BE_OBTAINED = 6589; -- Come back after sorting your inventory.
 -- WS Quest
    SAVAGE_BLADE_LEARNED = 7938;-- You have learned the weapon skill “Savage Blade”!
 
-<<<<<<< HEAD
 -- Conquest Base
-          CONQUEST_BASE = 6877; -- Tallying conquest results...
-=======
           CONQUEST_BASE = 6878; -- Tallying conquest results...
->>>>>>> 99d42890e9a5003f512bd611fc3c5c6956e7d7bb

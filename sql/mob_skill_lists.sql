@@ -3633,3 +3633,37 @@ INSERT INTO `mob_skill_lists` VALUES ('NM_Rocs',1004,924); -- Dread Dive
 INSERT INTO `mob_skill_lists` VALUES ('NM_Rocs',1004,402); -- Feather Barrier
 -- INSERT INTO `mob_skill_lists` VALUES ('NM_Rocs',1004,925); -- Feather Barrier (For now using 402. Retail data needed. Diff is likely animation time.)
 INSERT INTO `mob_skill_lists` VALUES ('NM_Rocs',1004,926); -- Stormwind
+
+-- custom 
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1289);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1290);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1291);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1292);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1293);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1294);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1295);
+INSERT INTO `mob_skill_lists` VALUES ('NagaRajaWyrm',1050,1296);
+
+INSERT INTO `mob_skill_lists` VALUES ('Kammavaca',1051,428);
+INSERT INTO `mob_skill_lists` VALUES ('Kammavaca',1051,429);
+INSERT INTO `mob_skill_lists` VALUES ('Kammavaca',1051,1110);
+
+INSERT INTO `mob_skill_lists` VALUES ('BalamorRuAun',1052,673);
+INSERT INTO `mob_skill_lists` VALUES ('BalamorRuAun',1052,983);
+INSERT INTO `mob_skill_lists` VALUES ('BalamorRuAun',1052,1194);
+INSERT INTO `mob_skill_lists` VALUES ('BalamorRuAun',1052,1252);
+
+INSERT INTO `mob_skill_lists` VALUES ('Bucca',1053,327);
+INSERT INTO `mob_skill_lists` VALUES ('Bucca',1053,348);
+INSERT INTO `mob_skill_lists` VALUES ('Bucca',1053,402);
+INSERT INTO `mob_skill_lists` VALUES ('Bucca',1053,500);
+INSERT INTO `mob_skill_lists` VALUES ('Bucca',1053,594);
+
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1299);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1300);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1301);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1302);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1303);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1304);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1305);
+INSERT INTO `mob_skill_lists` VALUES ('KouryuWyrm',1054,1306);

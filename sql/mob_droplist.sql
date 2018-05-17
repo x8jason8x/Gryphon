@@ -32936,6 +32936,135 @@ INSERT INTO `mob_droplist` VALUES (4594,0,0,1000,16024,220);
 INSERT INTO `mob_droplist` VALUES (4595,0,0,1000,16036,49); -- 4.9% Wilhelm's Earring off Goblintrap
 INSERT INTO `mob_droplist` VALUES (4596,0,0,1000,16032,169);
 
+-- Custom stuff
+
+-- Cerberus
+INSERT INTO `mob_droplist` VALUES (502,0,0,1000,14569,150); -- Denali body
+INSERT INTO `mob_droplist` VALUES (502,0,0,1000,14984,150); -- hands
+INSERT INTO `mob_droplist` VALUES (502,0,0,1000,15648,200); -- legs
+INSERT INTO `mob_droplist` VALUES (502,0,0,1000,15734,200); -- feet
+INSERT INTO `mob_droplist` VALUES (502,0,0,1000,16107,200); -- head
+
+-- Khimaira
+INSERT INTO `mob_droplist` VALUES (2220,0,0,1000,14568,150); -- Askar body
+INSERT INTO `mob_droplist` VALUES (2220,0,0,1000,14983,200); -- hands
+INSERT INTO `mob_droplist` VALUES (2220,0,0,1000,15647,150); -- legs
+INSERT INTO `mob_droplist` VALUES (2220,0,0,1000,15733,200); -- feet
+INSERT INTO `mob_droplist` VALUES (2220,0,0,1000,16106,200); -- head
+
+-- Hydra
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,2158,400); -- Hydra Fang
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,5564,400); -- Hydra Meat
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,2172,400); -- Hydra Scale
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,15530,250); -- Berserkers Torque
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,17952,250); -- Sirius Axe
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,14570,150); -- Goliard Saio
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,14985,200); -- Goliard Cuffs
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,15649,200); -- Goliard Trews
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,15735,150); -- Goliard Clogs
+INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,16108,200); -- Goliard Chapeau
+
+-- Buarainech
+INSERT INTO `mob_droplist` VALUES (4901,0,0,1000,11411,70); -- Shrewd Pumps
+
+-- Bucca
+INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,15711,150); -- salvage feet
+INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,15715,150);
+INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,15719,150);
+INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,15723,150);
+INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,15727,150);
+INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,11584,250); -- lmg. medallion +1
+
+-- Wepwawet
+INSERT INTO `mob_droplist` VALUES (4903,0,0,1000,16084,150); -- salvage heads
+INSERT INTO `mob_droplist` VALUES (4903,0,0,1000,16088,150);
+INSERT INTO `mob_droplist` VALUES (4903,0,0,1000,16092,150);
+INSERT INTO `mob_droplist` VALUES (4903,0,0,1000,16096,150);
+INSERT INTO `mob_droplist` VALUES (4903,0,0,1000,16100,150);
+INSERT INTO `mob_droplist` VALUES (4903,0,0,1000,11580,250); -- fyl. torque +1
+
+-- Azi Dahaka
+INSERT INTO `mob_droplist` VALUES (4904,0,0,1000,14961,150); -- salvage hands
+INSERT INTO `mob_droplist` VALUES (4904,0,0,1000,14965,150);
+INSERT INTO `mob_droplist` VALUES (4904,0,0,1000,14969,150);
+INSERT INTO `mob_droplist` VALUES (4904,0,0,1000,14973,150);
+INSERT INTO `mob_droplist` VALUES (4904,0,0,1000,14977,150);
+INSERT INTO `mob_droplist` VALUES (4904,0,0,1000,11582,250); -- ire torque +1
+
+-- Kammavaca
+INSERT INTO `mob_droplist` VALUES (4905,0,0,1000,15625,150); -- salvage legs
+INSERT INTO `mob_droplist` VALUES (4905,0,0,1000,15629,150);
+INSERT INTO `mob_droplist` VALUES (4905,0,0,1000,15633,150);
+INSERT INTO `mob_droplist` VALUES (4905,0,0,1000,15637,150);
+INSERT INTO `mob_droplist` VALUES (4905,0,0,1000,15641,150);
+INSERT INTO `mob_droplist` VALUES (4905,0,0,1000,27597,150); -- emico mantle
+
+-- Balamor
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,15625,150); -- salvage bodies
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,15629,150);
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,15633,150);
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,15637,150);
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,15641,150);
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,11354,100); -- noct body
+INSERT INTO `mob_droplist` VALUES (4906,0,0,1000,11501,100); -- noct head
+
+-- Naga Raja
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19853,100); -- lv99 empyreans for ws unlock
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19854,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19855,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19856,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19857,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19858,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19859,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19860,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19861,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19862,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19863,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19864,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19865,100);
+INSERT INTO `mob_droplist` VALUES (4907,0,0,1000,19866,100); --
+
+-- EschaAngel HM
+INSERT INTO `mob_droplist` VALUES (4908,0,0,1000,11629,200); -- voidwatch rings unless otherwise marked
+INSERT INTO `mob_droplist` VALUES (4908,0,0,1000,11631,200);
+
+-- EschaAngel TT
+INSERT INTO `mob_droplist` VALUES (4909,0,0,1000,11633,200);
+INSERT INTO `mob_droplist` VALUES (4909,0,0,1000,11543,200); -- Hecate's Cape
+
+-- EschaAngel MR
+INSERT INTO `mob_droplist` VALUES (4910,0,0,1000,11632,200);
+INSERT INTO `mob_droplist` VALUES (4910,0,0,1000,11634,200);
+
+-- EschaAngel EV
+INSERT INTO `mob_droplist` VALUES (4911,0,0,1000,11630,200);
+INSERT INTO `mob_droplist` VALUES (4911,0,0,1000,15859,200);
+
+-- EschaAngel GK
+INSERT INTO `mob_droplist` VALUES (4912,0,0,1000,11628,200); -- end rings
+INSERT INTO `mob_droplist` VALUES (4912,0,0,1000,11287,200); -- Antares Harness
+
+-- Kouryu
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18969,100); -- mythic base weap. for augged mythic trade
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18970,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18971,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18972,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18973,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18974,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18975,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18976,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18977,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18978,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18979,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18980,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18981,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18982,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18983,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18984,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18985,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18986,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18987,100);
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18988,100); --
 
 /*!40000 ALTER TABLE `mob_droplist` ENABLE KEYS */;
 UNLOCK TABLES;

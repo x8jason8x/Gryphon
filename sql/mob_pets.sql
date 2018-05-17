@@ -1338,7 +1338,8 @@ INSERT INTO `mob_pets` VALUES (17183021, 1, 15); -- Yagudo_s_Elemental
 
 INSERT INTO `mob_pets` VALUES (16986197, 1, 9); -- Percipient_Zoraal_Ja
 
-
+-- Custom
+INSERT INTO `mob_pets` VALUES (17961573, 3, 15); -- EschaKirin's Avatar
 
 /*!40000 ALTER TABLE `mob_pets` ENABLE KEYS */;
 UNLOCK TABLES;

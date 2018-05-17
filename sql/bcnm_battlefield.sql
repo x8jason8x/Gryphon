@@ -3110,4 +3110,27 @@ INSERT INTO `bcnm_battlefield` VALUES (1301,4,16929085,1);-- Temenos Aern
 INSERT INTO `bcnm_battlefield` VALUES (1301,4,16929086,1);-- Temenos Aern
 INSERT INTO `bcnm_battlefield` VALUES (1301,4,16929087,1);-- Temenos Aern
 
+-- Custom stuff
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510452,3); -- ACP Ode BC thru 17510472
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510453,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510454,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510455,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510456,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510457,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,1,17510458,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510459,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510460,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510461,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510462,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510463,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510464,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,2,17510465,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510466,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510467,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510468,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510469,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510470,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510471,3);
+INSERT INTO `bcnm_battlefield` VALUES (262,3,17510472,3);
+
 -- Dump completed on 2017-01-31 10:38:38

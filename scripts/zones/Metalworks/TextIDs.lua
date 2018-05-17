@@ -16,7 +16,10 @@
          NOT_HAVE_ENOUGH_GP =  6893; -- You do not have enough guild points.
      FISHING_MESSAGE_OFFSET =  8005; -- You can't fish here
               HOMEPOINT_SET = 11002; -- Home point set!
-            
+
+-- conquest Base
+               CONQUEST_BASE = 6530; -- Tallying conquest results...
+
 -- Mission Dialogs
     YOU_ACCEPT_THE_MISSION  =     9; -- You have accepted the mission.
    ORIGINAL_MISSION_OFFSET  =    14; -- You can consult the ission section of the main menu to review your objectives. Speed and efficiency are your priorities. Dismissed. 
@@ -40,5 +43,6 @@ MISSION_DIALOG_CID_TO_AYAME =  7572; -- Give it to one of his Mythril Musketeers
       TAKIYAH_CLOSED_DIALOG =  9966; -- Maybe someday I'll be able to sell goods from Qufim Island... Someday...
         TAKIYAH_OPEN_DIALOG =  9967; -- Hey, it's your lucky day! I've got a fresh batch of goods straight from the island of Qufim!
 
--- conquest Base
-               CONQUEST_BASE = 6530; -- Tallying conquest results...
+-- WS quests
+      STEEL_CYCLONE_LEARNED =  9007; -- You have learned the weapon skill “Steel Cyclone”!
+          DETONATOR_LEARNED =  9032; -- You have learned the weapon skill “Detonator”!

@@ -16,7 +16,15 @@ require("scripts/globals/titles");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-    if (player:getQuestStatus(OUTLANDS, FORGE_YOUR_DESTINY) == QUEST_ACCEPTED and npcUtil.tradeHas(trade, {1152, 1153})) then -- Bomb Steel, Sacred Branch
+
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(17815,1)) then -- check trial Gkatana latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then --(retail is 300)
+	        player:startEvent(181); -- enough points
+		else
+		    player:startEvent(180); -- not enough points
+		end
+		
+    elseif (player:getQuestStatus(OUTLANDS, FORGE_YOUR_DESTINY) == QUEST_ACCEPTED and npcUtil.tradeHas(trade, {1152, 1153})) then -- Bomb Steel, Sacred Branch
         player:startEvent(27);
     elseif (player:getQuestStatus(OUTLANDS, THE_SACRED_KATANA) == QUEST_ACCEPTED and player:hasKeyItem(dsp.ki.HANDFUL_OF_CRYSTAL_SCALES) and npcUtil.tradeHas(trade, 17809)) then -- Mumeito
         player:startEvent(141);
@@ -26,10 +34,13 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local forgeYourDestiny  = player:getQuestStatus(OUTLANDS, FORGE_YOUR_DESTINY);
+    
+	local forgeYourDestiny  = player:getQuestStatus(OUTLANDS, FORGE_YOUR_DESTINY);
     local theSacredKatana   = player:getQuestStatus(OUTLANDS, THE_SACRED_KATANA);
     local yomiOkuri         = player:getQuestStatus(OUTLANDS, YOMI_OKURI);
     local aThiefinNorg      = player:getQuestStatus(OUTLANDS, A_THIEF_IN_NORG);
+    local potWithin         = player:getQuestStatus(OUTLANDS,THE_POTENTIAL_WITHIN); -- GKatana WSNM quest
+	local gktSkill          = player:getSkillLevel(dsp.skill.GREAT_KATANA);
     local swordTimer        = player:getVar("ForgeYourDestiny_timer");
     local swordTimeLeft     = swordTimer - os.time();
     local yomiOkuriCS       = player:getVar("yomiOkuriCS");
@@ -37,8 +48,22 @@ function onTrigger(player,npc)
     local mLvl              = player:getMainLvl();
     local mJob              = player:getMainJob();
 
-    -- FORGE YOUR DESTINY
-    if (forgeYourDestiny == QUEST_AVAILABLE and mLvl >= ADVANCED_JOB_LEVEL) then
+    if (potWithin == QUEST_AVAILABLE and mLvl >= WSNM_LEVEL and gktSkill >= 240) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem (345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+		    player:startEvent(178); -- start The Potential Within (Tachi: Kasha quest)
+		end
+	elseif (potWithin == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then 
+            player:startEvent(183); -- player has Annals of Truth
+		elseif player:hasKeyItem(344) then
+		    player:startEvent(182); -- player has Map to Annals
+        else			
+		    player:startEvent(179); -- quit quest option
+		end
+     -- FORGE YOUR DESTINY
+    elseif (forgeYourDestiny == QUEST_AVAILABLE and mLvl >= ADVANCED_JOB_LEVEL) then
         player:startEvent(25, 1153, 1152); -- start quest
     elseif (forgeYourDestiny == QUEST_ACCEPTED) then
         if (swordTimer == 0) then
@@ -147,5 +172,43 @@ function onEventFinish(player,csid,option)
         player:needToZone(true);
     elseif (csid == 164) then
         npcUtil.completeQuest(player, OUTLANDS, A_THIEF_IN_NORG, {item=13868, title=dsp.title.PARAGON_OF_SAMURAI_EXCELLENCE, fame=AF3_FAME, fameArea=NORG, var={"aThiefinNorgCS"}});
+    
+    elseif (csid == 164) then
+        if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,13868);
+        else
+            player:addItem(13868);
+            player:messageSpecial(ITEM_OBTAINED,13868); --     Myochin Kabuto
+            player:addTitle(PARAGON_OF_SAMURAI_EXCELLENCE);
+            player:setVar("aThiefinNorgCS",0);
+            player:setVar("Wait1DayForAThiefinNorg2_date",0);
+            player:addFame(NORG,AF3_FAME);
+            player:completeQuest(OUTLANDS,A_THIEF_IN_NORG);
+        end
+
+    elseif (csid == 178 and option == 1) then
+	    if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17815);
+	    else
+	        player:addQuest(OUTLANDS,THE_POTENTIAL_WITHIN); -- start wsnm quest
+			player:addItem(17815);
+	        player:messageSpecial(ITEM_OBTAINED,17815);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 179 and option == 2) then -- quit wsnm quest
+		player:delQuest(OUTLANDS,THE_POTENTIAL_WITHIN);
+		player:delKeyItem(343);
+	elseif (csid == 181) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 183) then -- The Potential Within end
+		player:delKeyItem(345);
+		player:addLearnedWeaponskill(10);
+		player:messageSpecial(TACHI_KASHA_LEARNED);
+		player:addFame(NORG,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(OUTLANDS,THE_POTENTIAL_WITHIN);
     end
 end;

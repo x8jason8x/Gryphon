@@ -23,6 +23,9 @@
 -- Mission Dialogs
          YOU_ACCEPT_THE_MISSION = 11153; -- You have accepted the mission.
 
+-- WSNM Quest
+			 BLACK_HALO_LEARNED = 12643; -- You have learned the weapon skill "Black Halo!"
+
 -- Quest Dialog
               GOLD_SKULL_DIALOG =  3251; -- Welcome back. Your mission went without incident, I trust?
                  MELEK_DIALOG_A =  3278; -- Well, good luck with your mission. I look forward to hearing of your success.

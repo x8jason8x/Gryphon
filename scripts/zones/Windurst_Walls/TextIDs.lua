@@ -18,6 +18,9 @@
              DOORS_SEALED_SHUT = 7729; -- The doors are firmly sealed shut.
                  MOGHOUSE_EXIT = 8186; -- You have learned your way through the back alleys of Windurst! Now you can exit to any area from your residence.
 
+-- WS Quest
+           RETRIBUTION_LEARNED = 9058;
+
 -- Dynamis dialogs
       YOU_CANNOT_ENTER_DYNAMIS = 9081; -- You cannot enter Dynamis
 PLAYERS_HAVE_NOT_REACHED_LEVEL = 9083; -- Players who have not reached levelare prohibited from entering Dynamis.

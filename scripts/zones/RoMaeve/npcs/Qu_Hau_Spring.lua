@@ -26,11 +26,16 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local CurrentMission = player:getCurrentMission(WINDURST);
+    
+	local CurrentMission = player:getCurrentMission(WINDURST);
     local MissionStatus = player:getVar("MissionStatus");
 
     if (CurrentMission == VAIN and MissionStatus >= 1) then
         player:startEvent(2);
+    elseif player:hasKeyItem(dsp.ki.ANCIENT_VERSE_OF_ROMAEVE) then
+	    return;
+    elseif (CurrentMission == MOON_READING and MissionStatus == 1) then
+        player:startEvent(4);
     else
         player:messageSpecial(NOTHING_OUT_OF_ORDINARY);
     end
@@ -40,7 +45,12 @@ function onEventUpdate(player,csid,menuchoice)
 end;
 
 function onEventFinish(player,csid,option)
-    if (csid == 7) then
+    
+	if (csid == 4) then
+        player:addKeyItem(dsp.ki.ANCIENT_VERSE_OF_ROMAEVE);
+		player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.ANCIENT_VERSE_OF_ROMAEVE);
+
+	elseif (csid == 7) then
         if (player:getFreeSlotsCount() == 0) then
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,1550);
         else
@@ -48,10 +58,12 @@ function onEventFinish(player,csid,option)
             player:messageSpecial(ITEM_OBTAINED,1550);
             player:tradeComplete();
         end
+
     elseif (csid == 8) then
         player:tradeComplete();
         player:addKeyItem(dsp.ki.MOONLIGHT_ORE);
         player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.MOONLIGHT_ORE);
+
     elseif (csid == 2 and player:getCurrentMission(WINDURST) == VAIN) then
         player:setVar("MissionStatus",2);
     end

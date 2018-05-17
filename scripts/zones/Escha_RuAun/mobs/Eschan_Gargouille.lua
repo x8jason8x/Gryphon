@@ -2,13 +2,13 @@
 -- Area: Escha Ruaun
 --  MOB: Gargouilles
 -----------------------------------
-require("scripts/globals/titles");
+require("scripts/globals/status");
 -----------------------------------
 
 function onMobSpawn(mob)
-mob:hideName(true);
-mob:untargetable(true);
-mob:AnimationSub(6);
+    mob:hideName(true);
+    mob:untargetable(true);
+    mob:AnimationSub(6);
 end;
 
 function onMobEngaged(mob, target)
@@ -18,4 +18,5 @@ function onMobEngaged(mob, target)
 end;
 
 function onMobDeath(mob, player, isKiller)
+
 end;

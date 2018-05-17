@@ -16,28 +16,35 @@ require("scripts/globals/titles");
 function onTrade(player,npc,trade)
 
     local count = trade:getItemCount();
-    -- Curses Foiled Again!
-    if (player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_1) == QUEST_ACCEPTED) then
+	
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(17527,1)) then -- check trial weapon latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then
+	        player:startEvent(448); -- enough points
+		else
+		    player:startEvent(447); -- not enough points
+		end
+     -- Curses Foiled Again!
+    elseif (player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_1) == QUEST_ACCEPTED) then
         if (trade:hasItemQty(928,1) and trade:hasItemQty(880,2) and count == 3) then
             player:startEvent(173,0,0,0,0,0,0,928,880); -- Correct items given, complete quest.
         else
             player:startEvent(172,0,0,0,0,0,0,928,880); -- Incorrect or not enough items
         end
-
-    -- Curses,Foiled ... Again!?
+     -- Curses,Foiled ... Again!?
     elseif (player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_2) == QUEST_ACCEPTED) then
         if (trade:hasItemQty(17316,2) and trade:hasItemQty(940,1) and trade:hasItemQty(552,1) and count == 4) then
             player:startEvent(183); -- Correct items given, complete quest.
         else
             player:startEvent(181,0,0,0,0,0,0,17316,940); -- Incorrect or not enough items
         end
-
-
     end
 end;
 
 function onTrigger(player,npc)
 
+    local bloodGlory = player:getQuestStatus(WINDURST,BLOOD_AND_GLORY);
+	local mLvl = player:getMainLvl();
+	local stfSkill = player:getSkillLevel(dsp.skill.STAFF);
     local foiledAgain = player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_1);
     local CFA2 = player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_2);
     local CFAtimer = player:getVar("CursesFoiledAgain");
@@ -45,14 +52,29 @@ function onTrigger(player,npc)
     local golemdelivery = player:getVar("foiledagolemdeliverycomplete");
     local WildcatWindurst = player:getVar("WildcatWindurst");
 
-    if (player:getCurrentMission(WINDURST) == THE_JESTER_WHO_D_BE_KING and player:getVar("MissionStatus") == 7) then
+    if (bloodGlory == QUEST_AVAILABLE and mLvl >= WSNM_LEVEL and stfSkill >= 230) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem(345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+	        player:startEvent(445); -- start Blood and Glory (Retribution quest)
+		end
+	elseif (bloodGlory == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then -- player has Annals of Truth
+            player:startEvent(450); 
+		elseif player:hasKeyItem(344) then -- player has Map to Annals
+		    player:startEvent(449);
+		else
+		    player:startEvent(446); -- dropped trial weapon or quit quest options
+		end
+
+    elseif (player:getCurrentMission(WINDURST) == THE_JESTER_WHO_D_BE_KING and player:getVar("MissionStatus") == 7) then
         player:startEvent(397,0,0,0,282);
     elseif (player:getQuestStatus(WINDURST,LURE_OF_THE_WILDCAT_WINDURST) == QUEST_ACCEPTED and player:getMaskBit(WildcatWindurst,6) == false) then
         player:startEvent(498);
     elseif (player:getQuestStatus(WINDURST,CLASS_REUNION) == QUEST_ACCEPTED and player:getVar("ClassReunionProgress") == 3) then
         player:startEvent(409); -- she mentions that Sunny-Pabonny left for San d'Oria
-    -------------------------------------------------------
-    -- Curses Foiled Again!
+
+     -- Curses Foiled Again!
     elseif (foiledAgain == QUEST_AVAILABLE) then
         player:startEvent(171,0,0,0,0,0,0,928,880);
     elseif (foiledAgain == QUEST_ACCEPTED) then
@@ -74,22 +96,19 @@ function onTrigger(player,npc)
             player:startEvent(179);
         end
 
-
-    -- Curses,Foiled...Again!?
+     -- Curses,Foiled...Again!?
     elseif (foiledAgain == QUEST_COMPLETED and CFA2 == QUEST_AVAILABLE and player:getFameLevel(WINDURST) >= 2 and player:getMainLvl() >= 5 and CFAtimer == 1) then
         player:startEvent(180,0,0,0,0,928,880,17316,940);        -- Quest Start
     elseif (CFA2 == QUEST_ACCEPTED) then
         player:startEvent(181,0,0,0,0,0,0,17316,940);  -- Reminder dialog
 
-
-    -- Curses,Foiled A-Golem!?
+     -- Curses,Foiled A-Golem!?
     elseif (CFA2 == QUEST_COMPLETED and FoiledAGolem == QUEST_AVAILABLE and player:getFameLevel(WINDURST) >= 4 and player:getMainLvl() >= 10) then
         player:startEvent(340);  --quest start
     elseif (golemdelivery == 1) then
         player:startEvent(342);  -- finish
     elseif (FoiledAGolem == QUEST_ACCEPTED) then
         player:startEvent(341);  -- reminder dialog
-
 
     -- Standard dialog
     elseif (FoiledAGolem == QUEST_COMPLETED) then
@@ -102,20 +121,52 @@ function onTrigger(player,npc)
     else
         player:startEvent(164);
     end
-
-
 end;
 
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
-
 end;
 
 function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
-    if (csid == 173) then
+
+    if (csid == 445) then
+	    if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17527);
+	    else
+	        player:addQuest(WINDURST,BLOOD_AND_GLORY); -- start Blood and Glory
+		    player:addItem(17527);
+	        player:messageSpecial(ITEM_OBTAINED,17527);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 446) then
+	    if (option == 2) then -- lost/dropped trial weapon
+		    if (player:getFreeSlotsCount() < 1 or player:hasItem(17527)) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17527);
+		    else	
+		        player:addItem(17527);
+			    player:messageSpecial(ITEM_OBTAINED,17527);
+			end
+		elseif (option == 3) then -- quit Blood and Glory
+		    player:delQuest(WINDURST,BLOOD_AND_GLORY);
+			player:delKeyItem(343);
+	    end
+	elseif (csid == 448) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 450) then -- Blood and Glory end
+		player:addLearnedWeaponskill(12);
+		player:messageSpecial(RETRIBUTION_LEARNED);
+		player:delKeyItem(345);
+		player:addFame(WINDURST,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(WINDURST,BLOOD_AND_GLORY);
+
+    elseif (csid == 173) then
         if (player:getFreeSlotsCount() == 0) then
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17081);
         else

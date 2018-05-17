@@ -5,7 +5,7 @@
 
 cmdprops =
 {
-    permission = 1,
+    permission = 3,
     parameters = "i"
 };
 
@@ -20,7 +20,6 @@ function onTrigger(player, costumeId)
         error(player, "Invalid costumeID.");
         return;
     end
-    
     -- put on costume
     player:costume( costumeId );
-end
+end;

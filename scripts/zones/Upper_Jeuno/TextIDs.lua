@@ -35,5 +35,8 @@ YOU_CAN_NOW_BECOME_A_BEASTMASTER =  7180; -- You can now become a beastmaster.
                   MP_SHOP_DIALOG =  6974; -- Welcome to M & P's Market.
            LEILLAINE_SHOP_DIALOG =  7000; -- Hello. Are you feeling all right?
 
+-- WS Quest
+              DECIMATION_LEARNED =  8192; -- You have learned the weapon skill “Decimation”!
+
 -- conquest Base
                    CONQUEST_BASE =     0;

@@ -771,13 +771,13 @@ end;
         nativecrit = nativecrit + (attacker:getMod(dsp.mod.CRITHITRATE)/100) + attacker:getMerit(dsp.merit.CRIT_HIT_RATE)/100 - target:getMerit(dsp.merit.ENEMY_CRIT_RATE)/100;
         
         -- Handle Fencer
-        local mainEquip = attacker:getStorageItem(0, 0, dsp.slot.MAIN);
+        --[[local mainEquip = attacker:getStorageItem(0, 0, dsp.slot.MAIN); -- causing conflicts in WS's!
         local subEquip = attacker:getStorageItem(0, 0, dsp.slot.SUB);
         if (mainEquip:isTwoHanded() == false and mainEquip:isHandToHand() == false) then
             if (subEquip:getSkillType() == dsp.skill.NONE or subEquip:isShield()) then
                 nativecrit = nativecrit + attacker:getMod(dsp.mod.FENCER_CRITHITRATE) / 100;
             end
-        end
+        end]]
         
         if (attacker:hasStatusEffect(dsp.effect.INNIN) and attacker:isBehind(target, 23)) then -- Innin crit boost if attacker is behind target
             nativecrit = nativecrit + attacker:getStatusEffect(dsp.effect.INNIN):getPower();

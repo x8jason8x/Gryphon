@@ -1,6 +1,6 @@
 -----------------------------------
 -- Area: Metalworks
---  NPC: Cid
+-- NPC: Cid
 -- Starts & Finishes Quest: Cid's Secret, The Usual, Dark Puppet (start)
 -- Involved in Mission: Bastok 7-1
 -- !pos -12 -12 1 237
@@ -22,13 +22,23 @@ function onTrade(player,npc,trade)
         if (trade:getItemQty(613,1) and trade:getItemCount() == 1) then
             player:startEvent(506);
         end
+
+    elseif (trade:getItemCount() == 1) and (trade:hasItemQty(18146,1)) then -- check trial gun latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then
+	        player:startEvent(798); -- enough points
+		else
+		    player:startEvent(797); -- not enough points
+		end
     end
 
 end;
 
 function onTrigger(player,npc)
-    local currentday = tonumber(os.date("%j"));
-
+    
+	local shootFirst = player:getQuestStatus(BASTOK,SHOOT_FIRST_ASK_QUESTIONS_LATER); -- Gun WSNM quest
+	local mLvl = player:getMainLvl();
+	local mrkSkill = player:getSkillLevel(dsp.skill.MARKSMANSHIP);
+	local currentday = tonumber(os.date("%j"));
     local CidsSecret = player:getQuestStatus(BASTOK,CID_S_SECRET);
     local LetterKeyItem = player:hasKeyItem(dsp.ki.UNFINISHED_LETTER);
     local currentMission = player:getCurrentMission(BASTOK);
@@ -36,8 +46,21 @@ function onTrigger(player,npc)
     local UlmiaPath = player:getVar("COP_Ulmia_s_Path");
     local TenzenPath = player:getVar("COP_Tenzen_s_Path");
     local LouverancePath = player:getVar("COP_Louverance_s_Path");
-    local TreePathAv=0;
-    if (currentCOPMission == DAWN and player:getVar("PromathiaStatus")==3 and player:getVar("Promathia_kill_day")~=currentday and player:getVar("COP_tenzen_story")== 0 ) then
+    local TreePathAv = 0;
+
+    if (shootFirst == QUEST_AVAILABLE and mLvl >= WSNM_LEVEL and mrkSkill >= 240) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem (345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+		    player:startEvent(795); -- start Shoot First (Detonator quest)
+		end
+	elseif (shootFirst == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then 
+            player:startEvent(799); -- player has Annals of Truth
+		else
+		    player:startEvent(796); -- dropped gun or quit quest options
+		end
+	elseif (currentCOPMission == DAWN and player:getVar("PromathiaStatus")==3 and player:getVar("Promathia_kill_day")~=currentday and player:getVar("COP_tenzen_story")== 0 ) then
            player:startEvent(897); -- COP event
     elseif (currentCOPMission == CALM_BEFORE_THE_STORM and player:hasKeyItem(dsp.ki.LETTERS_FROM_ULMIA_AND_PRISHE) == false and player:getVar("COP_Dalham_KILL") == 2 and player:getVar("COP_Boggelmann_KILL") == 2 and player:getVar("Cryptonberry_Executor_KILL")==2) then
             player:startEvent(892); -- COP event
@@ -50,48 +73,48 @@ function onTrigger(player,npc)
     elseif (currentCOPMission == THREE_PATHS and LouverancePath == 6 ) then
             player:startEvent(852); -- COP event
     elseif (currentCOPMission == THREE_PATHS and LouverancePath == 9 ) then
-            if (TenzenPath==11 and UlmiaPath==8) then
-               TreePathAv=6;
-            elseif (TenzenPath==11) then
-               TreePathAv=2;
-            elseif (UlmiaPath==8) then
-               TreePathAv=4;
+            if (TenzenPath == 11 and UlmiaPath == 8) then
+                TreePathAv = 6;
+            elseif (TenzenPath == 11) then
+                TreePathAv = 2;
+            elseif (UlmiaPath == 8) then
+                TreePathAv = 4;
             else
-               TreePathAv=1;
+                TreePathAv = 1;
             end
             player:startEvent(853,TreePathAv); -- COP event
-    elseif (currentCOPMission == THREE_PATHS and TenzenPath == 10 ) then
-            if (UlmiaPath==8 and LouverancePath==10) then
-               TreePathAv=5;
-            elseif (LouverancePath==10) then
-               TreePathAv=3;
-            elseif (UlmiaPath==8) then
-               TreePathAv=4;
+    elseif (currentCOPMission == THREE_PATHS and TenzenPath == 10) then
+            if (UlmiaPath == 8 and LouverancePath == 10) then
+                TreePathAv = 5;
+            elseif (LouverancePath == 10) then
+                TreePathAv = 3;
+            elseif (UlmiaPath == 8) then
+                TreePathAv = 4;
             else
-               TreePathAv=1;
+                TreePathAv = 1;
             end
             player:startEvent(854,TreePathAv); -- COP event
-    elseif (currentCOPMission == THREE_PATHS and UlmiaPath == 7 ) then
-            if (TenzenPath==11 and LouverancePath==10) then
-               TreePathAv=3;
-            elseif (LouverancePath==10) then
-               TreePathAv=1;
-            elseif (TenzenPath==11) then
-               TreePathAv=2;
+    elseif (currentCOPMission == THREE_PATHS and UlmiaPath == 7) then
+            if (TenzenPath == 11 and LouverancePath == 10) then
+                TreePathAv = 3;
+            elseif (LouverancePath == 10) then
+                TreePathAv = 1;
+            elseif (TenzenPath == 11) then
+                TreePathAv = 2;
             else
-               TreePathAv=0;
+                TreePathAv = 0;
             end
             player:startEvent(855,TreePathAv); -- COP event
     elseif (currentCOPMission == DESIRES_OF_EMPTINESS and player:getVar("PromathiaStatus") > 8) then
             player:startEvent(850); -- COP event
-    elseif (currentCOPMission == THE_ENDURING_TUMULT_OF_WAR and player:getVar("PromathiaStatus")==1) then
+    elseif (currentCOPMission == THE_ENDURING_TUMULT_OF_WAR and player:getVar("PromathiaStatus") == 1) then
             player:startEvent(849); -- COP event
-    elseif (currentCOPMission == THE_CALL_OF_THE_WYRMKING and player:getVar("PromathiaStatus")==1) then
+    elseif (currentCOPMission == THE_CALL_OF_THE_WYRMKING and player:getVar("PromathiaStatus") == 1) then
             player:startEvent(845); -- COP event
-    elseif (currentCOPMission == THE_ROAD_FORKS and player:getVar("EMERALD_WATERS_Status")== 7 and player:getVar("MEMORIES_OF_A_MAIDEN_Status")== 12) then --two paths are finished ?
+    elseif (currentCOPMission == THE_ROAD_FORKS and player:getVar("EMERALD_WATERS_Status") == 7 and player:getVar("MEMORIES_OF_A_MAIDEN_Status") == 12) then --two paths are finished ?
             player:startEvent(847); -- COP event 3.3
     elseif (player:getMainJob() == dsp.job.DRK and player:getMainLvl() >= AF2_QUEST_LEVEL and
-       player:getQuestStatus(BASTOK,DARK_LEGACY) == QUEST_COMPLETED and player:getQuestStatus(BASTOK,DARK_PUPPET) == QUEST_AVAILABLE) then
+        player:getQuestStatus(BASTOK,DARK_LEGACY) == QUEST_COMPLETED and player:getQuestStatus(BASTOK,DARK_PUPPET) == QUEST_AVAILABLE) then
         player:startEvent(760); -- Start Quest "Dark Puppet"
     elseif (currentMission == GEOLOGICAL_SURVEY) then
         if (player:hasKeyItem(dsp.ki.RED_ACIDITY_TESTER)) then
@@ -109,7 +132,7 @@ function onTrigger(player,npc)
         player:startEvent(763); -- Bastok Mission 7-1
     elseif (currentMission == THE_FINAL_IMAGE and player:getVar("MissionStatus") == 2) then
         player:startEvent(764); -- Bastok Mission 7-1 (with Ki)
-    --Begin Cid's Secret
+     --Begin Cid's Secret
     elseif (player:getFameLevel(BASTOK) >= 4 and CidsSecret == QUEST_AVAILABLE) then
         player:startEvent(507);
     elseif (CidsSecret == QUEST_ACCEPTED and LetterKeyItem == false and player:getVar("CidsSecret_Event") == 1) then
@@ -118,17 +141,11 @@ function onTrigger(player,npc)
         player:startEvent(502); --Reminder dialogue from Cid if you have not spoken to Hilda
     elseif (CidsSecret == QUEST_ACCEPTED and LetterKeyItem) then
         player:startEvent(509);
-    --End Cid's Secret
+     --End Cid's Secret
     else
         player:startEvent(500); -- Standard Dialogue
     end
-
 end;
-
--- 503  504  505  506  500  502  0x02d0  507  508  509  0x025b  0x02f3  760  0x03f2  763  764
--- 0x030c  0x030e  0x031b  0x031c  0x031d  0x031e  0x031f  0x035d  0x034e  0x0350  0x035e  0x035f  0x0353  0x035a  0x034d  0x034f
--- 849  850  852  853  854  855  856  857  0x0364  0x0365  0x0373  0x0374  0x037a  0x037b  0x037c  0x037d
--- 0x037e  0x037f  897  0x0382
 
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
@@ -136,12 +153,47 @@ function onEventUpdate(player,csid,option)
 end;
 
 function onEventFinish(player,csid,option)
--- local currentday = tonumber(os.date("%j"));
-
-
+    -- local currentday = tonumber(os.date("%j"));
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
-    if (csid == 897) then
+
+    if (csid == 795) then
+	    if (player:getFreeSlotsCount() == 0) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,18146);
+	    else
+	        player:addQuest(BASTOK,SHOOT_FIRST_ASK_QUESTIONS_LATER); -- start Shoot First
+			player:addItem(18146);
+	        player:messageSpecial(ITEM_OBTAINED,18146);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 796) then
+	    if (option == 2) then -- lost/dropped gun of trials
+		    if (player:getFreeSlotsCount() == 0 or player:hasItem(18146)) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,18146);
+		    else	
+		        player:addItem(18146);
+			    player:messageSpecial(ITEM_OBTAINED,18146);
+			end
+		elseif (option == 3) then -- quit shoot first
+		    player:delQuest(BASTOK,SHOOT_FIRST_ASK_QUESTIONS_LATER);
+			player:delKeyItem(343);
+			player:delKeyItem(344);
+			player:delKeyItem(345);
+	    end
+	elseif (csid == 798) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 799) then -- Shoot First end
+		player:addLearnedWeaponskill(14);
+		player:messageSpecial(DETONATOR_LEARNED);
+		player:delKeyItem(345);
+		player:addFame(BASTOK,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(BASTOK,SHOOT_FIRST_ASK_QUESTIONS_LATER);
+
+	elseif (csid == 897) then
             player:setVar("COP_tenzen_story",1);
     elseif (csid == 892) then
             player:addKeyItem(dsp.ki.LETTERS_FROM_ULMIA_AND_PRISHE);
@@ -163,7 +215,7 @@ function onEventFinish(player,csid,option)
     elseif (csid == 852) then
             player:setVar("COP_Louverance_s_Path",7);
     elseif (csid == 850) then
-             player:setVar("PromathiaStatus",0);
+            player:setVar("PromathiaStatus",0);
             player:completeMission(COP,DESIRES_OF_EMPTINESS);
             player:addMission(COP,THREE_PATHS);
     elseif (csid == 849) then
@@ -212,29 +264,25 @@ function onEventFinish(player,csid,option)
     elseif (csid == 507) then
         player:addQuest(BASTOK,CID_S_SECRET);
     elseif (csid == 509) then
-            if (player:getFreeSlotsCount(0) >= 1) then
-                player:delKeyItem(dsp.ki.UNFINISHED_LETTER);
-                player:setVar("CidsSecret_Event",0);
-                player:addItem(13570);
-                player:messageSpecial(ITEM_OBTAINED,13570); -- Ram Mantle
-                player:addFame(BASTOK,30);
-                player:completeQuest(BASTOK,CID_S_SECRET);
+        if (player:getFreeSlotsCount(0) >= 1) then
+            player:delKeyItem(dsp.ki.UNFINISHED_LETTER);
+            player:setVar("CidsSecret_Event",0);
+            player:addItem(13570);
+            player:messageSpecial(ITEM_OBTAINED,13570); -- Ram Mantle
+            player:addFame(BASTOK,30);
+            player:completeQuest(BASTOK,CID_S_SECRET);
         else
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,13570);
         end
-     end
-     -- complete chapter "tree path"
-     if (csid == 853 or csid == 854 or csid == 855) then
-       if (player:getVar("COP_Tenzen_s_Path")==11 and player:getVar("COP_Ulmia_s_Path")==8 and player:getVar("COP_Louverance_s_Path")==10) then
-         player:completeMission(COP,THREE_PATHS);
-         player:addMission(COP,FOR_WHOM_THE_VERSE_IS_SUNG);
-         player:setVar("PromathiaStatus",0);
-         end
-     end
-
-
-
+     -- complete chapter "three paths"
+    elseif (csid == 853 or csid == 854 or csid == 855) then
+        if (player:getVar("COP_Tenzen_s_Path")==11 and player:getVar("COP_Ulmia_s_Path")==8 and player:getVar("COP_Louverance_s_Path")==10) then
+            player:completeMission(COP,THREE_PATHS);
+            player:addMission(COP,FOR_WHOM_THE_VERSE_IS_SUNG);
+            player:setVar("PromathiaStatus",0);
+			player:setVar("COP_Tenzen_s_Path", 0);
+			player:setVar("COP_Ulmia_s_Path", 0);
+			player:setVar("COP_Louverance_s_Path", 0);
+        end
+    end
 end;
-
-
-

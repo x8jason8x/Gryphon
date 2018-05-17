@@ -17,12 +17,18 @@ require("scripts/globals/titles");
 
 function onTrade(player,npc,trade)
 
-    if (player:getQuestStatus(SANDORIA,A_SQUIRE_S_TEST) == QUEST_ACCEPTED) then
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(16892,1)) then -- check trial pole latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then --(retail is 300)
+	        player:startEvent(9); -- enough points
+		else
+		    player:startEvent(10); -- not enough points
+		end
+
+	elseif (player:getQuestStatus(SANDORIA,A_SQUIRE_S_TEST) == QUEST_ACCEPTED) then
         if (trade:hasItemQty(940,1) and trade:getItemCount() == 1) then
             player:startEvent(617);
         end
     end
-
 end;
 
 function onTrigger(player,npc)
@@ -31,8 +37,25 @@ function onTrigger(player,npc)
     local ASquiresTest = player:getQuestStatus(SANDORIA, A_SQUIRE_S_TEST);
     local ASquiresTestII = player:getQuestStatus(SANDORIA,A_SQUIRE_S_TEST_II);
     local AKnightsTest = player:getQuestStatus(SANDORIA, A_KNIGHT_S_TEST);
+	local methodMad = player:getQuestStatus(SANDORIA,METHODS_CREATE_MADNESS); -- Polearm WSNM quest
+    local polSkill = player:getSkillLevel(dsp.skill.POLEARM);
 
-    if (player:getQuestStatus(SANDORIA,KNIGHT_STALKER) == QUEST_ACCEPTED and player:getVar("KnightStalker_Progress") == 2) then
+    if (methodMad == QUEST_AVAILABLE and LvL >= WSNM_LEVEL and polSkill >= 240) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem (345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+		    player:startEvent(8); -- start Methods Create Madness (Impulse Drive wsnm quest)
+		end
+	elseif (methodMad == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then 
+            player:startEvent(13); -- player has Annals of Truth
+		elseif player:hasKeyItem(344) then
+		    player:startEvent(12); -- player has Map to Annals
+        else			
+		    player:startEvent(11); -- dropped pole or quit quest options
+		end
+
+    elseif (player:getQuestStatus(SANDORIA,KNIGHT_STALKER) == QUEST_ACCEPTED and player:getVar("KnightStalker_Progress") == 2) then
         player:startEvent(63); -- DRG AF3 cutscene, doesn't appear to have a follow up.
     elseif (LvL < 7) then
         player:startEvent(668);
@@ -77,7 +100,6 @@ function onTrigger(player,npc)
     else
         player:startEvent(667);
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -89,7 +111,41 @@ function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 
-    if (csid == 616) then
+    if (csid == 8 and option == 1) then
+	    if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,16892);
+	    else
+	        player:addQuest(SANDORIA,METHODS_CREATE_MADNESS); -- start wsnm quest
+			player:addItem(16892);
+	        player:messageSpecial(ITEM_OBTAINED,16892);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 11) then
+	    if (option == 1) then -- lost/dropped pole of trials
+		    if (player:getFreeSlotsCount() < 1 or player:hasItem(16892)) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,16892);
+		    else	
+		        player:addItem(16892);
+			    player:messageSpecial(ITEM_OBTAINED,16892);
+			end
+		elseif (option == 2) then -- quit wsnm quest
+		    player:delQuest(SANDORIA,METHODS_CREATE_MADNESS);
+			player:delKeyItem(343);
+	    end
+	elseif (csid == 9) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 13) then -- Methods Create Madness end
+		player:delKeyItem(345);
+		player:addLearnedWeaponskill(8);
+		player:messageSpecial(IMPULSE_DRIVE_LEARNED);
+		player:addFame(SANDORIA,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(SANDORIA,METHODS_CREATE_MADNESS);
+
+	elseif (csid == 616) then
         if (option == 0) then
             player:addQuest(SANDORIA,A_SQUIRE_S_TEST);
         else
@@ -151,12 +207,4 @@ function onEventFinish(player,csid,option)
     elseif (csid == 63) then
         player:setVar("KnightStalker_Progress",3);
     end
-
 end;
---    player:startEvent(32690)     -- starlight celebration
---    player:startEvent(10)     -- methods create madness you havent used the weapon to full extent
---    player:startEvent(8)      -- methods create madness start
---    player:startEvent(11)      -- methods create nadness menu
---    player:startEvent(9)      -- methods create madness map
---    player:startEvent(12)     -- methods create madness map reminder
---    player:startEvent(13)     -- methods create madness end

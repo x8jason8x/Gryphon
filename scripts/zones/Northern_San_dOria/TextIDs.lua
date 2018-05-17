@@ -1,8 +1,9 @@
 -- Variable TextID   Description text
-
+--
 -- General Texts
     ITEM_CANNOT_BE_OBTAINED =  6589; -- Come back after sorting your inventory.
-              ITEM_OBTAINED =  6985; -- Obtained: <<<Unknown Parameter (Type: 80) 1>>><<<Possible Special Code: 01>>><<<Possible Special Code: 05>>>
+	       MYSTIC_RETRIEVER =  6591; -- You cannot obtain the <item>. Speak with the mystic retriever after sorting your inventory.
+              ITEM_OBTAINED =  6594; -- Obtained: <<<Unknown Parameter (Type: 80) 1>>><<<Possible Special Code: 01>>><<<Possible Special Code: 05>>>
                GIL_OBTAINED =  6596; -- Obtained <<<Numeric Parameter 0>>> gil.
            KEYITEM_OBTAINED =  6597; -- Obtained key item: <<<Unknown Parameter (Type: 80) 1>>>
         NOT_HAVE_ENOUGH_GIL =  6601; -- You do not have enough gil.

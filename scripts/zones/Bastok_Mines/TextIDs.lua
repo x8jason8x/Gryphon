@@ -85,6 +85,9 @@ EMALIVEULAUX_COP_NOT_COMPLETED = 12239; -- I'd like to start my own business som
 -- Standard NPC Dialog
           ITEM_DELIVERY_DIALOG = 10433; -- Need something sent to a friend's house? Sending items to your own house? You've come to the right place!
 
+-- WS Quest
+         GROUND_STRIKE_LEARNED = 11710; -- You have learned the weapon skill “Ground Strike”!
+
 -- conquest Base
                  CONQUEST_BASE =  6579; -- Tallying conquest results...
 

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Area: Full Moon Fountain
 -- NPC:  Moon Spiral
--- Involved in Quests: The Moonlit Path
+-- Involved in: The Moonlit Path, Moon Reading (Windurst 9-2 BCNM)
 -- !pos -302 9 -260 170
 -----------------------------------
 package.loaded["scripts/zones/Full_Moon_Fountain/TextIDs"] = nil;
@@ -13,12 +13,17 @@ require("scripts/globals/missions");
 require("scripts/zones/Full_Moon_Fountain/TextIDs");
 
 -----------------------------------
+
+	-- 0: The Moonlit Path
+	-- 1: Moon Reading
+	
+-----------------------------------
 -- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
-
-    if (TradeBCNM(player,player:getZoneID(),trade,npc)) then
+	
+	if (TradeBCNM(player,player:getZoneID(),trade,npc)) then
         return;
     end
 end;
@@ -28,9 +33,11 @@ end;
 -----------------------------------
 
 function onTrigger(player,npc)
-
-    if (EventTriggerBCNM(player,npc)) then
-        return;
+	
+    if (player:getCurrentMission(WINDURST) == MOON_READING and "MissionStatus" == 2) then
+		player:startEvent(225);
+	elseif (EventTriggerBCNM(player,npc)) then
+        return 1;
     end
 end;
 
@@ -39,10 +46,10 @@ end;
 -----------------------------------
 
 function onEventUpdate(player,csid,option)
-printf("onUpdate CSID: %u",csid);
-printf("onUpdate RESULT: %u",option);
-
-    if (EventUpdateBCNM(player,csid,option)) then
+    -- printf("CSID: %u",csid);
+    -- printf("RESULT: %u",option);
+	
+	if (EventUpdateBCNM(player,csid,option)) then
         return;
     end
 end;
@@ -52,8 +59,8 @@ end;
 -----------------------------------
 
 function onEventFinish(player,csid,option)
-printf("onFinish CSID: %u",csid);
-printf("onFinish RESULT: %u",option);
+    --printf("onFinish CSID: %u",csid);
+    --printf("onFinish RESULT: %u",option);
 
     if (EventFinishBCNM(player,csid,option)) then
         return;

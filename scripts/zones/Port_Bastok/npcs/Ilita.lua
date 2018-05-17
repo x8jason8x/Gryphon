@@ -18,7 +18,6 @@ function onTrigger(player,npc)
     player:showText(npc,ILITA_SHOP_DIALOG,513);
 
     stock = {
-        0x0200,  8000,       --Linkshell
         0x3F9D,   375        --Pendant Compass
     }
     showShop(player, STATIC, stock);

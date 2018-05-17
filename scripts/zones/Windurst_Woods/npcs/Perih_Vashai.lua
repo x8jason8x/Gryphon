@@ -17,36 +17,52 @@ require("scripts/globals/titles");
 
 function onTrade(player,npc,trade)
 
-    if (trade:hasItemQty(1113,1) and trade:getItemCount() == 1) then -- Trade old earring (complete Rng AF2 quest) -- oldEarring
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(18144,1)) then -- check trial club latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then
+	        player:startEvent(664); -- enough points
+		else
+		    player:startEvent(663); -- not enough points
+		end	
+    elseif (trade:hasItemQty(1113,1) and trade:getItemCount() == 1) then -- Trade old earring (complete Rng AF2 quest) -- oldEarring
         local FireAndBrimstoneCS = player:getVar("fireAndBrimstone");
-
         if (FireAndBrimstoneCS == 5) then
             player:startEvent(537, 0, 13360); -- twinstoneEarring
         end
     end
-
 end;
 
 function onTrigger(player,npc)
 
     local TheFangedOne = player:getQuestStatus(WINDURST,THE_FANGED_ONE); -- RNG flag quest
-
     local SinHunting = player:getQuestStatus(WINDURST,SIN_HUNTING);-- RNG AF1
     local SinHuntingCS = player:getVar("sinHunting");
-
     local FireAndBrimstone = player:getQuestStatus(WINDURST,FIRE_AND_BRIMSTONE);-- RNG AF2
     local FireAndBrimstoneCS = player:getVar("fireAndBrimstone");
-
     local UnbridledPassion = player:getQuestStatus(WINDURST,UNBRIDLED_PASSION);-- RNG AF3
     local UnbridledPassionCS = player:getVar("unbridledPassion");
-
+	local fromSapling = player:getQuestStatus(WINDURST,FROM_SAPLINGS_GROW); -- Bow WSNM quest
+	local arcSkill = player:getSkillLevel(dsp.skill.ARCHERY);
     local LvL = player:getMainLvl();
     local Job = player:getMainJob();
 
-    -- COP mission
-    if (player:getCurrentMission(COP) == THREE_PATHS and player:getVar("COP_Louverance_s_Path") == 1) then
+    if (fromSapling == QUEST_AVAILABLE and LvL >= WSNM_LEVEL and arcSkill >= 240) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem(345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+	        player:startEvent(661);-- start From Saplings Grow (Empyreal Arrow quest)
+		end
+	elseif (fromSapling == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then -- player has Annals of Truth
+            player:startEvent(666); 
+		elseif player:hasKeyItem(344) then -- player has Map to Annals
+		    player:startEvent(665);
+		else
+		    player:startEvent(662); -- dropped bow or quit quest options
+		end
+     -- COP mission
+    elseif (player:getCurrentMission(COP) == THREE_PATHS and player:getVar("COP_Louverance_s_Path") == 1) then
             player:startEvent(686);
-    -- the fanged one
+     -- the fanged one
     elseif (TheFangedOne ~= QUEST_COMPLETED) then
         if (TheFangedOne == QUEST_AVAILABLE and player:getMainLvl() >= ADVANCED_JOB_LEVEL) then
             player:startEvent(351);
@@ -57,16 +73,14 @@ function onTrigger(player,npc)
         elseif (player:getVar("TheFangedOne_Event") == 1) then
             player:startEvent(358);
         end
-
-    -- sin hunting
+     -- sin hunting
     elseif (SinHunting == QUEST_AVAILABLE and Job == 11 and LvL >= 40 and SinHuntingCS == 0) then
         player:startEvent(523); -- start RNG AF1
     elseif (SinHuntingCS > 0 and SinHuntingCS < 5) then
         player:startEvent(524); -- during quest RNG AF1
     elseif (SinHuntingCS == 5) then
         player:startEvent(527); -- complete quest RNG AF1
-
-    -- fire and brimstone
+     -- fire and brimstone
     elseif (SinHunting == QUEST_COMPLETED and Job == 11 and FireAndBrimstone == QUEST_AVAILABLE and FireAndBrimstoneCS == 0) then
         player:startEvent(531); -- start RNG AF2
     elseif (FireAndBrimstoneCS > 0 and FireAndBrimstoneCS < 4) then
@@ -75,8 +89,7 @@ function onTrigger(player,npc)
         player:startEvent(535,0,13360,1113); -- second part RNG AF2
     elseif (FireAndBrimstoneCS == 5) then
         player:startEvent(536,0,13360,1113); -- during second part RNG AF2
-
-    -- Unbridled Passion
+     -- Unbridled Passion
     elseif (FireAndBrimstone == QUEST_COMPLETED and Job == 11 and UnbridledPassion == QUEST_AVAILABLE and UnbridledPassion == 0) then
         player:startEvent(541, 0, 13360); -- start RNG AF3
     elseif (UnbridledPassionCS > 0 and UnbridledPassionCS < 3) then
@@ -85,12 +98,10 @@ function onTrigger(player,npc)
         player:startEvent(542);-- during RNG AF3
     elseif (UnbridledPassionCS == 7) then
         player:startEvent(546, 0, 14099); -- complete RNG AF3
-
-    -- standard dialog
+     -- standard dialog
     else
         player:startEvent(338);
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -102,7 +113,42 @@ function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 
-    if (csid == 351) then
+    if (csid == 661) then
+	    if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,18144);
+	    else
+	        player:addQuest(WINDURST,FROM_SAPLINGS_GROW); -- start From Saplings Grow
+		    player:addItem(18144);
+	        player:messageSpecial(ITEM_OBTAINED,18144);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 662) then
+	    if (option == 2) then -- lost/dropped bow of trials
+		    if (player:getFreeSlotsCount() < 1 or player:hasItem(18144)) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,18144);
+		    else	
+		        player:addItem(18144);
+			    player:messageSpecial(ITEM_OBTAINED,18144);
+			end
+		elseif (option == 3) then -- quit From Saplings Grow
+		    player:delQuest(WINDURST,FROM_SAPLINGS_GROW);
+			player:delKeyItem(343);
+			player:delKeyItem(344);
+			player:delKeyItem(345);
+	    end
+	elseif (csid == 664) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 666) then -- From Saplings Grow end
+		player:addLearnedWeaponskill(13);
+		player:messageSpecial(EMPYREAL_ARROW_LEARNED);
+		player:delKeyItem(345);
+		player:addFame(WINDURST,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(WINDURST,FROM_SAPLINGS_GROW);
+    elseif (csid == 351) then
         player:addQuest(WINDURST,THE_FANGED_ONE);
         player:setVar("TheFangedOneCS", 1);
     elseif (csid == 357 or csid == 358) then
@@ -168,5 +214,4 @@ function onEventFinish(player,csid,option)
     elseif (csid == 686) then
         player:setVar("COP_Louverance_s_Path",2);
     end
-
 end;

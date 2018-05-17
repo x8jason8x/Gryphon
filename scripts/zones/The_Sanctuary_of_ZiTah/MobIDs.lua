@@ -2,6 +2,7 @@ GUARDIAN_TREANT         = 17272838;
 DOOMED_PILGRIMS         = 17272839;
 NOBLE_MOLD              = 17273278;
 ISONADE                 = 17273285;
+GREENMAN                = 17273295;
 
 NOBLE_MOLD_PH =
 {

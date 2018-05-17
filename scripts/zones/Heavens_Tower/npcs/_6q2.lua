@@ -37,12 +37,26 @@ function onTrigger(player,npc)
         player:startEvent(312);
     elseif (CurrentMission == DOLL_OF_THE_DEAD and MissionStatus == 2) then
         player:startEvent(362);
+    elseif (player:getVar("Flagwindurst") == 1) then
+        if (player:getFreeSlotsCount() == 0) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,181);
+        else
+            player:setVar("Flagwindurst",0);
+            player:addItem(181);
+            player:messageSpecial(ITEM_OBTAINED,181);
+		end	
+    elseif (CurrentMission == MOON_READING and MissionStatus == 0) then
+        player:startEvent(384);
+	elseif (CurrentMission == MOON_READING and player:hasKeyItem(ANCIENT_VERSE_OF_ALTEPA and ANCIENT_VERSE_OF_ROMAEVE and ANCIENT_VERSE_OF_UGGALEPIH)) then
+        player:startEvent(385);
+	elseif (CurrentMission == MOON_READING and MissionStatus == 3) then
+        player:startEvent(386);
+	elseif (CurrentMission == MOON_READING and MissionStatus == 4) then
+        player:startEvent(407);	
     else
         player:startEvent(154);
     end
-
     return 1;
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -82,6 +96,30 @@ function onEventFinish(player,csid,option)
         finishMissionTimeline(player,1,csid,option);
     elseif (csid == 362) then
         player:setVar("MissionStatus",3);
+    elseif (csid == 384) then
+        player:setVar("MissionStatus",1);
+	elseif (csid == 385) then
+		player:delKeyItem(ANCIENT_VERSE_OF_ALTEPA);
+		player:delKeyItem(ANCIENT_VERSE_OF_ROMAEVE);
+		player:delKeyItem(ANCIENT_VERSE_OF_UGGALEPIH);
+		player:setVar("MissionStatus",2);
+	elseif (csid == 386) then
+        player:setVar("MissionStatus",4);
+	elseif (csid == 407) then
+        if (player:getFreeSlotsCount() == 0) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,183);
+            player:setVar("Flagwindurst",1);
+        else
+		    player:setPos(0,-50,35,64,242);
+            player:addItem(183);
+            player:messageSpecial(ITEM_OBTAINED,183);
+        end
+        player:setVar("MissionStatus",0);
+        player:completeMission(WINDURST,MOON_READING);
+        player:setRank(10);
+        player:addGil(GIL_RATE*100000);
+        player:messageSpecial(GIL_OBTAINED,GIL_RATE*100000);
+        player:setTitle(300);
+        player:setVar("WindyEpilogue",1);
     end
-
 end;

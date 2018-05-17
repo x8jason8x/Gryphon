@@ -5,6 +5,16 @@
 require("scripts/globals/titles");
 -----------------------------------
 
+function onMobInitialize(mob)
+    -- addMod
+    mob:addMod(MOD_REGAIN,24);
+    mob:addMod(MOD_MATT,58);
+    mob:addMod(MOD_MACC,375);
+    mob:addMod(MOD_ACC,185);
+    mob:addMod(MOD_ATT,36);
+    mob:addMod(MOD_DEF,36);
+end;
+
 function onMobSpawn(mob)
 end;
 
@@ -43,4 +53,12 @@ end;
 
 function onMobDeath(mob, player, isKiller)
     player:addTitle(dsp.title.TROLL_SUBJUGATOR);
+end;
+
+-----------------------------------
+-- onMobDespawn
+-----------------------------------
+
+function onMobDespawn(mob)
+    mob:setRespawnTime(math.random(172800,259200)); -- 2 to 3 days
 end;

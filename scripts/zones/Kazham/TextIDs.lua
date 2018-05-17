@@ -8,12 +8,11 @@
              HOMEPOINT_SET =  6477; -- Home point set!
     FISHING_MESSAGE_OFFSET =  6656; -- You can't fish here.
 
+-- conquest Base
+             CONQUEST_BASE =  6497; -- Tallying conquest results...
+
 -- Other Texts
       ITEM_DELIVERY_DIALOG =  9956; -- We can deliver packages to Mog Houses anywhere in Vana'diel.
-
--- Quest Dialog
-            IFRIT_UNLOCKED = 10515; -- You are now able to summon
-       NOMAD_MOOGLE_DIALOG = 10583; -- I'm a traveling moogle, kupo. I help adventurers in the Outlands access items they have stored in a Mog House elsewhere, kupo.
 
 -- Shop Texts
  TOJIMUMOSULAH_SHOP_DIALOG = 10020; -- Things meant to live will live. Things meant to die will die when their time has come. However, this does not mean you should cease your strrruggle for life.
@@ -24,8 +23,12 @@ GHEMISENTERILO_SHOP_DIALOG = 10042; -- Can you really get everything that you wa
  PAHYALOLOHOIV_SHOP_DIALOG = 10328; -- Nothing in this world is crrreated good or evil. However, evil can arrrise when something exists in a place where it did not originally belong.
        MAMERIE_SHOP_DIALOG = 10607; -- Is there something you require?
 
--- conquest Base
-             CONQUEST_BASE =  6497; -- Tallying conquest results...
+-- Quest Dialog
+            IFRIT_UNLOCKED = 10515; -- You are now able to summon
+       NOMAD_MOOGLE_DIALOG = 10583; -- I'm a traveling moogle, kupo. I help adventurers in the Outlands access items they have stored in a Mog House elsewhere, kupo.
+
+-- WSNM Quest
+      EVISCERATION_LEARNED = 10644; -- You have learned the weapon skill "Evisceration"!
 
 -- Porter Moogle
         RETRIEVE_DIALOG_ID = 10994; -- You retrieve$ from the porter moogle's care.

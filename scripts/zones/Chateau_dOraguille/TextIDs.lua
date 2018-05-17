@@ -13,6 +13,8 @@ ITEM_CANNOT_BE_OBTAINED = 6588; -- Come back after sorting your inventory.
 -- Mission dialog
           HALVER_OFFSET = 6791; -- The princess is always speaking of your deeds for the Kingdom. Everyone here is counting on you,
 
--- Conquest Base
+-- WS Quest
+   SAVAGE_BLADE_LEARNED = 7938;-- You have learned the weapon skill “Savage Blade”!
 
+-- Conquest Base
           CONQUEST_BASE = 6877; -- Tallying conquest results...

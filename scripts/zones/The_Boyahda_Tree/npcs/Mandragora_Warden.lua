@@ -25,17 +25,16 @@ local dialog = player:getVar ("mandialog");
         if (dialog == 0) then
             player:startEvent(10);
             player:setVar("mandialog",1);
-            player:PrintToPlayer("Seems like he wants something");
+            player:PrintToPlayer("Seems like he wants something. . .");
         elseif (dialog == 1) then
             player:startEvent(11);
             player:setVar("mandialog",2);
         elseif (dialog == 2) then
             player:startEvent(12);
             player:setVar("mandialog",3);
-            player:PrintToPlayer("Seems like he wants some Gobbu Hummus");
+            player:PrintToPlayer("Seems like he wants some Goobbue Humus!");
         end
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -52,4 +51,3 @@ function onEventFinish(player,csid,option)
         player:addKeyItem(dsp.ki.LETTER_FROM_ZONPAZIPPA);
     end
 end;
-

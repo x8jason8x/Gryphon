@@ -39,13 +39,22 @@ end;
 
 function onTrade(player,npc,trade)
 
-    if (player:getVar("troubleAtTheSluiceVar") == 2) then
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(16793,1)) then -- check trial scythe latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then --(retail is 300)
+	        player:startEvent(1); -- enough points
+			npc:wait();
+		else
+		    player:startEvent(2); -- not enough points
+			npc:wait();
+		end
+
+	elseif (player:getVar("troubleAtTheSluiceVar") == 2) then
         if (trade:hasItemQty(959,1) and trade:getItemCount() == 1) then -- Trade Dahlia
             player:startEvent(17);
             npc:wait();
         end
-    end
-    if (player:getQuestStatus(SANDORIA,THE_RUMOR) == QUEST_ACCEPTED) then
+		
+    elseif (player:getQuestStatus(SANDORIA,THE_RUMOR) == QUEST_ACCEPTED) then
         local count = trade:getItemCount();
         local BeastBlood = trade:hasItemQty(930,1)
         if (BeastBlood == true and count == 1) then
@@ -57,6 +66,9 @@ end;
 
 function onTrigger(player,npc)
 
+    local soulShadow = player:getQuestStatus(SANDORIA,SOULS_IN_SHADOW); -- Scythe WSNM quest
+	local mLvl = player:getMainLvl();
+	local syhSkill = player:getSkillLevel(dsp.skill.SCYTHE);
     local troubleAtTheSluice = player:getQuestStatus(SANDORIA,TROUBLE_AT_THE_SLUICE);
     local TheHolyCrest = player:getVar("TheHolyCrest_Event");
     local tatsVar = player:getVar("troubleAtTheSluiceVar");
@@ -65,19 +77,33 @@ function onTrigger(player,npc)
 
     npc:wait();
 
-    -- The Holy Crest Quest
-    if (TheHolyCrest == 1) then
+    if (soulShadow == QUEST_AVAILABLE and mLvl >= WSNM_LEVEL and syhSkill >= 240) then -- Souls in Shadow (WSNM quest)
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem (345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+		    player:startEvent(0); -- start Souls in Shadow (Spiral Hell quest)
+		end
+	elseif (soulShadow == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then 
+            player:startEvent(5); -- player has Annals of Truth
+		elseif player:hasKeyItem(344) then
+		    player:startEvent(4); -- player has Map to Annals
+        else			
+		    player:startEvent(3); -- dropped scythe or quit quest options
+		end
+     -- The Holy Crest Quest
+    elseif (TheHolyCrest == 1) then
         player:startEvent(6);
     elseif (TheHolyCrest == 2 and crestCheck == 0) then
         player:startEvent(7);
         player:setVar("theHolyCrestCheck",1);
-    -- Trouble at the Sluice Quest
+     -- Trouble at the Sluice Quest
     elseif (tatsVar == 1) then
         player:startEvent(15);
         player:setVar("troubleAtTheSluiceVar",2);
     elseif (tatsVar == 2) then
         player:startEvent(16);
-    -- The rumor Quest
+     -- The Rumor Quest
     elseif (theRumor == QUEST_AVAILABLE and player:getFameLevel(SANDORIA) >= 3 and player:getMainLvl() >= 10) then
         player:startEvent(13);
     elseif (theRumor == QUEST_ACCEPTED) then
@@ -99,7 +125,41 @@ function onEventFinish(player,csid,option,npc)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 
-    if (csid == 6) then
+    if (csid == 0 and option == 1) then
+	    if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,16793);
+	    else
+	        player:addQuest(SANDORIA,SOULS_IN_SHADOW); -- start wsnm quest
+			player:addItem(16793);
+	        player:messageSpecial(ITEM_OBTAINED,16793);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 3) then
+	    if (option == 1) then -- lost/dropped scythe of trials
+		    if (player:getFreeSlotsCount() < 1 or player:hasItem(16793)) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,16793);
+		    else	
+		        player:addItem(16793);
+			    player:messageSpecial(ITEM_OBTAINED,16793);
+			end
+		elseif (option == 2) then -- quit wsnm quest
+		    player:delQuest(SANDORIA,SOULS_IN_SHADOW);
+			player:delKeyItem(343);
+	    end
+	elseif (csid == 1) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 5) then -- Souls in Shadow end
+		player:delKeyItem(345);
+		player:addLearnedWeaponskill(7);
+		player:messageSpecial(SPIRAL_HELL_LEARNED);
+		player:addFame(SANDORIA,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(SANDORIA,SOULS_IN_SHADOW);
+
+    elseif (csid == 6) then
         player:setVar("TheHolyCrest_Event",2);
     elseif (csid == 17) then
         player:tradeComplete();

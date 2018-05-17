@@ -15,6 +15,14 @@ require("scripts/globals/titles");
 -----------------------------------
 
 function onTrade(player,npc,trade)
+
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(17933,1)) then -- check trial pick latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then
+	        player:startEvent(13); -- enough points
+		else
+		    player:startEvent(14); -- not enough points
+		end
+    end
 end;
 
 function onTrigger(player,npc)
@@ -25,23 +33,27 @@ function onTrigger(player,npc)
     local saveMySon = player:getQuestStatus(JEUNO,SAVE_MY_SON);
     local wingsOfGold = player:getQuestStatus(JEUNO,WINGS_OF_GOLD);
     local scatIntoShadow = player:getQuestStatus(JEUNO,SCATTERED_INTO_SHADOW);
-
+    local axeComp = player:getQuestStatus(JEUNO,AXE_THE_COMPETITION); -- axe WSNM quest
+	local axeSkill = player:getSkillLevel(dsp.skill.AXE);
     local mLvl = player:getMainLvl();
     local mJob = player:getMainJob();
 
-    if (chocoboOnTheLoose == QUEST_AVAILABLE) then
-        player:startEvent(10093);
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 0) then
-        player:startEvent(10094);
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 2) then
-        player:startEvent(10095);
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 3) then
-        player:startEvent(10099);
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and (chocoboOnTheLooseStatus == 5 or chocoboOnTheLooseStatus == 6)) then
-        player:startEvent(10100);
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 7 and player:needToZone() == false and (player:getVar("ChocoboOnTheLooseDay") < VanadielDayOfTheYear() or player:getVar("ChocoboOnTheLooseYear") < VanadielYear())) then
-        player:startEvent(10109);
-    elseif (player:getMainLvl() >= 20 and ChocobosWounds ~= QUEST_COMPLETED) then
+    if (axeComp == QUEST_AVAILABLE and mLvl >= WSNM_LEVEL and axeSkill >= 240) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem(345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+	        player:startEvent(12);-- start Axe the Competition (Decimation quest)
+		end
+	elseif (axeComp == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then -- player has Annals of Truth
+            player:startEvent(17); 
+		elseif player:hasKeyItem(344) then -- player has Map to Annals
+		    player:startEvent(16);
+		else
+		    player:startEvent(15); -- dropped axe or quit quest options
+		end
+
+	elseif (player:getMainLvl() >= 20 and ChocobosWounds ~= QUEST_COMPLETED) then
         local chocoFeed = player:getVar("ChocobosWounds_Event");
 
         if (ChocobosWounds == QUEST_AVAILABLE) then
@@ -94,6 +106,18 @@ function onTrigger(player,npc)
         player:startEvent(151);
     elseif (player:getQuestStatus(JEUNO,PATH_OF_THE_BEASTMASTER) == QUEST_COMPLETED) then
         player:startEvent(20);
+    elseif (chocoboOnTheLoose == QUEST_AVAILABLE) then
+        player:startEvent(10093);
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 0) then
+        player:startEvent(10094);
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 2) then
+        player:startEvent(10095);
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 3) then
+        player:startEvent(10099);
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and (chocoboOnTheLooseStatus == 5 or chocoboOnTheLooseStatus == 6)) then
+        player:startEvent(10100);
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 7 and player:needToZone() == false and (player:getVar("ChocoboOnTheLooseDay") < VanadielDayOfTheYear() or player:getVar("ChocoboOnTheLooseYear") < VanadielYear())) then
+        player:startEvent(10109);
     else
         player:startEvent(66, player:getMainLvl());
     end
@@ -108,7 +132,38 @@ function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 
-    if (csid == 10093) then
+    if (csid == 12 and option == 1) then
+	    player:addQuest(JEUNO,AXE_THE_COMPETITION); -- start Axe the Competition
+		player:addItem(17933);
+	    player:messageSpecial(ITEM_OBTAINED,17933);
+		player:addKeyItem(343);
+	    player:messageSpecial(KEYITEM_OBTAINED,343);
+	elseif (csid == 15) then
+	    if (option == 1) then -- lost/dropped pick of trials
+		    if (player:getFreeSlotsCount() < 1 or player:hasItem(17933)) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17456);
+		    else	
+		        player:addItem(17933);
+			    player:messageSpecial(ITEM_OBTAINED,17933);
+			end
+		elseif (option == 2) then -- quit Axe the Competition
+		    player:delQuest(JEUNO,AXE_THE_COMPETITION);
+			player:delKeyItem(343);
+			player:delKeyItem(344);
+	    end
+	elseif (csid == 13) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);	
+	elseif (csid == 17) then -- Axe the Competition end
+		player:addLearnedWeaponskill(5);
+		player:messageSpecial(DECIMATION_LEARNED);
+		player:delKeyItem(345);
+		player:addFame(JEUNO,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(JEUNO,AXE_THE_COMPETITION);
+
+	elseif (csid == 10093) then
         player:addQuest(JEUNO,CHOCOBO_ON_THE_LOOSE);
     elseif (csid == 10094) then
         player:setVar("ChocoboOnTheLoose", 1);

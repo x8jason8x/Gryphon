@@ -542,10 +542,11 @@ function checkNonTradeBCNM(player, npc, mode)
                 },
         [170] = {
                     [224] = function() return (player:hasKeyItem(dsp.ki.MOON_BAUBLE))  end, -- The Moonlit Path
-                    [225] = function() return ((player:getCurrentMission(WINDURST) == MOON_READING) and player:getVar("WINDURST92") == 2)  end, -- Moon reading
+                    [225] = function() return ((player:getCurrentMission(WINDURST) == MOON_READING) and player:getVar("MissionStatus") == 2)  end, -- Moon reading
                 },
         [179] = {
                     [256] = function() return (player:getCurrentMission(ZILART) == RETURN_TO_DELKFUTTS_TOWER and player:getVar("ZilartStatus") == 3)  end, -- Zilart Mission 8
+                    [262] = function() return (player:getCurrentMission(ACP) == ODE_OF_LIFE_BESTOWING and player:hasKeyItem(dsp.ki.OMNIS_STONE)) end, -- Ode of Life Bestowing
                 },
         [180] = {
                     [288] = function() return (player:getCurrentMission(ZILART) == ARK_ANGELS and player:getVar("ZilartStatus") == 1 and npc:getID() == 17514791 and player:hasKeyItem(dsp.ki.SHARD_OF_APATHY) == false)  end, -- Hume, Ark Angels 1
@@ -572,10 +573,7 @@ function checkNonTradeBCNM(player, npc, mode)
         [206] = {
                     [512] = function() return (player:getCurrentMission(player:getNation()) == 14 and player:getVar("MissionStatus") == 11)  end, -- Mission 5-1
                     [516] = function() return (player:getCurrentMission(SANDORIA) == THE_HEIR_TO_THE_LIGHT and player:getVar("MissionStatus") == 3)  end, -- sando 9-2
-                --[[
-                    Temp disabled pending BCNM mob fixes
                     [532] = function() return (player:getCurrentMission(ACP) >= THOSE_WHO_LURK_IN_SHADOWS_III and player:hasKeyItem(dsp.ki.MARK_OF_SEED))  end, -- ACP Mission 7
-                ]]
                 },
         [207] = {
                     [544] = function() return (player:hasKeyItem(dsp.ki.TUNING_FORK_OF_FIRE))  end, -- Trial by Fire
@@ -610,7 +608,7 @@ end
 
 function CutsceneSkip(player, npc)
 
-    local skip = 0
+    local skip = 1
     local Zone = player:getZoneID()
 
     if (Zone == 6) then -- Bearclaw Pinnacle

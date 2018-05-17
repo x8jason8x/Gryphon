@@ -12,7 +12,7 @@ require("scripts/zones/Aht_Urhgan_Whitegate/TextIDs");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-    --[[
+    
     local trophies =
     {
         2616, 2617, 2618, 2613, 2614, 2615, 2610, 2611, 2612,
@@ -24,22 +24,22 @@ function onTrade(player,npc,trade)
     local seals =
     {
         dsp.ki.MAROON_SEAL, dsp.ki.MAROON_SEAL, dsp.ki.MAROON_SEAL,
-        dsp.ki.APPLE_GREEN_SEAL,dsp.ki.APPLE_GREEN_SEAL,dsp.ki.APPLE_GREEN_SEAL,
+        dsp.ki.APPLE_GREEN_SEAL, dsp.ki.APPLE_GREEN_SEAL, dsp.ki.APPLE_GREEN_SEAL,
         dsp.ki.CHARCOAL_GREY_SEAL, dsp.ki.DEEP_PURPLE_SEAL, dsp.ki.CHESTNUT_COLORED_SEAL,
         dsp.ki.LILAC_COLORED_SEAL,
-        dsp.ki.CERISE_SEAL,dsp.ki.CERISE_SEAL,dsp.ki.CERISE_SEAL,
-        dsp.ki.SALMON_COLORED_SEAL,dsp.ki.SALMON_COLORED_SEAL,dsp.ki.SALMON_COLORED_SEAL,
+        dsp.ki.CERISE_SEAL, dsp.ki.CERISE_SEAL, dsp.ki.CERISE_SEAL,
+        dsp.ki.SALMON_COLORED_SEAL, dsp.ki.SALMON_COLORED_SEAL, dsp.ki.SALMON_COLORED_SEAL,
         dsp.ki.PURPLISH_GREY_SEAL, dsp.ki.GOLD_COLORED_SEAL, dsp.ki.COPPER_COLORED_SEAL,
         dsp.ki.BRIGHT_BLUE_SEAL,
-        dsp.ki.PINE_GREEN_SEAL,dsp.ki.PINE_GREEN_SEAL,dsp.ki.PINE_GREEN_SEAL,
-        dsp.ki.AMBER_COLORED_SEAL,dsp.ki.AMBER_COLORED_SEAL,dsp.ki.AMBER_COLORED_SEAL,
-        dsp.ki.FALLOW_COLORED_SEAL,dsp.ki.TAUPE_COLORED_SEAL,dsp.ki.SIENNA_COLORED_SEAL,
+        dsp.ki.PINE_GREEN_SEAL, dsp.ki.PINE_GREEN_SEAL, dsp.ki.PINE_GREEN_SEAL,
+        dsp.ki.AMBER_COLORED_SEAL, dsp.ki.AMBER_COLORED_SEAL, dsp.ki.AMBER_COLORED_SEAL,
+        dsp.ki.FALLOW_COLORED_SEAL, dsp.ki.TAUPE_COLORED_SEAL, dsp.ki.SIENNA_COLORED_SEAL,
         dsp.ki.LAVENDER_COLORED_SEAL
     }
 
     if (trade:getItemCount() == 1) then
         if (trade:hasItemQty(2477,1)) then -- Trade Soul Plate
-            zeni = math.random(1,200); -- random value since soul plates aren't implemented yet.
+            zeni = math.random(100,250); -- random value since soul plates aren't implemented yet.
             player:tradeComplete();
             player:addCurrency("zeni_point", zeni);
             player:startEvent(910,zeni);
@@ -65,11 +65,10 @@ function onTrade(player,npc,trade)
             end
         end
     end
-    ]]
 end;
 
 function onTrigger(player,npc)
-    --[[
+    
     if (player:getVar("ZeniStatus") == 0) then
         player:startEvent(908);
     else
@@ -114,13 +113,12 @@ function onTrigger(player,npc)
 
         player:startEvent(909,param);
     end
-    ]]
 end;
 
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("updateRESULT: %u",option);
-    --[[
+    
     local lures =
     {
         2580, 2581, 2582, 2577, 2578, 2579, 2574, 2575, 2576,
@@ -132,16 +130,16 @@ function onEventUpdate(player,csid,option)
     local seals =
     {
         dsp.ki.MAROON_SEAL, dsp.ki.MAROON_SEAL, dsp.ki.MAROON_SEAL,
-        dsp.ki.APPLE_GREEN_SEAL,dsp.ki.APPLE_GREEN_SEAL,dsp.ki.APPLE_GREEN_SEAL,
+        dsp.ki.APPLE_GREEN_SEAL, dsp.ki.APPLE_GREEN_SEAL, dsp.ki.APPLE_GREEN_SEAL,
         dsp.ki.CHARCOAL_GREY_SEAL, dsp.ki.DEEP_PURPLE_SEAL, dsp.ki.CHESTNUT_COLORED_SEAL,
         dsp.ki.LILAC_COLORED_SEAL,
-        dsp.ki.CERISE_SEAL,dsp.ki.CERISE_SEAL,dsp.ki.CERISE_SEAL,
-        dsp.ki.SALMON_COLORED_SEAL,dsp.ki.SALMON_COLORED_SEAL,dsp.ki.SALMON_COLORED_SEAL,
+        dsp.ki.CERISE_SEAL, dsp.ki.CERISE_SEAL, dsp.ki.CERISE_SEAL,
+        dsp.ki.SALMON_COLORED_SEAL, dsp.ki.SALMON_COLORED_SEAL, dsp.ki.SALMON_COLORED_SEAL,
         dsp.ki.PURPLISH_GREY_SEAL, dsp.ki.GOLD_COLORED_SEAL, dsp.ki.COPPER_COLORED_SEAL,
         dsp.ki.BRIGHT_BLUE_SEAL,
-        dsp.ki.PINE_GREEN_SEAL,dsp.ki.PINE_GREEN_SEAL,dsp.ki.PINE_GREEN_SEAL,
-        dsp.ki.AMBER_COLORED_SEAL,dsp.ki.AMBER_COLORED_SEAL,dsp.ki.AMBER_COLORED_SEAL,
-        dsp.ki.FALLOW_COLORED_SEAL,dsp.ki.TAUPE_COLORED_SEAL,dsp.ki.SIENNA_COLORED_SEAL,
+        dsp.ki.PINE_GREEN_SEAL, dsp.ki.PINE_GREEN_SEAL, dsp.ki.PINE_GREEN_SEAL,
+        dsp.ki.AMBER_COLORED_SEAL, dsp.ki.AMBER_COLORED_SEAL, dsp.ki.AMBER_COLORED_SEAL,
+        dsp.ki.FALLOW_COLORED_SEAL, dsp.ki.TAUPE_COLORED_SEAL, dsp.ki.SIENNA_COLORED_SEAL,
         dsp.ki.LAVENDER_COLORED_SEAL
     }
 
@@ -230,16 +228,14 @@ function onEventUpdate(player,csid,option)
             end
         end
     end
-    ]]
 end;
 
 function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("finishRESULT: %u",option);
-    --[[
+
     if (csid == 908) then
         player:setVar("ZeniStatus",1);
         player:addCurrency("zeni_point", 2000);
     end
-    ]]
 end;

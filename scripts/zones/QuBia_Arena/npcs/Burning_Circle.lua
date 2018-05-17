@@ -54,12 +54,9 @@ end;
 
 function onTrigger(player,npc)
 
-    -- if (player:hasKeyItem(dsp.ki.MARK_OF_SEED) and player:getCurrentMission(ACP) == THOSE_WHO_LURK_IN_SHADOWS_II) then
-        --player:startEvent(5);
-    --elseif (EventTriggerBCNM(player,npc)) then
-    -- Temp disabled pending fixes for the BCNM mobs.
-
-    if (EventTriggerBCNM(player,npc)) then
+    if (player:hasKeyItem(MARK_OF_SEED) and player:getCurrentMission(ACP) == THOSE_WHO_LURK_IN_SHADOWS_II) then
+        player:startEvent(5);
+    elseif (EventTriggerBCNM(player,npc)) then
         return;
     end
 

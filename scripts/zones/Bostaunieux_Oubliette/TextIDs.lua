@@ -12,5 +12,5 @@ ITEM_CANNOT_BE_OBTAINED = 6539; -- You cannot obtain the item <item>. Come back 
           CHUMIA_DIALOG = 7306; -- Welcome to Bostaunieux Oubliette...
            SEEMS_LOCKED = 7308; -- It seems to be locked.
 
--- conquest Base
-          CONQUEST_BASE =    0;
+-- WS Quest
+    SPIRAL_HELL_LEARNED = 7415; -- You have learned the weapon skill “Spiral Hell”!

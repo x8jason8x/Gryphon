@@ -15,23 +15,48 @@ require("scripts/zones/Norg/TextIDs");
 -----------------------------------
 
 function onTrade(player,npc,trade)
+
+    if (trade:getItemCount() == 1) and (trade:hasItemQty(17773,1)) then -- check trial katana latent points
+	    if trade:getItem(0):getWeaponskillPoints() >= 100 then --(retail is 300)
+	        player:startEvent(187); -- enough points
+		else
+		    player:startEvent(186); -- not enough points
+		end
+    end
 end;
 
 function onTrigger(player,npc)
 
-    twentyInPirateYears = player:getQuestStatus(OUTLANDS,TWENTY_IN_PIRATE_YEARS);
-    illTakeTheBigBox = player:getQuestStatus(OUTLANDS,I_LL_TAKE_THE_BIG_BOX);
-    trueWill = player:getQuestStatus(OUTLANDS,TRUE_WILL);
-
-    mLvl = player:getMainLvl();
-    mJob = player:getMainJob();
-
+    local twentyInPirateYears = player:getQuestStatus(OUTLANDS,TWENTY_IN_PIRATE_YEARS);
+    local illTakeTheBigBox = player:getQuestStatus(OUTLANDS,I_LL_TAKE_THE_BIG_BOX);
+    local trueWill = player:getQuestStatus(OUTLANDS,TRUE_WILL);
+	local bugiSoden = player:getQuestStatus(OUTLANDS,BUGI_SODEN); -- Katana WSNM quest
+	local katSkill = player:getSkillLevel(dsp.skill.KATANA);
+    local mJob = player:getMainJob();
+    local mLvl = player:getMainLvl();
+	
     if (player:getQuestStatus(BASTOK,AYAME_AND_KAEDE) == QUEST_ACCEPTED) then
         if (player:getVar("AyameAndKaede_Event") == 3) then
             player:startEvent(95); -- During Quest "Ayame and Kaede"
         else
             player:startEvent(94);
         end
+
+    elseif (bugiSoden == QUEST_AVAILABLE and mLvl >= WSNM_LEVEL and katSkill >= 240) then -- WSNM quest
+	    if player:hasKeyItem(343) or player:hasKeyItem(344) or player:hasKeyItem (345) then
+		    return; -- preempts player from getting quest if another wsnm is active
+		else
+		    player:startEvent(184); -- start Bugi Soden (Blade:Ku quest)
+		end
+	elseif (bugiSoden == QUEST_ACCEPTED) then
+		if player:hasKeyItem(345) then 
+            player:startEvent(189); -- player has Annals of Truth
+		elseif player:hasKeyItem(344) then
+		    player:startEvent(188); -- player has Map to Annals
+        else			
+		    player:startEvent(185); -- quit quest option
+		end
+
     elseif (twentyInPirateYears == QUEST_AVAILABLE and mJob == 13 and mLvl >= 40) then
         player:startEvent(133); -- Start Quest "20 in Pirate Years"
     elseif (twentyInPirateYears == QUEST_ACCEPTED and player:hasKeyItem(dsp.ki.TRICK_BOX)) then
@@ -49,8 +74,6 @@ function onTrigger(player,npc)
     end
 
 end;
-
---0x00af  94  95  133  134  135  136  137  138  0x00b8  0x00b9  0x00ba  0x00bb  0x00bc  0x00bd
 
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
@@ -89,6 +112,30 @@ function onEventFinish(player,csid,option)
         player:addQuest(OUTLANDS,TRUE_WILL);
     elseif (csid == 137) then
         player:setVar("trueWillCS",1);
-    end
 
+    elseif (csid == 184 and option == 1) then
+	    if (player:getFreeSlotsCount() < 1) then
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17773);
+	    else
+	        player:addQuest(OUTLANDS,BUGI_SODEN); -- start wsnm quest
+			player:addItem(17773);
+	        player:messageSpecial(ITEM_OBTAINED,17773);
+		    player:addKeyItem(343);
+	        player:messageSpecial(KEYITEM_OBTAINED,343);
+        end
+	elseif (csid == 185 and option == 2) then -- quit wsnm quest
+		player:delQuest(OUTLANDS,BUGI_SODEN);
+		player:delKeyItem(343);
+	elseif (csid == 187) then  -- attain Map to Annals
+	    player:tradeComplete();
+	    player:delKeyItem(343);
+	    player:addKeyItem(344);
+		player:messageSpecial(KEYITEM_OBTAINED,344);
+	elseif (csid == 189) then -- Bugi Soden end
+		player:delKeyItem(345);
+		player:addLearnedWeaponskill(9);
+		player:messageSpecial(BLADE_KU_LEARNED);
+		player:addFame(NORG,250); -- no idea on retail value, using 250 as default
+		player:completeQuest(OUTLANDS,BUGI_SODEN);
+    end
 end;

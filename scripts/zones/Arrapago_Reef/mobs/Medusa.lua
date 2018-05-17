@@ -11,6 +11,16 @@ require("scripts/zones/Arrapago_Reef/TextIDs");
 require("scripts/globals/titles");
 -----------------------------------
 
+function onMobInitialize(mob)
+    
+    mob:addMod(MOD_REGAIN,27);
+    mob:addMod(MOD_MATT,58);
+    mob:addMod(MOD_MACC,375);
+    mob:addMod(MOD_ACC,185);
+    mob:addMod(MOD_ATT,36);
+    mob:addMod(MOD_DEF,36);
+end;
+
 function onMobSpawn(mob)
     mob:setLocalVar("mainSpec", dsp.jsa.EES_LAMIA);
     mob:setLocalVar("useSpecAtHpMin", 5);
@@ -30,4 +40,9 @@ end;
 function onMobDeath(mob, player, isKiller)
     player:showText(mob, MEDUSA_DEATH);
     player:addTitle(dsp.title.GORGONSTONE_SUNDERER);
+end;
+
+function onMobDespawn(mob)
+
+    mob:setRespawnTime(math.random(172800,259200)); -- 2 to 3 days
 end;

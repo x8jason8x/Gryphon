@@ -28,7 +28,6 @@ function onTrade(player,npc,trade)
     if (TradeBCNM(player,player:getZoneID(),trade,npc)) then
         return;
     end
-
 end;
 
 -----------------------------------
@@ -37,10 +36,11 @@ end;
 
 function onTrigger(player,npc)
 
-    if (EventTriggerBCNM(player,npc)) then
+    if (player:getCurrentMission(ACP) == ODE_OF_LIFE_BESTOWING and player:getVar("ACP_Ode_CS") == 0) then
+	    player:startEvent(12);
+    elseif (EventTriggerBCNM(player,npc)) then
         return 1;
     end
-
 end;
 
 -----------------------------------
@@ -54,7 +54,6 @@ function onEventUpdate(player,csid,option)
     if (EventUpdateBCNM(player,csid,option)) then
         return;
     end
-
 end;
 
 -----------------------------------
@@ -65,8 +64,9 @@ function onEventFinish(player,csid,option)
     -- printf("onFinish CSID: %u",csid);
     -- printf("onFinish RESULT: %u",option);
 
-    if (EventFinishBCNM(player,csid,option)) then
+    if (csid == 12) then
+        player:setVar("ACP_Ode_CS", 1);
+    elseif (EventFinishBCNM(player,csid,option)) then
         return;
     end
-
 end;

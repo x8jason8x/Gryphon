@@ -9,6 +9,9 @@
                HOMEPOINT_SET =     2;     -- Home point set!
               DOOR_IS_LOCKED = 10353; -- The door is locked tight.
 
+-- conquest Base
+               CONQUEST_BASE =  6497; -- Tallying conquest results...
+
 -- Other Texts
      SPASIJA_DELIVERY_DIALOG = 10347; -- Hiya! I can deliver packages to anybody, anywhere, anytime. What do you say?
     PALEILLE_DELIVERY_DIALOG = 10348; -- We can deliver parcels to any residence in Vana'diel.
@@ -32,8 +35,9 @@ YOU_CAN_NOW_BECOME_A_SAMURAI = 10196; -- You can now become a samurai.
 
     SOLBYMAHOLBY_SHOP_DIALOG = 10573; -- Hiya! My name's Solby-Maholby! I'm new here, so they put me on tooty-fruity shop duty. I'll give you a super-duper deal on unwanted items!
 
--- conquest Base
-               CONQUEST_BASE =  6497; -- Tallying conquest results...
+-- WS Quests
+         TACHI_KASHA_LEARNED = 10796; -- You have learned the weapon skill “Tachi: Kasha”!
+            BLADE_KU_LEARNED = 10821; -- You have learned the weapon skill “Blade: Ku”!
 
 -- Porter Moogle
           RETRIEVE_DIALOG_ID = 11274; -- You retrieve$ from the porter moogle's care.

@@ -40,10 +40,16 @@ end;
 
 function onTrigger(player,npc)
 
-    if (EventTriggerBCNM(player,npc)) then
+    local CurrentMission = player:getCurrentMission(WINDURST);
+    local MissionStatus = player:getVar("MissionStatus");
+
+    if player:hasKeyItem(dsp.ki.ANCIENT_VERSE_OF_ALTEPA) then
+	    return;
+	elseif (CurrentMission == MOON_READING and MissionStatus == 1) then
+        player:startEvent(3);
+	elseif (EventTriggerBCNM(player,npc)) then
         return;
     end
-
 end;
 
 -----------------------------------
@@ -57,7 +63,6 @@ function onEventUpdate(player,csid,option)
     if (EventUpdateBCNM(player,csid,option)) then
         return;
     end
-
 end;
 
 -----------------------------------
@@ -68,8 +73,10 @@ function onEventFinish(player,csid,option)
     -- printf("onFinish CSID: %u",csid);
     -- printf("onFinish RESULT: %u",option);
 
-    if (EventFinishBCNM(player,csid,option)) then
+    if (csid == 3) then
+        player:addKeyItem(dsp.ki.ANCIENT_VERSE_OF_ALTEPA);
+		player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.ANCIENT_VERSE_OF_ALTEPA);
+	elseif (EventFinishBCNM(player,csid,option)) then
         return;
     end
-
 end;

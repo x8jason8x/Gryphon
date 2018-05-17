@@ -15,11 +15,12 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local fangedOne = player:getQuestStatus(WINDURST,THE_FANGED_ONE);
+    
+	local fangedOne = player:getQuestStatus(WINDURST,THE_FANGED_ONE);
     local fangedOneCS = player:getVar("TheFangedOneCS");
 
     -- THE FANGED ONE
-    if (fangedOne == QUEST_ACCEPTED and fangedOneCS == 1 and not GetMobByID(OLD_SABERTOOTH):isSpawned()) then
+    if (fangedOne == QUEST_ACCEPTED and fangedOneCS == 1) then
         SpawnMob(OLD_SABERTOOTH):addStatusEffect(dsp.effect.POISON,40,10,210);
         player:messageSpecial(OLD_SABERTOOTH_DIALOG_I);
     elseif (fangedOne == QUEST_ACCEPTED and fangedOneCS == 2 and not player:hasKeyItem(dsp.ki.OLD_TIGERS_FANG)) then
@@ -27,7 +28,7 @@ function onTrigger(player,npc)
         player:messageSpecial(KEYITEM_OBTAINED, dsp.ki.OLD_TIGERS_FANG);
         player:setVar("TheFangedOneCS", 0);
         
-    -- DEFAULT DIALOG
+     -- DEFAULT DIALOG
     else
         player:messageSpecial(NOTHING_HAPPENS);
     end;

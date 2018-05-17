@@ -9,6 +9,15 @@ mixins = {require("scripts/mixins/job_special")};
 
 -----------------------------------
 
+function onMobInitialize(mob)
+    -- addMod
+    mob:addMod(dsp.mod.MATT, 59);
+    mob:addMod(dsp.mod.MACC, 375);
+    mob:addMod(dsp.mod.ACC, 185);
+    mob:addMod(dsp.mod.ATT, 38);
+    mob:addMod(dsp.mod.DEF, 38);
+end;
+
 function onMobSpawn(mob)
     mob:setMod(dsp.mod.DOUBLE_ATTACK, 20);
     mob:setMobMod(dsp.mobMod.DRAW_IN, 2);
@@ -56,4 +65,5 @@ end;
 
 function onMobDespawn(mob)
     for i = 1,4 do DespawnMob(GULOOL_JA_JA + i) end
+	mob:setRespawnTime(math.random(172800,259200)); -- 2 to 3 days
 end;

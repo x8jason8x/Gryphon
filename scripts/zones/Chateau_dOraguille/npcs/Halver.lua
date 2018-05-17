@@ -190,8 +190,8 @@ function onEventFinish(player,csid,option)
         player:setVar("MissionStatus",0);
         player:completeMission(SANDORIA,THE_HEIR_TO_THE_LIGHT);
         player:setRank(10);
-        player:addGil(100000);
-        player:messageSpecial(GIL_OBTAINED,100000);
+        player:addGil(GIL_RATE*100000);
+        player:messageSpecial(GIL_OBTAINED,GIL_RATE*100000);
         player:setTitle(295);
         player:setVar("SandoEpilogue",1);
     elseif (csid == 58) then

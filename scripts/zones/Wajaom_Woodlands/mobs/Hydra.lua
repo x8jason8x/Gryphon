@@ -19,7 +19,6 @@ function onMobFight(mob, target)
         mob:AnimationSub(broken - 1);
         mob:setLocalVar("headgrow", battletime + 300);
     end
-
 end;
 
 function onCriticalHit(mob)
@@ -35,11 +34,14 @@ function onCriticalHit(mob)
         mob:setLocalVar("headgrow", battletime + math.random(120, 240))
         mob:setLocalVar("headbreak", battletime + 300);
     end
-
 end;
 
 function onMobDeath(mob, player, isKiller)
 
     player:addTitle(dsp.title.HYDRA_HEADHUNTER);
+end;
 
+function onMobDespawn(mob)
+    
+	mob:setRespawnTime((math.random(0,24)*3600)+172800); -- 48-72 hours with 1 hour windows
 end;

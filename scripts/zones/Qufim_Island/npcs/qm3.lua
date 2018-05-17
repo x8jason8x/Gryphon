@@ -23,7 +23,8 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local ACPm = player:getCurrentMission(ACP);
+    
+	local ACPm = player:getCurrentMission(ACP);
     local now = tonumber(os.date("%j"));
     local SR = player:hasKeyItem(dsp.ki.SEEDSPALL_ROSEUM)
     local SC = player:hasKeyItem(dsp.ki.SEEDSPALL_CAERULUM)
@@ -38,7 +39,7 @@ function onTrigger(player,npc)
         elseif (ACPm == GATHERER_OF_LIGHT_II and player:getVar("SEED_MANDY") == 0) then
             -- Spawn Seed mandragora's
             player:setVar("SEED_MANDY",1); -- This will need moved into Seed mandies onDeath script later.
-            player:PrintToPlayer( "Confrontation Battles are not working yet." );
+            player:PrintToPlayer( "Confrontation Battles are not working yet, click again to continue ACP missions." );
             -- dsp.effect.CONFRONTATION for 30 min
         elseif (ACPm == GATHERER_OF_LIGHT_II and player:getVar("SEED_MANDY") == 1) then -- change SEED_MANDY var number later when battle actually works (intended purpose is to track number of slain mandies).
             player:setVar("SEED_MANDY",0);

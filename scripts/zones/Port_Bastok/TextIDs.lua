@@ -72,5 +72,8 @@ DHENTEVRYUKOH_CLOSED_DIALOG = 8363; -- I'm trrrying to start a business selling 
     BAGNOBROK_CLOSED_DIALOG = 9118; -- Kbastok sis kweak! Smoblins yonly twant gstrong sfriends! Non sgoods mfrom Smovalpolos ytoday!
       BAGNOBROK_OPEN_DIALOG = 9119; -- Kbastok! Crepublic sis gstrong! Smoblins lsell sgoods oto gstrong sfriends!
 
+-- WS Quest
+       ASURAN_FISTS_LEARNED = 8806; -- You have learned the weapon skill “Asuran Fists”!
+
 -- conquest Base
               CONQUEST_BASE = 6524; -- Tallying conquest results...

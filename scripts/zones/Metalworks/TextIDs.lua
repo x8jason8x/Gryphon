@@ -1,27 +1,6 @@
 -- Variable TextID   Description text
 
 -- General Texts
-<<<<<<< HEAD
-    ITEM_CANNOT_BE_OBTAINED =  6435; -- You cannot obtain the item <item>. Come back after sorting your inventory.
- FULL_INVENTORY_AFTER_TRADE =  6439; -- You cannot obtain the item <item>. Try trading again after sorting your inventory.
-              ITEM_OBTAINED =  6441; -- Obtained:
-               GIL_OBTAINED =  6442; -- Obtained <<<Numeric Parameter 0>>> gil.
-        NOT_HAVE_ENOUGH_GIL =  6446; -- You do not have enough gil.
-           KEYITEM_OBTAINED =  6444; -- Obtained key item: <<<Unknown Parameter (Type: 80) 1>>>.
-             ITEMS_OBTAINED =  6450; -- You obtain
-           SMITHING_SUPPORT =  6858; -- Your ?Multiple Choice (Parameter 1)?[fishing/woodworking/smithing/goldsmithing/clothcraft/leatherworking/bonecraft/alchemy/cooking] skills went up ...
-   GUILD_TERMINATE_CONTRACT =  6872; -- You have terminated your trading contract with the Multiple Choice (Parameter 1)[Fishermen's/Carpenters'/Blacksmiths'/Goldsmiths'/Weavers'/Tanners'/Boneworkers'/Alchemists'/Culinarians'] Guild and formed a new one with the Multiple Choice (Parameter 0)[Fishermen's/Carpenters'/Blacksmiths'/Goldsmiths'/Weavers'/Tanners'/Boneworkers'/Alchemists'/Culinarians'] Guild
-         GUILD_NEW_CONTRACT =  6880; -- You have formed a new trading contract with the Multiple Choice (Parameter 0)[Fishermen's/Carpenters'/Blacksmiths'/Goldsmiths'/Weavers'/Tanners'/Boneworkers'/Alchemists'/Culinarians'] Guild
-        NO_MORE_GP_ELIGIBLE =  6887; -- You are not eligible to receive guild points at this time
-                GP_OBTAINED =  6892; -- Obtained: ?Numeric Parameter 0? guild points.
-         NOT_HAVE_ENOUGH_GP =  6893; -- You do not have enough guild points.
-     FISHING_MESSAGE_OFFSET =  8005; -- You can't fish here
-              HOMEPOINT_SET = 11002; -- Home point set!
-
--- conquest Base
-               CONQUEST_BASE = 6530; -- Tallying conquest results...
-
-=======
     ITEM_CANNOT_BE_OBTAINED =  6436; -- You cannot obtain the item <item>. Come back after sorting your inventory.
  FULL_INVENTORY_AFTER_TRADE =  6440; -- You cannot obtain the item <item>. Try trading again after sorting your inventory.
               ITEM_OBTAINED =  6442; -- Obtained:
@@ -37,8 +16,7 @@
          NOT_HAVE_ENOUGH_GP =  6894; -- You do not have enough guild points.
      FISHING_MESSAGE_OFFSET =  8006; -- You can't fish here
               HOMEPOINT_SET = 11003; -- Home point set!
-            
->>>>>>> 99d42890e9a5003f512bd611fc3c5c6956e7d7bb
+
 -- Mission Dialogs
     YOU_ACCEPT_THE_MISSION  =     9; -- You have accepted the mission.
    ORIGINAL_MISSION_OFFSET  =    14; -- You can consult the ission section of the main menu to review your objectives. Speed and efficiency are your priorities. Dismissed. 
@@ -62,11 +40,9 @@ MISSION_DIALOG_CID_TO_AYAME =  7573; -- Give it to one of his Mythril Musketeers
       TAKIYAH_CLOSED_DIALOG =  9967; -- Maybe someday I'll be able to sell goods from Qufim Island... Someday...
         TAKIYAH_OPEN_DIALOG =  9968; -- Hey, it's your lucky day! I've got a fresh batch of goods straight from the island of Qufim!
 
-<<<<<<< HEAD
 -- WS quests
       STEEL_CYCLONE_LEARNED =  9007; -- You have learned the weapon skill “Steel Cyclone”!
           DETONATOR_LEARNED =  9032; -- You have learned the weapon skill “Detonator”!
-=======
+
 -- conquest Base
                CONQUEST_BASE = 6531; -- Tallying conquest results...
->>>>>>> 99d42890e9a5003f512bd611fc3c5c6956e7d7bb

@@ -57,8 +57,14 @@ end;
 
 function onMobDeath(mob, player, isKiller)
     
-	if (player:getMainJob() == JOBS.SMN and player:hasSpell(306) == false) then
+	if player:hasSpell(305) == true then
         player:addSpell(306);
+		player:PrintToPlayer("You can now summon Alexander!", 0xD);
     end
 	player:addTitle(dsp.title.PREVENTER_OF_RAGNAROK);
+end;
+
+function onMobDespawn(mob)
+
+    mob:setRespawnTime(math.random(432000,604800)); -- 5 to 7 days
 end;

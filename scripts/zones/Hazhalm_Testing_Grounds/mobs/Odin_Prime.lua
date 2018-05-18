@@ -85,9 +85,9 @@ function onMobDeath(mob, player, isKiller)
 	if (player:hasSpell(297) == true and player:hasSpell(304) == true and
 	player:hasSpell(305) == false) then
         player:addSpell(305);
-		player:PrintToPlayer("You can now summon Odin!", 0xD);
+        player:PrintToPlayer("You can now summon Odin!", 0xD);
     end
-	player:addTitle(dsp.title.ELITE_EINHERJAR);
+    player:addTitle(dsp.title.ELITE_EINHERJAR);
 end;
 
 function onMobDespawn(mob)

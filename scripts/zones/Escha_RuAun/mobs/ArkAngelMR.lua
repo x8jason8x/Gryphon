@@ -43,8 +43,8 @@ function onMobFight(mob, target)
     if (charm == 0 and mob:getHPP() <  50) then
         mob:useMobAbility(710);
         mob:setLocalVar("Charm",1);
-		SpawnMob(17961605):updateEnmity(target);
-		SpawnMob(17961608):updateEnmity(target);
+		SpawnMob(17961603):updateEnmity(target);
+		SpawnMob(17961606):updateEnmity(target);
     end
 end;
 
@@ -71,8 +71,8 @@ end;
 function onMobDeath(mob, player, isKiller)
 
     player:PrintToPlayer("<GryphonMsg> Ark Angel EV has spawned!", 0xE);
-	DespawnMob(17961605);
-	DespawnMob(17961608);
+	DespawnMob(17961603);
+	DespawnMob(17961606);
     SpawnMob(17961611);
 end;
 

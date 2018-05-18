@@ -33086,16 +33086,16 @@ INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,11589,250); -- " torque
 INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,16057,250); -- " ear pendant
 
 -- Alexander
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2429,150); -- phantasmals
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2430,150); --
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2431,150); --
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2432,150); --
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2433,150); -- *
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2434,150); -- hadeans
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2435,150); --
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2436,150); --
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2437,150); --
-INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2438,150); -- *
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2429,150); -- phantasmals
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2430,150); --
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2431,150); --
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2432,150); --
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2433,150); -- *
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2434,150); -- hadeans
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2435,150); --
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2436,150); --
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2437,150); --
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2438,150); -- *
 INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,11547,250); -- colossus's mantle
 INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,11590,250); -- " torque
 INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,16058,250); -- " earring

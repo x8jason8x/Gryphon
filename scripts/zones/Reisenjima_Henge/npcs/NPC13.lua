@@ -1,6 +1,6 @@
 -----------------------------------
 -- Area: !base
--- NPC: Arciela (NPC13)
+-- NPC: Tenzen (NPC13)
 -- AF1 NPC
 -----------------------------------
 
@@ -18,7 +18,7 @@ end;
 -----------------------------------
 
 function onTrigger(player,npc)
-	player:PrintToPlayer("Arciela: AF shop - Dancer to Ninja~", 0xD);
+	player:PrintToPlayer("Tenzen: AF shop - Dancer to Ninja~", 0xD);
 		local stock =
 	{
         0x4b03,10000,      -- War Hoop

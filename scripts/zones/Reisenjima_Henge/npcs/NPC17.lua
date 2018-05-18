@@ -1,6 +1,6 @@
 -----------------------------------
 -- Area: !base
--- NPC: Naja Salaheem (NPC17)
+-- NPC: Shantotto (NPC17)
 -- AF1 NPC
 -----------------------------------
 
@@ -18,7 +18,7 @@ end;
 -----------------------------------
 
 function onTrigger(player,npc)
-	player:PrintToPlayer("Naja: AF shop - Scholar to White Mage~", 0xD);
+	player:PrintToPlayer("Shantotto: AF shop - Scholar to White Mage~", 0xD);
 		local stock =
 	{
         0x17aa,10000,      -- Klimaform

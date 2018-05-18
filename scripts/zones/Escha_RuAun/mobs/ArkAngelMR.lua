@@ -28,8 +28,8 @@ end;
 
 function onMobEngaged(mob,target)
 
-    SpawnMob(17961605):updateEnmity(target);
-    SpawnMob(17961608):updateEnmity(target);
+    SpawnMob(17961603):updateEnmity(target);
+    SpawnMob(17961606):updateEnmity(target);
 end;
 
 -----------------------------------

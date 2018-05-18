@@ -154,13 +154,13 @@ INSERT INTO `mob_skill_lists` VALUES ('Avatar-Leviathan',40,863);
 INSERT INTO `mob_skill_lists` VALUES ('Avatar-Leviathan',40,864);
 INSERT INTO `mob_skill_lists` VALUES ('Avatar-Leviathan',40,865);
 INSERT INTO `mob_skill_lists` VALUES ('Avatar-Leviathan',40,866);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2556);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2557);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2558);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2559);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2560);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2561);
--- INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2126);
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2126); -- custom
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2556); --
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2557); --
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2558); --
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2559); --
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2560); --
+INSERT INTO `mob_skill_lists` VALUES ('Avatar-Odin',41,2561); -- *
 INSERT INTO `mob_skill_lists` VALUES ('Avatar-Ramuh',43,885);
 INSERT INTO `mob_skill_lists` VALUES ('Avatar-Ramuh',43,886);
 INSERT INTO `mob_skill_lists` VALUES ('Avatar-Ramuh',43,887);

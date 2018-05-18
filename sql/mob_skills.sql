@@ -2377,12 +2377,12 @@ INSERT INTO `mob_skills` VALUES (2549,176,'fluid_toss_claret',0,15,2000,1500,4,0
 -- INSERT INTO `mob_skills` VALUES (2553,2297,'.',0,7.0,2000,1500,4,0,0,0,0,0,0);
 -- INSERT INTO `mob_skills` VALUES (2554,2298,'.',0,7.0,2000,1500,4,0,0,0,0,0,0);
 -- INSERT INTO `mob_skills` VALUES (2555,2299,'.',0,7.0,2000,1500,4,0,0,0,0,0,0);
--- INSERT INTO `mob_skills` VALUES (2556,2300,'ofnir',0,7.0,2000,1500,4,0,0,0,0,0,0);
--- INSERT INTO `mob_skills` VALUES (2557,2301,'valfodr',0,7.0,2000,1500,4,0,0,0,0,0,0);
--- INSERT INTO `mob_skills` VALUES (2558,2302,'yggr',0,7.0,2000,1500,4,0,0,0,0,0,0);
--- INSERT INTO `mob_skills` VALUES (2559,2303,'gagnrath',0,7.0,2000,1500,4,0,0,0,0,0,0);
--- INSERT INTO `mob_skills` VALUES (2560,2304,'sanngetall',0,7.0,2000,1500,4,0,0,0,0,0,0);
--- INSERT INTO `mob_skills` VALUES (2561,2305,'geirrothr',0,7.0,2000,1500,4,0,0,0,0,0,0);
+INSERT INTO `mob_skills` VALUES (2556,2300,'ofnir',0,7.0,2000,1500,4,0,0,0,0,0,0); -- custom
+INSERT INTO `mob_skills` VALUES (2557,2301,'valfodr',0,7.0,2000,1500,4,0,0,0,0,0,0); --
+INSERT INTO `mob_skills` VALUES (2558,2302,'yggr',0,7.0,2000,1500,4,0,0,0,0,0,0); --
+INSERT INTO `mob_skills` VALUES (2559,2303,'gagnrath',0,7.0,2000,1500,4,0,0,0,0,0,0); --
+INSERT INTO `mob_skills` VALUES (2560,2304,'sanngetall',0,7.0,2000,1500,4,0,0,0,0,0,0); --
+INSERT INTO `mob_skills` VALUES (2561,2305,'geirrothr',0,7.0,2000,1500,4,0,0,0,0,0,0); -- *
 INSERT INTO `mob_skills` VALUES (2562,1794,'acrid_stream',4,8.0,2000,1500,4,0,0,0,0,0,0);
 INSERT INTO `mob_skills` VALUES (2563,1795,'rime_spray',4,15.0,2000,1500,4,0,0,0,0,0,0);
 INSERT INTO `mob_skills` VALUES (2564,1796,'blazing_bound',1,21.0,2000,1500,4,0,0,0,0,0,0);

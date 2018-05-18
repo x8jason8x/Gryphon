@@ -33064,7 +33064,41 @@ INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18984,100);
 INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18985,100);
 INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18986,100);
 INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18987,100);
-INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18988,100); --
+INSERT INTO `mob_droplist` VALUES (4913,0,0,1000,18988,100); -- *
+
+-- Odin 
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2429,150); -- phantasmals
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2430,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2431,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2432,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2433,150); -- *
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2434,150); -- hadeans
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2435,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2436,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2437,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2438,150); -- *
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,17745,150); -- hofud
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,14577,150); -- valhalla breastplate
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,16117,150); -- " helm
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,18121,150); -- valkyries fork
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,11546,250); -- aesir mantle
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,11589,250); -- " torque
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,16057,250); -- " ear pendant
+
+-- Alexander
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2429,150); -- phantasmals
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2430,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2431,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2432,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2433,150); -- *
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2434,150); -- hadeans
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2435,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2436,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2437,150); --
+INSERT INTO `mob_droplist` VALUES (4914,0,0,1000,2438,150); -- *
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,11547,250); -- colossus's mantle
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,11590,250); -- " torque
+INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,16058,250); -- " earring
 
 /*!40000 ALTER TABLE `mob_droplist` ENABLE KEYS */;
 UNLOCK TABLES;

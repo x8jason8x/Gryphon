@@ -2518,6 +2518,30 @@ INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,192,1,255);
 INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,357,1,255);
 INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,499,1,255);
 
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,182,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,183,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,273,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,357,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,359,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,360,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,362,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,365,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,366,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Odin',360,497,1,255);
+
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,6,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,22,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,31,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,32,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,35,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,41,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,47,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,52,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,286,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,356,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,357,1,255);
+INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,360,1,255);
+
 /*!40000 ALTER TABLE `mob_spell_lists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

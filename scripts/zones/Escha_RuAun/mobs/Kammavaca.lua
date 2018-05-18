@@ -13,7 +13,7 @@ require("scripts/globals/status");
 
 function onMobInitialize(mob)
     
-	mob:setMobMod(dsp.mobMod.MAGIC_COOL, 120);
+	mob:setMobMod(dsp.mobMod.MAGIC_COOL, 30);
 end;
 
 -----------------------------------

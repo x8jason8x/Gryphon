@@ -32,7 +32,7 @@ function onTrigger(player,npc)
                         npc:hideNPC(FORCE_SPAWN_QM_RESET_TIME);
                     end
                 else
-                    player:messageSpecial(SENSE_OF_BOREBODING);
+                    player:messageSpecial(SENSE_OF_FOREBODING);
                     SpawnMob(KORROLOKA_LEECH_I);
                     SpawnMob(KORROLOKA_LEECH_II);
                     SpawnMob(KORROLOKA_LEECH_III);

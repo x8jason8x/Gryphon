@@ -81,9 +81,9 @@ function onMobDisengage(mob)
 end;
 
 function onMobDeath(mob, player, isKiller)
-    
-	if (player:hasSpell(297) == true and player:hasSpell(304) == true and
-	player:hasSpell(305) == false) then
+
+    if (player:hasSpell(297) == true and player:hasSpell(304) == true and
+    player:hasSpell(305) == false) then
         player:addSpell(305);
         player:PrintToPlayer("You can now summon Odin!", 0xD);
     end

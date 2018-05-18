@@ -337,7 +337,7 @@ INSERT INTO `zone_settings` VALUES (288,2,'127.0.0.1',54230,'Escha_ZiTah',73,73,
 INSERT INTO `zone_settings` VALUES (289,2,'127.0.0.1',54230,'Escha_RuAun',73,73,62,62,0,0.00,128);
 INSERT INTO `zone_settings` VALUES (290,0,'127.0.0.1',54230,'Desuetia_Empyreal_Paradox',0,0,0,0,0,0.00,128);
 INSERT INTO `zone_settings` VALUES (291,0,'127.0.0.1',54230,'Reisenjima',79,79,79,79,0,0.00,128);
-INSERT INTO `zone_settings` VALUES (292,0,'127.0.0.1',54230,'Reisenjima_Henge',88,88,88,88,0,0.00,0);
+INSERT INTO `zone_settings` VALUES (292,0,'127.0.0.1',54230,'Reisenjima_Henge',88,88,88,88,0,0.00,32);
 INSERT INTO `zone_settings` VALUES (293,0,'127.0.0.1',54230,'Reisenjima_Sanctorium',56,56,62,62,0,0.00,128);
 INSERT INTO `zone_settings` VALUES (294,5,'127.0.0.1',54230,'Dynamis-San_dOria_[D]',88,88,88,88,0,0.00,400);
 INSERT INTO `zone_settings` VALUES (295,5,'127.0.0.1',54230,'Dynamis-Bastok_[D]',88,88,88,88,0,0.00,400);

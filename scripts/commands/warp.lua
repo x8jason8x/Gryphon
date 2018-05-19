@@ -11,5 +11,5 @@ cmdprops =
 
 function onTrigger(player)
     
-	player:addStatusEffectEx(dsp.effect.TELEPORT,0,TELEPORT_WARP,0,2);
+	player:addStatusEffectEx(dsp.effect.TELEPORT,0,dsp.teleport.id.WARP,0,2);
 end

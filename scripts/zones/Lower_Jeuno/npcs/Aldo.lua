@@ -16,8 +16,9 @@ end;
 
 function onTrigger(player,npc)
 
-   local ZilartMission = player:getCurrentMission(ZILART);
-   local ZilartStatus = player:getVar("ZilartStatus");
+    local ZilartMission = player:getCurrentMission(ZILART);
+    local ZilartStatus = player:getVar("ZilartStatus");
+   
 
     if (player:hasKeyItem(dsp.ki.LETTERS_TO_ALDO)) then
         player:startEvent(152);
@@ -27,6 +28,8 @@ function onTrigger(player,npc)
         player:startEvent(104);
     elseif (ZilartMission == THE_SEALED_SHRINE and ZilartStatus == 1) then
         player:startEvent(111);
+    elseif (player:getCurrentMission(ASA) == SUGAR_COATED_SUBTERFUGE) then
+        player:startEvent(10100);
     end
 end;
 
@@ -46,6 +49,8 @@ function onEventFinish(player,csid,option)
         player:setVar("MissionStatus",3);
     elseif (csid == 104) then
         player:setVar("ZilartStatus",1);
+    elseif (csid == 10100) then
+	    player:completeMission(ASA,SUGAR_COATED_SUBTERFUGE);
+		player:addMission(ASA,SHANTOTTO_IN_CHAINS);
     end
-
 end;

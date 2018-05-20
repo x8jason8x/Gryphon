@@ -32965,7 +32965,7 @@ INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,15735,150); -- Goliard Clogs
 INSERT INTO `mob_droplist` VALUES (4900,0,0,1000,16108,200); -- Goliard Chapeau
 
 -- Buarainech
-INSERT INTO `mob_droplist` VALUES (4901,0,0,1000,11411,70); -- Shrewd Pumps
+INSERT INTO `mob_droplist` VALUES (4901,0,0,1000,11411,175); -- Shrewd Pumps
 
 -- Bucca
 INSERT INTO `mob_droplist` VALUES (4902,0,0,1000,15711,150); -- salvage feet
@@ -33099,6 +33099,9 @@ INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,2438,150); -- *
 INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,11547,250); -- colossus's mantle
 INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,11590,250); -- " torque
 INSERT INTO `mob_droplist` VALUES (4915,0,0,1000,16058,250); -- " earring
+
+-- Ankabut
+INSERT INTO `mob_droplist` VALUES (4916,0,0,1000,19277,175); -- tsugumi
 
 /*!40000 ALTER TABLE `mob_droplist` ENABLE KEYS */;
 UNLOCK TABLES;

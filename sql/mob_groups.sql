@@ -12373,7 +12373,7 @@ INSERT INTO `mob_groups` VALUES (14532,5194,74,0,128,0,0,0,75,75,0);
 INSERT INTO `mob_groups` VALUES (14533,5192,74,0,128,0,0,0,75,75,0);
 
 -- Eldritch Edge
-INSERT INTO `mob_groups` VALUES (14534 ,5729,110,0,32,4567,5096,0,55,55,0);
+INSERT INTO `mob_groups` VALUES (14534,5729,110,0,32,4567,5096,0,55,55,0);
 
 -- Blighting Brand
 INSERT INTO `mob_groups` VALUES (14535,5730,120,0,32,4568,4900,4900,55,55,0);
@@ -12432,7 +12432,6 @@ INSERT INTO `mob_groups` VALUES (14564,4283,22,1056,0,4060,0,0,51,53,0);  -- Pro
 INSERT INTO `mob_groups` VALUES (14565,4283,22,1056,0,4060,0,0,53,55,0);  -- Promyvion-Vahzl Level 3
 INSERT INTO `mob_groups` VALUES (14566,4283,22,1056,0,4060,0,0,55,56,0);  -- Promyvion-Vahzl Level 4/5
 
-
 -- Weepers
 INSERT INTO `mob_groups` VALUES (14567,4317,16,1056,0,4124,0,0,25,30,0);  -- Promyvion-Holla Level 1
 INSERT INTO `mob_groups` VALUES (14568,4317,16,1056,0,4124,0,0,30,33,0);  -- Promyvion-Holla Level 2
@@ -12465,7 +12464,6 @@ INSERT INTO `mob_groups` VALUES (14592,3784,22,330,0,0,0,0,39,42,0);  -- Promyvi
 INSERT INTO `mob_groups` VALUES (14593,3784,22,330,0,0,0,0,42,45,0);  -- Promyvion-Vahzl Level 2
 INSERT INTO `mob_groups` VALUES (14594,3784,22,330,0,0,0,0,45,48,0);  -- Promyvion-Vahzl Level 3
 INSERT INTO `mob_groups` VALUES (14595,3784,22,330,0,0,0,0,48,51,0);  -- Promyvion-Vahzl Level 4
-
 
 -- Seethers
 INSERT INTO `mob_groups` VALUES (14596,3539,16,1056,0,3113,0,0,31,34,0);  -- Promyvion-Holla Level 2
@@ -12514,7 +12512,7 @@ INSERT INTO `mob_groups` VALUES (14631,830,22,1056,0,591,0,0,58,60,0);  -- Promy
 -- custom
 INSERT INTO `mob_groups` VALUES (16000,6000,78,432000,0,4914,100000,99999,110,110,0); -- Odin
 INSERT INTO `mob_groups` VALUES (16001,6001,78,432000,0,4915,100000,99999,110,110,0); -- Alexander
-INSERT INTO `mob_groups` VALUES (16002,6002,88,0,128,4916,5000,0,52,53,0); -- Ankabut
+INSERT INTO `mob_groups` VALUES (16002,6002,88,0,32,4916,5000,0,50,53,0); -- Ankabut
 
 /*!40000 ALTER TABLE `mob_groups` ENABLE KEYS */;
 UNLOCK TABLES;

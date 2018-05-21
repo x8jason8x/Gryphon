@@ -1,23 +1,18 @@
 -----------------------------------
--- Nomad Moogle (NPC10) (ReiHen)
+-- Area: Reisenjima Henge
+-- NPC: Semih Lahfina (NPC10)
+-- Ammo NPC
 -----------------------------------
-
 require("scripts/globals/settings");
-
------------------------------------
--- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
     
 end;
 
------------------------------------
--- onTrigger Action
------------------------------------
-
 function onTrigger(player,npc)
 
+    player:showText(npc,NPC_BLANK);
     player:PrintToPlayer("Semih Lahfina: Rrranged attack!", 0xD);
     local stock =
     {
@@ -39,18 +34,10 @@ function onTrigger(player,npc)
     showShop(player, STATIC, stock);
 end;
 
------------------------------------
--- onEventUpdate
------------------------------------
-
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 end;
-
------------------------------------
--- onEventFinish
------------------------------------
 
 function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);

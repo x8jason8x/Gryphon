@@ -1,41 +1,24 @@
 -----------------------------------
--- Nomad Moogle (gthumbmog) (Mog Garden)
+-- Green Thumb Moogle (Mog Garden)
 -----------------------------------
-
 require("scripts/globals/settings");
-package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil;
-require("scripts/zones/Mog_Garden/TextIDs");
-
------------------------------------
--- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
 end;
 
------------------------------------
--- onTrigger Action
------------------------------------
-
 function onTrigger(player,npc)
 
+    player:showText(npc,NPC_BLANK);
     player:PrintToPlayer("Moogle: Change job, Kupo?", 0xD);
     player:sendMenu(1);
 end;
-
------------------------------------
--- onEventUpdate Action
------------------------------------
 
 function onEventUpdate(player,csid,option)
 --print("onEventUpdate");
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 end;
-
------------------------------------
--- onEventFinish Action
------------------------------------
 
 function onEventFinish(player,csid,option)
 --print("onEventFinish");

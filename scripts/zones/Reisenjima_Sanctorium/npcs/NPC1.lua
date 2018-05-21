@@ -3,31 +3,24 @@
 -- NPC1
 -- Clothcraft items/support
 -----------------------------------
-
 require("scripts/globals/settings");
-
------------------------------------
--- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
         
     if (trade:hasItemQty(4245,1)) then -- Trade Twilight Crystal
         player:tradeComplete();
-	    player:setPos(-48,0,-115,20,241);
+        player:setPos(-48,0,-115,20,241);
     elseif (trade:hasItemQty(4244,1)) then -- Trade Aurora Crystal
         player:tradeComplete();
-	    player:PrintToPlayer("You are now receiving Clothcraft support.", 0xD);
-	    player:addStatusEffect(dsp.effect.CLOTHCRAFT_IMAGERY,3,0,480);
+        player:PrintToPlayer("You are now receiving Clothcraft support.", 0xD);
+        player:addStatusEffect(dsp.effect.CLOTHCRAFT_IMAGERY,3,0,480);
     end
 end;
 
------------------------------------
--- onTrigger Action
------------------------------------
-
 function onTrigger(player,npc)
-	
+
+    player:showText(npc,NPC_BLANK);
 	player:PrintToPlayer("Hauh: Trade me an Aurora Crystal for advanced Clothcraft support.", 0xD);
 	player:PrintToPlayer("Hauh: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD);
 	    local stock =
@@ -75,25 +68,12 @@ function onTrigger(player,npc)
     showShop(player, STATIC, stock);
 end;
 
------------------------------------
--- onEventUpdate
------------------------------------
-
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 end;
 
------------------------------------
--- onEventFinish
------------------------------------
-
 function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
-    if (trade:hasItemQty(4245,1)) then	
-	    player:delItem(4245,1);
-    elseif (trade:hasItemQty(4244,1)) then
-        player:delItem(4244,1);
-    end
 end;

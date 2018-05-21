@@ -14,3 +14,6 @@ MOGLOCKER_MESSAGE_OFFSET = 7511; -- Your particular paid period of Mog Locker pa
 NOTHING_OUT_OF_ORDINARY  = 7585; -- There is nothing out of the ordinary here.
       STARS_ON_KEYITEM   = 7495; --  Singular/Plural Choice (Parameter 1)[has/have] come aglow.
       RETRIEVE_DIALOG_ID = 8562; -- You retrieve$ from the porter moogle's care.
+
+-- custom
+		       NPC_BLANK = 8800;

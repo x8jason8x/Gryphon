@@ -22,6 +22,7 @@ end;
 
 function onTrigger(player,npc)
 
+    player:showText(npc,NPC_BLANK);
     player:PrintToPlayer("Iroha: Ninja tools for your journey.", 0xD);
 		local stock =
 	{

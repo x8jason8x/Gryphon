@@ -1,11 +1,9 @@
 -----------------------------------
--- Hades (New Player Rewards) (!base2)
+-- Area: Reisenjima Henge
+-- NPC: Hades (NPC18)
+-- New Player Rewards etc NPC
 -----------------------------------
-
 require("scripts/globals/settings");
-
------------------------------------
--- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
@@ -29,32 +27,21 @@ function onTrade(player,npc,trade)
 	end
 end;
 
------------------------------------
--- onTrigger Action
------------------------------------
-
 function onTrigger(player,npc)
 
-	player:PrintToPlayer("Hades: Welcome to Gryphon, adventurer.", 0xD)
+    player:showText(npc,NPC_BLANK);
+    player:PrintToPlayer("Hades: Welcome to Gryphon, adventurer.", 0xD)
     local stock =
     {
         0x6ba4,100,      -- Echad Ring
-		0x3cad,100,      -- Chocobo Whistle
-		534,100,         -- Gausebit Grass
+        534,100,         -- Gausebit Grass
     }
     showShop(player, STATIC, stock);
 end;
------------------------------------
--- onEventUpdate Action
------------------------------------
 
 function onEventUpdate(player,csid,option)
 
 end;
-
------------------------------------
--- onEventFinish Action
------------------------------------
 
 function onEventFinish(player,csid,option)
  

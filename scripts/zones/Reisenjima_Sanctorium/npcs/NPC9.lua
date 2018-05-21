@@ -1,26 +1,19 @@
----------------------------------------------------------------------------------------------------
+-----------------------------------
 -- NPC9 (ReiSan)
 -- desc: sells HQ craft items
----------------------------------------------------------------------------------------------------
-
-require("scripts/globals/settings");
-
 -----------------------------------
--- onTrade Action
+require("scripts/globals/settings");
 -----------------------------------
 
 function onTrade(player,npc,trade)
 end;
 
------------------------------------
--- onTrigger Action
------------------------------------
-
 function onTrigger(player,npc)
 
+    player:showText(npc,NPC_BLANK);
     player:PrintToPlayer("Alienor: High Quality craft items~", 0xD);
-		local stock =
-	{
+    local stock =
+    {
         0x520,10000,      -- Angel Skin
         0x35c,10000,      -- Behemoth Hide
         0x6b1,10000,      -- Cashmere Thread
@@ -28,7 +21,7 @@ function onTrigger(player,npc)
         0x879,10000,      -- Cerberus Claw
         0x344,1000,       -- Damascene Cloth		
         0x292,10000,      -- Damascus Ingot
-		0x2d3,10000,      -- Divine Lumber
+        0x2d3,10000,      -- Divine Lumber
         0x1186,10000,     -- Dragon Heart
         0x387,10000,      -- Dragon Talon
         0x6e9,10000,      -- Galateia
@@ -39,18 +32,10 @@ function onTrigger(player,npc)
     showShop(player, STATIC, stock);
 end;
 
------------------------------------
--- onEventUpdate
------------------------------------
-
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 end;
-
------------------------------------
--- onEventFinish
------------------------------------
 
 function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);

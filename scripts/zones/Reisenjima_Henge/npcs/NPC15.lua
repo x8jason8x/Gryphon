@@ -18,6 +18,8 @@ end;
 -----------------------------------
 
 function onTrigger(player,npc)
+
+    player:showText(npc,NPC_BLANK);
 	player:PrintToPlayer("Gilgamesh: AF shop - Bard to Corsair~", 0xD);
 		local stock =
 	{

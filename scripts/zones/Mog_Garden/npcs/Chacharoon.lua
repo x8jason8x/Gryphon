@@ -3,27 +3,18 @@
 -- NPC: Chacharoon
 -- NIN tools NPC
 -----------------------------------
-
 require("scripts/globals/settings");
-package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil;
-require("scripts/zones/Mog_Garden/TextIDs");
-
------------------------------------
--- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
 end;
 
------------------------------------
--- onTrigger Action
------------------------------------
-
 function onTrigger(player,npc)
 
+    player:showText(npc,NPC_BLANK);
     player:PrintToPlayer("Chacharoon: Ninja! Vanish!", 0xD);
-		local stock =
-	{
+    local stock =
+    {
         0x16eb,100,      -- Inoshishinofuda bag 
         0x16ec,100,      -- Shikanofuda bag
         0x16ed,100,      -- Chonofuda bag
@@ -34,18 +25,10 @@ function onTrigger(player,npc)
     showShop(player, STATIC, stock);
 end;
 
------------------------------------
--- onEventUpdate
------------------------------------
-
 function onEventUpdate(player,csid,option)
     -- printf("CSID: %u",csid);
     -- printf("RESULT: %u",option);
 end;
-
------------------------------------
--- onEventFinish
------------------------------------
 
 function onEventFinish(player,csid,option)
     -- printf("CSID: %u",csid);

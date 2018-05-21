@@ -6,6 +6,3 @@ ITEM_CANNOT_BE_OBTAINED = 6380; -- You cannot obtain the item <item>. Come back 
            GIL_OBTAINED = 6387; -- Obtained <number> gil.
        KEYITEM_OBTAINED = 6389; -- Obtained key item: <keyitem>.
          ITEMS_OBTAINED = 6395; -- You obtain <param2 number> <param1 item>!
-
--- custom
-              NPC_BLANK = 8800;

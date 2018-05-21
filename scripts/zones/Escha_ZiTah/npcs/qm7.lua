@@ -1,7 +1,6 @@
 -----------------------------------
 -- Area: Escha Zi'Tah (288)
--- NPC:  ??? (Bucca's Spawn)
--- Allows players to spawn the HNM Bucca
+-- NPC: ??? (Bucca's Spawn)
 -- !pos 242 0 -293
 -----------------------------------
 package.loaded["scripts/zones/Escha_ZiTah/TextIDs"] = nil;

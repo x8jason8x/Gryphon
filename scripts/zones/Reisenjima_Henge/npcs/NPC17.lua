@@ -1,6 +1,6 @@
 -----------------------------------
 -- Area: Reisenjima Henge
--- NPC: Shantotto (NPC17)
+-- NPC: Star Sibyl (NPC17)
 -- AF1 NPC
 -----------------------------------
 require("scripts/globals/settings");
@@ -12,7 +12,7 @@ end;
 function onTrigger(player,npc)
 
     player:showText(npc,NPC_BLANK);
-	player:PrintToPlayer("Shantotto: AF shop - Scholar to White Mage~", 0xD);
+	player:PrintToPlayer("Star Sibyl: AF shop - Scholar to White Mage~", 0xD);
 		local stock =
 	{
         0x17aa,10000,      -- Klimaform

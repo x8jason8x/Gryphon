@@ -1,9 +1,9 @@
 -----------------------------------
--- Soupox (Leafallia)
+-- NPC 24 Maat
 -- Accessory Trade NPC
 -----------------------------------
-require("scripts/globals/missions");
-require("scripts/globals/titles");
+require("scripts/globals/settings");
+-----------------------------------
 
 function onTrade(player,npc,trade)
 
@@ -45,9 +45,9 @@ function onTrigger(player,npc)
 
     if current_rank == 10 then
         player:showText(npc,NPC_BLANK);
-        player:PrintToPlayer("Soupox: Youse gots rare armors? Soupox gots rare ammos! Youse trades Soupox?", 0xD);
+        player:PrintToPlayer("Maat: Well now, you got some Aht Uhrgan king armor for me? I'll give you some power ammo in return...", 0xD);
     else
-        player:PrintToPlayer("Soupox: Soupox gots no times for scruffys aggrobaits adventurers!", 0xD);
+        player:PrintToPlayer("Maat: Gotta hit rank 10 befor we can talk trades, kiddo.", 0xD);
     end	
 end;
 

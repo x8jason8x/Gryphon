@@ -1,10 +1,8 @@
 -------------------------------------
--- Morimar (Leafallia)
+-- NPC 21 Aldo
 -- desc: Custom NPC for buying CoP/Zilart accessories
 -------------------------------------
-require("scripts/globals/keyitems");
-require("scripts/globals/missions");
-require("scripts/globals/titles");
+require("scripts/globals/settings");
 -------------------------------------
 
 function onTrigger(player)
@@ -12,7 +10,7 @@ function onTrigger(player)
     -- Must have RoZ, CoP, and Storms of Fate complete
     if player:hasKeyItem(dsp.ki.WHISPER_OF_THE_WYRMKING) then
         player:showText(npc,NPC_BLANK);
-        player:PrintToPlayer("Morimar: You are a true hero to all! I can do business with you.", 0xD);
+        player:PrintToPlayer("Aldo: I see you have defeated the Wyrmking! Let's talk accessories!", 0xD);
         local stock = 
         { 
             14739, 5000000, -- Suppanomimi
@@ -30,7 +28,6 @@ function onTrigger(player)
         };
         showShop(player, STATIC, stock);
     else
-        player:PrintToPlayer("Morimar: Novice 'adventurer'! Rank presumption! I have no business with amateurs.", 0xD);
-        player:PrintToPlayer("Morimar scowls at you like he just stepped in Chocobo dung...", 0xE);
+        player:PrintToPlayer("Aldo: You must kill Bahamut before we can do business friend...", 0xD);
     end
 end;

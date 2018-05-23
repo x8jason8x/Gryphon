@@ -18,6 +18,7 @@ require("scripts/zones/Upper_Jeuno/TextIDs")
 local wsQuest = dsp.wsquest.decimation
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if wsQuestEvent ~= nil then
@@ -26,6 +27,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local chocoboOnTheLoose = player:getQuestStatus(JEUNO,CHOCOBO_ON_THE_LOOSE)
     local chocoboOnTheLooseStatus = player:getVar("ChocoboOnTheLoose")
@@ -33,24 +35,11 @@ function onTrigger(player,npc)
     local saveMySon = player:getQuestStatus(JEUNO,SAVE_MY_SON)
     local wingsOfGold = player:getQuestStatus(JEUNO,WINGS_OF_GOLD)
     local scatIntoShadow = player:getQuestStatus(JEUNO,SCATTERED_INTO_SHADOW)
-
     local mLvl = player:getMainLvl()
     local mJob = player:getMainJob()
 
     if wsQuestEvent ~= nil then
         player:startEvent(wsQuestEvent)
-    elseif (chocoboOnTheLoose == QUEST_AVAILABLE) then
-        player:startEvent(10093)
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 0) then
-        player:startEvent(10094)
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 2) then
-        player:startEvent(10095)
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 3) then
-        player:startEvent(10099)
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and (chocoboOnTheLooseStatus == 5 or chocoboOnTheLooseStatus == 6)) then
-        player:startEvent(10100)
-    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 7 and player:needToZone() == false and (player:getVar("ChocoboOnTheLooseDay") < VanadielDayOfTheYear() or player:getVar("ChocoboOnTheLooseYear") < VanadielYear())) then
-        player:startEvent(10109)
     elseif (player:getMainLvl() >= 20 and ChocobosWounds ~= QUEST_COMPLETED) then
         local chocoFeed = player:getVar("ChocobosWounds_Event")
 
@@ -104,34 +93,26 @@ function onTrigger(player,npc)
         player:startEvent(151)
     elseif (player:getQuestStatus(JEUNO,PATH_OF_THE_BEASTMASTER) == QUEST_COMPLETED) then
         player:startEvent(20)
+    elseif (chocoboOnTheLoose == QUEST_AVAILABLE) then
+        player:startEvent(10093)
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 0) then
+        player:startEvent(10094)
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 2) then
+        player:startEvent(10095)
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 3) then
+        player:startEvent(10099)
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and (chocoboOnTheLooseStatus == 5 or chocoboOnTheLooseStatus == 6)) then
+        player:startEvent(10100)
+    elseif (chocoboOnTheLoose == QUEST_ACCEPTED and chocoboOnTheLooseStatus == 7 and player:needToZone() == false and (player:getVar("ChocoboOnTheLooseDay") < VanadielDayOfTheYear() or player:getVar("ChocoboOnTheLooseYear") < VanadielYear())) then
+        player:startEvent(10109)
     else
         player:startEvent(66, player:getMainLvl())
     end
 end
 
 function onEventFinish(player,csid,option)
-    if (csid == 10093) then
-        player:addQuest(JEUNO,CHOCOBO_ON_THE_LOOSE)
-    elseif (csid == 10094) then
-        player:setVar("ChocoboOnTheLoose", 1)
-    elseif (csid == 10095) then
-        player:setVar("ChocoboOnTheLoose", 3)
-    elseif (csid == 10099) then
-        player:setVar("ChocoboOnTheLoose", 4)
-    elseif (csid == 10100) then
-        player:setVar("ChocoboOnTheLoose", 7)
-        player:setVar("ChocoboOnTheLooseDay", VanadielDayOfTheYear())
-        player:setVar("ChocoboOnTheLooseYear", VanadielYear())
-        player:needToZone(true)
-    elseif (csid == 10109) then
-        player:setVar("ChocoboOnTheLoose", 0)
-        player:setVar("ChocoboOnTheLooseDay", 0)
-        player:setVar("ChocoboOnTheLooseYear", 0)
-        player:addFame(JEUNO, 30)
-        player:addItem(2317)
-        player:messageSpecial(ITEM_OBTAINED,2317) -- Chocobo Egg (a bit warm)
-        player:completeQuest(JEUNO,CHOCOBO_ON_THE_LOOSE)
-    elseif (csid == 71 and option == 1) then
+
+    if (csid == 71 and option == 1) then
         player:addQuest(JEUNO,CHOCOBO_S_WOUNDS)
         player:setVar("ChocobosWounds_Event",1)
     elseif (csid == 70) then
@@ -173,6 +154,27 @@ function onEventFinish(player,csid,option)
             player:addFame(JEUNO,AF2_FAME)
             player:completeQuest(JEUNO,SCATTERED_INTO_SHADOW)
         end
+    elseif (csid == 10093) then
+        player:addQuest(JEUNO,CHOCOBO_ON_THE_LOOSE)
+    elseif (csid == 10094) then
+        player:setVar("ChocoboOnTheLoose", 1)
+    elseif (csid == 10095) then
+        player:setVar("ChocoboOnTheLoose", 3)
+    elseif (csid == 10099) then
+        player:setVar("ChocoboOnTheLoose", 4)
+    elseif (csid == 10100) then
+        player:setVar("ChocoboOnTheLoose", 7)
+        player:setVar("ChocoboOnTheLooseDay", VanadielDayOfTheYear())
+        player:setVar("ChocoboOnTheLooseYear", VanadielYear())
+        player:needToZone(true)
+    elseif (csid == 10109) then
+        player:setVar("ChocoboOnTheLoose", 0)
+        player:setVar("ChocoboOnTheLooseDay", 0)
+        player:setVar("ChocoboOnTheLooseYear", 0)
+        player:addFame(JEUNO, 30)
+        player:addItem(2317)
+        player:messageSpecial(ITEM_OBTAINED,2317) -- Chocobo Egg (a bit warm)
+        player:completeQuest(JEUNO,CHOCOBO_ON_THE_LOOSE)
     else
         dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,DECIMATION_LEARNED)
     end

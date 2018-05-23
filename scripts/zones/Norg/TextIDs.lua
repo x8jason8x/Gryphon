@@ -33,8 +33,8 @@ YOU_CAN_NOW_BECOME_A_SAMURAI = 10197; -- You can now become a samurai.
     SOLBYMAHOLBY_SHOP_DIALOG = 10574; -- Hiya! My name's Solby-Maholby! I'm new here, so they put me on tooty-fruity shop duty. I'll give you a super-duper deal on unwanted items!
 
 -- WS Quests
-         TACHI_KASHA_LEARNED = 10796; -- You have learned the weapon skill “Tachi: Kasha”!
-            BLADE_KU_LEARNED = 10821; -- You have learned the weapon skill “Blade: Ku”!
+         TACHI_KASHA_LEARNED = 10797; -- You have learned the weapon skill “Tachi: Kasha”!
+            BLADE_KU_LEARNED = 10822; -- You have learned the weapon skill “Blade: Ku”!
 			
 -- conquest Base
                CONQUEST_BASE =  6498; -- Tallying conquest results...

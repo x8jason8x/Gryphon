@@ -43,7 +43,7 @@ PLAYERS_HAVE_NOT_REACHED_LEVEL =  7415; -- Players who have not reached level <<
           VARCHET_KEEP_PROMISE =  7765; -- As promised, I shall go and see about those woodchippers. Maybe we can play another game later.
 
 -- WS Quest
-         IMPULSE_DRIVE_LEARNED =  9315; -- You have learned the weapon skill “Impulse Drive”!
+         IMPULSE_DRIVE_LEARNED =  9316; -- You have learned the weapon skill “Impulse Drive”!
 
 
 -- Harvest Festival

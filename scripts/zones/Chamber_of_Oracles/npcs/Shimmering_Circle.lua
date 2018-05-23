@@ -22,10 +22,6 @@ require("scripts/zones/Chamber_of_Oracles/TextIDs");
     --- The Scarlet King
     --- Roar! A Cat Burglar Bares Her Fangs
 
------------------------------------
--- onTrade Action
------------------------------------
-
 function onTrade(player,npc,trade)
 
     if (TradeBCNM(player,player:getZoneID(),trade,npc)) then
@@ -33,10 +29,6 @@ function onTrade(player,npc,trade)
     end
 
 end;
-
------------------------------------
--- onTrigger Action
------------------------------------
 
 function onTrigger(player,npc)
 
@@ -51,10 +43,6 @@ function onTrigger(player,npc)
         return;
     end
 end;
-
------------------------------------
--- onEventUpdate
------------------------------------
 
 function onEventUpdate(player,csid,option)
     -- printf("onUpdate CSID: %u",csid);

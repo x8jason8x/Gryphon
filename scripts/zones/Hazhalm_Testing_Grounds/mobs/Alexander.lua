@@ -57,9 +57,10 @@ end;
 
 function onMobDeath(mob, player, isKiller)
     
-	if player:hasSpell(305) == true then
+	if (player:hasSpell(297) == true and player:hasSpell(304) == true and
+    player:hasSpell(306) == false) then
         player:addSpell(306);
-		player:PrintToPlayer("You can now summon Alexander!", 0xD);
+        player:PrintToPlayer("You can now summon Alexander!", 0xD);
     end
 	player:addTitle(dsp.title.PREVENTER_OF_RAGNAROK);
 end;

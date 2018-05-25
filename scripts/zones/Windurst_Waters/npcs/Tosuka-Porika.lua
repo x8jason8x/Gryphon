@@ -22,17 +22,9 @@ end;
 
 function onTrigger(player,npc)
 
-    -- cs notes
-    -- 0x172 (370) = You have no mission, gtfo
-    -- 0x17b (379) = Not sure yet (Adventurer from the other day?)
-    -- 0x17c (380) = About the book of gods and "some adventurer"
-    -- 0xa0 (160) = 1st cutscene of Windurst Mission 2-1
-    -- 0xa1 (161) = More info on 2-1, if you talk to him right after the previous cutscene again
-
     local bookwormStatus = player:getQuestStatus(WINDURST,EARLY_BIRD_CATCHES_THE_BOOKWORM);
     local glyphStatus = player:getQuestStatus(WINDURST,GLYPH_HANGER);
     local chasingStatus = player:getQuestStatus(WINDURST,CHASING_TALES);
-
     local Fame = player:getFameLevel(WINDURST);
 
     if (player:getCurrentMission(WINDURST) == THE_JESTER_WHO_D_BE_KING and player:getVar("MissionStatus") == 1) then
@@ -41,7 +33,7 @@ function onTrigger(player,npc)
     elseif (player:getCurrentMission(COP) == THE_ROAD_FORKS and player:getVar("MEMORIES_OF_A_MAIDEN_Status")==10) then
         player:startEvent(875); -- COP event
 
-    -- Start Past Reflections in First -----------
+     -- Start Past Reflections in First
     elseif (player:getCurrentMission(WINDURST) == LOST_FOR_WORDS) then
         MissionStatus = player:getVar("MissionStatus");
         if (MissionStatus == 0) then
@@ -62,7 +54,7 @@ function onTrigger(player,npc)
         if (testflag(tonumber(player:getVar("QuestHatInHand_var")),32) == false) then
             player:startEvent(55); -- Show Off Hat
         end
-    -- Book is dsp.ki.A_SONG_OF_LOVE, KeyItem ID = 126
+     -- Book is dsp.ki.A_SONG_OF_LOVE, KeyItem ID = 126
     elseif (chasingStatus == QUEST_AVAILABLE and bookwormStatus == QUEST_COMPLETED and WindyMission ~= THE_JESTER_WHO_D_BE_KING and Fame >= 3 and player:needToZone() == false) then
         player:startEvent(403); --  Add initial cutscene
     elseif (chasingStatus == QUEST_ACCEPTED and player:getVar("CHASING_TALES_TRACK_BOOK") > 0) then
@@ -71,7 +63,7 @@ function onTrigger(player,npc)
         player:startEvent(412);
     elseif (chasingStatus == QUEST_ACCEPTED) then
         player:startEvent(406); --  Add follow up cutscene
-        -- Windurst Mission 7-1 --
+     -- Windurst Mission 7-1
     elseif (player:getCurrentMission(WINDURST) == THE_SIXTH_MINISTRY and player:getVar("MissionStatus") == 0) then
         player:startEvent(715,0,dsp.ki.OPTISTERY_RING);
     elseif (player:getCurrentMission(WINDURST) == THE_SIXTH_MINISTRY and player:getVar("MissionStatus") == 1) then
@@ -107,6 +99,7 @@ function onEventFinish(player,csid,option)
         player:setVar("MissionStatus",1);
     elseif (csid == 724) then
         finishMissionTimeline(player,3,csid,option);
+        player:delKeyItem(dsp.ki.OPTISTERY_RING);
     elseif (csid == 801) then
         player:addKeyItem(dsp.ki.OPTISTERY_RING);
         player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.OPTISTERY_RING);

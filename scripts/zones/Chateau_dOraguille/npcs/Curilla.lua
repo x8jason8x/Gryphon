@@ -14,9 +14,10 @@ require("scripts/globals/wsquest")
 require("scripts/zones/Chateau_dOraguille/TextIDs")
 -----------------------------------
 
-local wsQuest = dsp.wsquest.savage_blade
+local wsQuest = dsp.wsquest.savage_blade;
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if wsQuestEvent ~= nil then
@@ -26,10 +27,10 @@ function onTrade(player,npc,trade)
             player:messageSpecial(FLYER_REFUSED)
         end
     end
-
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local mLvL = player:getMainLvl()
     local mJob = player:getMainJob()
@@ -71,7 +72,6 @@ function onTrigger(player,npc)
     else
         player:startEvent(530) -- Standard dialog
     end
-
 end
 
 function onEventFinish(player,csid,option)

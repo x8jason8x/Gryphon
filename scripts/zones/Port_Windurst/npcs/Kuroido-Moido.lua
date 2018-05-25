@@ -19,6 +19,7 @@ require("scripts/zones/Port_Windurst/TextIDs")
 local wsQuest = dsp.wsquest.black_halo
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if wsQuestEvent ~= nil then
@@ -27,6 +28,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local makingAmends = player:getQuestStatus(WINDURST,MAKING_AMENDS) --First quest in series
     local makingAmens = player:getQuestStatus(WINDURST,MAKING_AMENS) --Second quest in series
@@ -62,14 +64,12 @@ function onTrigger(player,npc)
     elseif (player:getCurrentMission(ASA) == THAT_WHICH_CURDLES_BLOOD) then
         local item = 0
         local asaStatus = player:getVar("ASA_Status")
-
         -- TODO: Other Enfeebling Kits
         if (asaStatus == 0) then
             item = 2779
         else
             printf("Error: Unknown ASA Status Encountered <%u>", asaStatus)
         end
-
         -- The Parameters are Item IDs for the Recipe
         player:startEvent(858, item, 1134, 2778, 2778, 4099, 2778)
     else
@@ -94,9 +94,6 @@ function onEventFinish(player,csid,option)
         player:addFame(WINDURST,150)
         player:completeQuest(WINDURST,MAKING_AMENS)
     else
-        dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,ASURAN_FISTS_LEARNED)
+        dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,BLACK_HALO_LEARNED)
     end
 end
-
-
-

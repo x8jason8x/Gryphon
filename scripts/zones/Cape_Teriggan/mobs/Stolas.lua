@@ -6,7 +6,7 @@
 -- !pos -151.65 -8.5 191.37 113
 -- Involved in Quest: From Saplings Grow
 -----------------------------------
-require("scripts/globals/wsquest");
+require("scripts/globals/wsquest")
 
 function onMobInitialize(mob)
     mob:setMobMod(dsp.mobMod.EXP_BONUS,-100)

@@ -141,7 +141,7 @@ function onEventFinish(player,csid,option)
         player:addKeyItem(dsp.ki.AQUAFLORA1)
         player:addKeyItem(dsp.ki.AQUAFLORA2)
         player:addKeyItem(dsp.ki.AQUAFLORA3)
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.AQUAFLORA1)
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.AQUAFLORA1);
     elseif (csid == 144) then
         player:setVar("scatIntoShadowCS",1)
     elseif (csid == 135) then
@@ -149,7 +149,7 @@ function onEventFinish(player,csid,option)
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,14097)
         else
             player:setVar("scatIntoShadowCS",0)
-            player:addItem(14097)
+            player:addItem(14097);
             player:messageSpecial(ITEM_OBTAINED,14097) -- Beast Gaiters
             player:addFame(JEUNO,AF2_FAME)
             player:completeQuest(JEUNO,SCATTERED_INTO_SHADOW)

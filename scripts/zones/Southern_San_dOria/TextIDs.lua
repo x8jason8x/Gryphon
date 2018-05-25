@@ -42,10 +42,6 @@ PLAYERS_HAVE_NOT_REACHED_LEVEL =  7415 -- Players who have not reached level <<<
               VARCHET_BET_LOST =  7756 -- You lose your bet of 5 gil.
           VARCHET_KEEP_PROMISE =  7765 -- As promised, I shall go and see about those woodchippers. Maybe we can play another game later.
 
--- WS Quest
-         IMPULSE_DRIVE_LEARNED =  9316; -- You have learned the weapon skill “Impulse Drive”!
-
-
 -- Harvest Festival
                 TRICK_OR_TREAT =  7354 -- Trick or treat...
                THANK_YOU_TREAT =  7355 -- And now for your treat...

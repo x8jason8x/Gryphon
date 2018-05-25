@@ -25,11 +25,12 @@ function onEventUpdate(player,csid,option)
 end;
 
 function onEventFinish(player,csid,option)
+
     if (csid == 45) then
         if (player:getFreeSlotsCount() == 0) then
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,13134);
         else
-            player:delKeyItem(dsp.ki.HOLY_ONES_INVITATION);
+            player:delKeyItem(dsp.ki.BALGA_CHAMPION_CERTIFICATE);
             player:addKeyItem(dsp.ki.HOLY_ONES_OATH);
             player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.HOLY_ONES_OATH);
             player:addItem(13134); -- Ashura Necklace
@@ -38,4 +39,3 @@ function onEventFinish(player,csid,option)
         end
     end
 end;
-

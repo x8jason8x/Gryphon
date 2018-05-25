@@ -18,8 +18,9 @@ end;
 
 function onTrigger(player,npc)
 
-    CurrentMission = player:getCurrentMission(player:getNation());
-    if ( player:getCurrentMission(COP) ==MORE_QUESTIONS_THAN_ANSWERS and player:getVar("PromathiaStatus")==1) then
+    local CurrentMission = player:getCurrentMission(player:getNation());
+
+    if ( player:getCurrentMission(COP) == MORE_QUESTIONS_THAN_ANSWERS and player:getVar("PromathiaStatus")==1) then
         player:startEvent(10050);
     elseif (player:hasKeyItem(dsp.ki.ARCHDUCAL_AUDIENCE_PERMIT) and CurrentMission == 255 and player:getVar("MissionStatus") == 1) then
         player:startEvent(128);
@@ -34,7 +35,6 @@ function onTrigger(player,npc)
     else
         player:startEvent(138); -- you don't have a permit
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -64,5 +64,4 @@ function onEventFinish(player,csid,option)
     elseif (csid == 10050) then
         player:setVar("PromathiaStatus",2);
     end
-
 end;

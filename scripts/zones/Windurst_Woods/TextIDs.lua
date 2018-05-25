@@ -75,9 +75,6 @@ MILLEROVIEUNET_CLOSED_DIALOG =  9979 -- Now that I've finally learned the langua
                FORINE_DIALOG =  8559 -- Act according to our convictions while fulfilling our promise with the Tarutaru. This is indeed a fitting course for us, the people of glorious San d'Oria.
               APURURU_DIALOG =  9490 -- There's no way Semih Lafihna will just hand it over for no good reason. Maybe if you try talking with Kupipi...
 
--- WS Quest
-      EMPYREAL_ARROW_LEARNED =  9723; -- You have learned the weapon skill “Empyreal Arrow”!
-
 -- Harvest Festival
               TRICK_OR_TREAT =  9735 -- Trick or treat...
              THANK_YOU_TREAT =  9736 -- And now for your treat...

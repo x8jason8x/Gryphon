@@ -56,7 +56,6 @@ function onTrigger(player,npc)
     else
         player:startEvent(24); -- Standard dialog
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -88,5 +87,4 @@ function onEventFinish(player,csid,option)
             player:setVar("MissionStatus",2)
         end
     end
-
 end;

@@ -16,6 +16,7 @@ require("scripts/zones/Port_Bastok/TextIDs")
 local wsQuest = dsp.wsquest.asuran_fists
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if wsQuestEvent ~= nil then
@@ -28,6 +29,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local ghostsOfThePast = player:getQuestStatus(BASTOK,GHOSTS_OF_THE_PAST)
     local theFirstMeeting = player:getQuestStatus(BASTOK,THE_FIRST_MEETING)
@@ -48,6 +50,7 @@ function onTrigger(player,npc)
 end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 231) then
         player:addQuest(BASTOK,GHOSTS_OF_THE_PAST)
     elseif (csid == 232) then
@@ -77,5 +80,4 @@ function onEventFinish(player,csid,option)
     else
         dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,ASURAN_FISTS_LEARNED)
     end
-
 end

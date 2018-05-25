@@ -6,7 +6,7 @@
 -- !pos 56 -1 16 212
 -- Involved in Quest: Cloak and Dagger
 -----------------------------------
-require("scripts/globals/wsquest")
+require("scripts/globals/wsquest");
 
 function onMobInitialize(mob)
     mob:setMobMod(dsp.mobMod.EXP_BONUS,-100)

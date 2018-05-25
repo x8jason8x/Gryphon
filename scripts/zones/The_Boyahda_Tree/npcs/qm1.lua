@@ -4,7 +4,7 @@
 -- Quests: Shoot First, Ask Questions Later (Detonator WSNM "Beet Leafhopper")
 -- !pos -11 -19 -177 153
 -----------------------------------
-package.loaded["scripts/zones/The_Boyahda_Tree/TextIDs"] = nil;
+package.loaded["scripts/zones/The_Boyahda_Tree/TextIDs"] = nil
 -----------------------------------
 require("scripts/globals/wsquest")
 require("scripts/zones/The_Boyahda_Tree/TextIDs")

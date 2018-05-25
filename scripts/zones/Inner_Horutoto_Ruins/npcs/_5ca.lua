@@ -19,13 +19,12 @@ end;
 function onTrigger(player,npc)
 
     local MakingHeadlines = player:getQuestStatus(WINDURST,MAKING_HEADLINES);
-    local CurrentMission = player:getCurrentMission(WINDURST)
+    local CurrentMission = player:getCurrentMission(WINDURST);
     local MissionStatus = player:getVar("MissionStatus");
 
-    -- Check for Missions first (priority?)
-    -- We should allow both missions and quests to activate
     if (CurrentMission == LOST_FOR_WORDS and MissionStatus == 4) then
         player:startEvent(46);
+
     elseif (MakingHeadlines == 1) then
         function testflag(set,flag)
             return (set % (2*flag) >= flag)
@@ -40,10 +39,7 @@ function onTrigger(player,npc)
         end
     else
         player:startEvent(44); -- "The door is firmly shut"
-    end;
-
-    return 1;
-
+    end
 end;
 
 function onEventUpdate(player,csid,option)
@@ -52,8 +48,8 @@ end;
 function onEventFinish(player,csid,option)
 
     if (csid == 46) then
-        -- Mark the progress
+	
         player:setVar("MissionStatus",5);
+        player:delKeyItem(dsp.ki.HIDEOUT_KEY);
     end
-
 end;

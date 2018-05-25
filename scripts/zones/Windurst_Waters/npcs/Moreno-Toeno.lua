@@ -15,8 +15,10 @@ require("scripts/globals/titles");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-    if (player:getQuestStatus(WINDURST,TEACHER_S_PET) >= 1 and trade:hasItemQty(847,1) == true and trade:hasItemQty(4368,1) == true and trade:getGil() == 0 and trade:getItemCount() == 2) then
-        player:startEvent(440,250,847,4368); -- -- Quest Finish
+
+    if (player:getQuestStatus(WINDURST,TEACHER_S_PET) >= 1 and trade:hasItemQty(847,1) == true
+    and trade:hasItemQty(4368,1) == true and trade:getGil() == 0 and trade:getItemCount() == 2) then
+        player:startEvent(440,250,847,4368); -- Quest Finish
     end
 end;
 
@@ -59,7 +61,7 @@ function onTrigger(player,npc)
                     event = 0x00C7;
                 else
                     event = 198;
-                end;
+                end
                 player:startEvent(event,0,VanadielHour(),1,killcount);
             -- are we in the last game hour of the Vana'diel Day? REPEAT
             elseif (alreadyCompleted and seconds_passed >= 6768) then
@@ -70,7 +72,7 @@ function onTrigger(player,npc)
                     event = 209;
                 else
                     event = 208;
-                end;
+                end
                 player:startEvent(event,0,VanadielHour(),1,killcount);
             else
                 start_day = player:getVar("testingTime_start_day");
@@ -82,14 +84,13 @@ function onTrigger(player,npc)
                 else
                     if (alreadyCompleted) then hours_passed = (24 - start_hour) + VanadielHour() + 24;
                     else hours_passed = (24 - start_hour) + VanadielHour(); end
-                end;
+                end
                 if (alreadyCompleted) then
                     player:startEvent(204,0,0,0,0,0,VanadielHour(),48 - hours_passed,0);
                 else
                     player:startEvent(183,0,VanadielHour(),24 - hours_passed);
-                end;
-
-            end;
+                end
+            end
         end
     elseif (teacherstatus == QUEST_AVAILABLE) then
         prog = player:getVar("QuestTeachersPet_prog")
@@ -111,7 +112,6 @@ function onTrigger(player,npc)
             player:startEvent(469); -- Standard Conversation 2
         end
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -151,14 +151,12 @@ function onEventFinish(player,csid,option)
         player:delMission(WINDURST,A_TESTING_TIME);
     elseif (csid == 200 or csid == 0x00C9) then -- first time win
         finishMissionTimeline(player,1,csid,option);
-
         player:setVar("testingTime_crea_count",0);
         player:setVar("testingTime_start_day",0);
         player:setVar("testingTime_start_hour",0);
         player:setVar("testingTime_start_time",0);
     elseif (csid == 209 or csid == 0x00CE) then -- succesfull repeat attempt (Buburimu).
         finishMissionTimeline(player,1,csid,option);
-
         player:setVar("testingTime_crea_count",0);
         player:setVar("testingTime_start_day",0);
         player:setVar("testingTime_start_hour",0);
@@ -168,8 +166,8 @@ function onEventFinish(player,csid,option)
         player:addKeyItem(dsp.ki.STAR_SEEKER);
         player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.STAR_SEEKER);
         player:addTitle(dsp.title.FUGITIVE_MINISTER_BOUNTY_HUNTER);
-
     elseif (csid == 758) then
         finishMissionTimeline(player,3,csid,option);
+        player:delKeyItem(dsp.ki.MAGIC_DRAINED_STAR_SEEKER);
     end
 end;

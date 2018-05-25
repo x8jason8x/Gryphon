@@ -19,6 +19,7 @@ require("scripts/globals/wsquest")
 local wsQuest = dsp.wsquest.tachi_kasha
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if (wsQuestEvent ~= nil) then
@@ -45,11 +46,10 @@ function onTrigger(player,npc)
     local mJob              = player:getMainJob()
     local wsQuestEvent      = dsp.wsquest.getTriggerEvent(wsQuest,player)
 
-    -- THE POTENTIAL WITHIN
+     -- THE POTENTIAL WITHIN
     if (wsQuestEvent ~= nil) then
         player:startEvent(wsQuestEvent)
-
-    -- FORGE YOUR DESTINY
+     -- FORGE YOUR DESTINY
     elseif (forgeYourDestiny == QUEST_AVAILABLE and mLvl >= ADVANCED_JOB_LEVEL) then
         player:startEvent(25, 1153, 1152) -- start quest
     elseif (forgeYourDestiny == QUEST_ACCEPTED) then
@@ -60,14 +60,12 @@ function onTrigger(player,npc)
         else
             player:startEvent(29, 17809) -- finish quest
         end
-
-    -- THE SACRED KATANA
+     -- THE SACRED KATANA
     elseif (forgeYourDestiny == QUEST_COMPLETED and theSacredKatana == QUEST_AVAILABLE and mJob == dsp.job.SAM and mLvl >= AF1_QUEST_LEVEL) then
         player:startEvent(139) -- start quest
     elseif (theSacredKatana == QUEST_ACCEPTED) then
         player:startEvent(player:hasItem(17809) and 140 or 143) -- event with or without Mumeito
-
-    -- YOMI OKURI
+     -- YOMI OKURI
     elseif (theSacredKatana == QUEST_COMPLETED and yomiOkuri == QUEST_AVAILABLE and mJob == dsp.job.SAM and mLvl >= AF2_QUEST_LEVEL) then
         player:startEvent(player:needToZone() and 142 or 146) -- event with or without needing to zone
     elseif (yomiOkuri == QUEST_ACCEPTED) then
@@ -80,8 +78,7 @@ function onTrigger(player,npc)
         elseif (player:hasKeyItem(dsp.ki.FADED_YOMOTSU_HIRASAKA)) then
             player:startEvent(156)
         end
-
-    -- A THIEF IN NORG
+     -- A THIEF IN NORG
     elseif (yomiOkuri == QUEST_COMPLETED and aThiefinNorg == QUEST_AVAILABLE and mJob == dsp.job.SAM and mLvl >= AF3_QUEST_LEVEL) then
         player:startEvent(player:needToZone() and 157 or 158) -- even with or without needing to zone
     elseif (aThiefinNorg == QUEST_ACCEPTED) then
@@ -100,8 +97,7 @@ function onTrigger(player,npc)
         end
     elseif (aThiefinNorg == QUEST_COMPLETED) then
         player:startEvent(165) -- new default dialog
-
-    -- DEFAULT DIALOG
+     -- DEFAULT DIALOG
     else
         player:startEvent(71)
     end
@@ -112,7 +108,7 @@ end
 
 function onEventFinish(player,csid,option)
 
-    -- FORGE YOUR DESTINY
+     -- FORGE YOUR DESTINY
     if (csid == 25 and option == 1) then
         player:addQuest(OUTLANDS, FORGE_YOUR_DESTINY)
     elseif (csid == 27) then
@@ -121,16 +117,14 @@ function onEventFinish(player,csid,option)
     elseif (csid == 29 and npcUtil.completeQuest(player, OUTLANDS, FORGE_YOUR_DESTINY, {item=17809, fame=30, fameArea=NORG, title=dsp.title.BUSHIDO_BLADE, var={"ForgeYourDestiny_timer", "ForgeYourDestiny_Event"}})) then -- Mumeito
         player:messageSpecial(YOU_CAN_NOW_BECOME_A_SAMURAI, 17809)
         player:unlockJob(dsp.job.SAM)
-
-    -- THE SACRED KATANA
+     -- THE SACRED KATANA
     elseif (csid == 139 and option == 1) then
         player:addQuest(OUTLANDS, THE_SACRED_KATANA)
     elseif (csid == 141 and npcUtil.completeQuest(player, OUTLANDS, THE_SACRED_KATANA, {item=17812, fame=AF1_FAME, fameArea=NORG})) then -- Magoroku
         player:confirmTrade()
         player:delKeyItem(dsp.ki.HANDFUL_OF_CRYSTAL_SCALES)
         player:needToZone(true)
-
-    -- YOMI OKURI
+      -- YOMI OKURI
     elseif (csid == 146 and option == 1) then
         player:addQuest(OUTLANDS,YOMI_OKURI)
         player:setVar("yomiOkuriCS",1)
@@ -144,8 +138,7 @@ function onEventFinish(player,csid,option)
     elseif (csid == 156 and npcUtil.completeQuest(player, OUTLANDS, YOMI_OKURI, {item=14100, fame=AF2_FAME, fameArea=NORG, var="yomiOkuriCS"})) then -- Myochin Sune-Ate
         player:delKeyItem(dsp.ki.FADED_YOMOTSU_HIRASAKA)
         player:needToZone(true)
-
-    -- A THIEF IN NORG
+     -- A THIEF IN NORG
     elseif (csid == 158 and option == 1) then
         player:addQuest(OUTLANDS,A_THIEF_IN_NORG)
         player:setVar("aThiefinNorgCS",1)
@@ -160,7 +153,6 @@ function onEventFinish(player,csid,option)
         player:needToZone(true)
     elseif (csid == 164) then
         npcUtil.completeQuest(player, OUTLANDS, A_THIEF_IN_NORG, {item=13868, title=dsp.title.PARAGON_OF_SAMURAI_EXCELLENCE, fame=AF3_FAME, fameArea=NORG, var={"aThiefinNorgCS"}})
-
     else
         dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,TACHI_KASHA_LEARNED)
     end

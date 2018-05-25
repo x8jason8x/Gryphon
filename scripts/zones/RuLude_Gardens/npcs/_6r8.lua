@@ -7,6 +7,7 @@
 package.loaded["scripts/zones/RuLude_Gardens/TextIDs"] = nil;
 -----------------------------------
 require("scripts/zones/RuLude_Gardens/TextIDs");
+require("scripts/globals/settings");
 require("scripts/globals/keyitems");
 require("scripts/globals/missions");
 -----------------------------------
@@ -15,7 +16,8 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    pNation = player:getNation();
+    
+	pNation = player:getNation();
     currentMission = player:getCurrentMission(pNation);
     MissionStatus = player:getVar("MissionStatus");
 
@@ -32,9 +34,6 @@ function onTrigger(player,npc)
     else
         player:messageSpecial(WINDURST_EMBASSY + 1); -- you have no letter of introduction
     end
-
-    return 1;
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -53,5 +52,4 @@ function onEventFinish(player,csid,option)
     elseif (csid == 38 or csid == 35) then
         finishMissionTimeline(player,1,csid,option);
     end
-
 end;

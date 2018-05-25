@@ -8,6 +8,7 @@ package.loaded["scripts/zones/RuLude_Gardens/TextIDs"] = nil;
 require("scripts/zones/RuLude_Gardens/TextIDs");
 require("scripts/globals/keyitems");
 require("scripts/globals/missions");
+require("scripts/globals/settings");
 -----------------------------------
 
 function onTrade(player,npc,trade)
@@ -51,7 +52,6 @@ function onTrigger(player,npc)
     elseif (pNation == NATION_BASTOK) then
         player:startEvent(51);
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -66,5 +66,4 @@ function onEventFinish(player,csid,option)
     elseif (csid == 37) then
         finishMissionTimeline(player,1,csid,option);
     end
-
 end;

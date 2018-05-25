@@ -15,6 +15,7 @@ require("scripts/zones/Kazham/TextIDs")
 local wsQuest = dsp.wsquest.evisceration
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if (wsQuestEvent ~= nil) then
@@ -23,6 +24,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
 
     if (wsQuestEvent ~= nil) then
@@ -36,10 +38,10 @@ function onTrigger(player,npc)
     else
         player:startEvent(113)
     end
-
 end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 114) then
         player:addKeyItem(dsp.ki.SACRIFICIAL_CHAMBER_KEY)
         player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.SACRIFICIAL_CHAMBER_KEY)
@@ -50,5 +52,4 @@ function onEventFinish(player,csid,option)
     else
         dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,EVISCERATION_LEARNED)
     end
-
 end

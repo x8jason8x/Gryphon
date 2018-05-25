@@ -41,6 +41,7 @@ function onPath(npc)
 end
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if (wsQuestEvent ~= nil) then
@@ -50,8 +51,7 @@ function onTrade(player,npc,trade)
             player:startEvent(17)
             npc:wait()
         end
-    end
-    if (player:getQuestStatus(SANDORIA,THE_RUMOR) == QUEST_ACCEPTED) then
+    elseif (player:getQuestStatus(SANDORIA,THE_RUMOR) == QUEST_ACCEPTED) then
         local count = trade:getItemCount()
         local BeastBlood = trade:hasItemQty(930,1)
         if (BeastBlood == true and count == 1) then
@@ -62,6 +62,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local troubleAtTheSluice = player:getQuestStatus(SANDORIA,TROUBLE_AT_THE_SLUICE)
     local TheHolyCrest = player:getVar("TheHolyCrest_Event")
@@ -73,20 +74,19 @@ function onTrigger(player,npc)
 
     if (wsQuestEvent ~= nil) then
         player:startEvent(wsQuestEvent)
-
-    -- The Holy Crest Quest
+     -- The Holy Crest Quest
     elseif (TheHolyCrest == 1) then
         player:startEvent(6)
     elseif (TheHolyCrest == 2 and crestCheck == 0) then
         player:startEvent(7)
         player:setVar("theHolyCrestCheck",1)
-    -- Trouble at the Sluice Quest
+     -- Trouble at the Sluice Quest
     elseif (tatsVar == 1) then
         player:startEvent(15)
         player:setVar("troubleAtTheSluiceVar",2)
     elseif (tatsVar == 2) then
         player:startEvent(16)
-    -- The rumor Quest
+     -- The rumor Quest
     elseif (theRumor == QUEST_AVAILABLE and player:getFameLevel(SANDORIA) >= 3 and player:getMainLvl() >= 10) then
         player:startEvent(13)
     elseif (theRumor == QUEST_ACCEPTED) then
@@ -117,13 +117,11 @@ function onEventFinish(player,csid,option,npc)
             player:tradeComplete()
             player:addItem(4853)
             player:messageSpecial(ITEM_OBTAINED, 4853) -- Scroll of Drain
-
             player:addFame(SANDORIA,30)
             player:completeQuest(SANDORIA,THE_RUMOR)
         end
     else
         dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,SPIRAL_HELL_LEARNED)
     end
-
     npc:wait(0)
 end

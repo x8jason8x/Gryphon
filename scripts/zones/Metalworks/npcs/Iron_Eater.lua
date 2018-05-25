@@ -17,6 +17,7 @@ require("scripts/zones/Metalworks/TextIDs")
 local wsQuest = dsp.wsquest.steel_cyclone
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if wsQuestEvent ~= nil then
@@ -25,6 +26,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local currentMission = player:getCurrentMission(BASTOK)
     local missionStatus = player:getVar("MissionStatus")

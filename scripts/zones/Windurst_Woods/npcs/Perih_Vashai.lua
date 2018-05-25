@@ -19,6 +19,7 @@ require("scripts/globals/wsquest")
 local wsQuest = dsp.wsquest.empyreal_arrow
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if wsQuestEvent ~= nil then
@@ -29,10 +30,10 @@ function onTrade(player,npc,trade)
             player:startEvent(537,0,13360) -- twinstoneEarring
         end
     end
-
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local TheFangedOne = player:getQuestStatus(WINDURST,THE_FANGED_ONE) -- RNG flag quest
     local SinHunting = player:getQuestStatus(WINDURST,SIN_HUNTING)-- RNG AF1
@@ -46,11 +47,10 @@ function onTrigger(player,npc)
 
     if wsQuestEvent ~= nil then
         player:startEvent(wsQuestEvent)
-
-    -- COP mission
+     -- COP mission
     elseif (player:getCurrentMission(COP) == THREE_PATHS and player:getVar("COP_Louverance_s_Path") == 1) then
         player:startEvent(686)
-    -- the fanged one
+     -- the fanged one
     elseif (TheFangedOne ~= QUEST_COMPLETED) then
         if (TheFangedOne == QUEST_AVAILABLE and player:getMainLvl() >= ADVANCED_JOB_LEVEL) then
             player:startEvent(351)
@@ -61,16 +61,14 @@ function onTrigger(player,npc)
         elseif (player:getVar("TheFangedOne_Event") == 1) then
             player:startEvent(358)
         end
-
-    -- sin hunting
+     -- sin hunting
     elseif (SinHunting == QUEST_AVAILABLE and Job == 11 and LvL >= 40 and SinHuntingCS == 0) then
         player:startEvent(523) -- start RNG AF1
     elseif (SinHuntingCS > 0 and SinHuntingCS < 5) then
         player:startEvent(524) -- during quest RNG AF1
     elseif (SinHuntingCS == 5) then
         player:startEvent(527) -- complete quest RNG AF1
-
-    -- fire and brimstone
+     -- fire and brimstone
     elseif (SinHunting == QUEST_COMPLETED and Job == 11 and FireAndBrimstone == QUEST_AVAILABLE and FireAndBrimstoneCS == 0) then
         player:startEvent(531) -- start RNG AF2
     elseif (FireAndBrimstoneCS > 0 and FireAndBrimstoneCS < 4) then
@@ -79,8 +77,7 @@ function onTrigger(player,npc)
         player:startEvent(535,0,13360,1113) -- second part RNG AF2
     elseif (FireAndBrimstoneCS == 5) then
         player:startEvent(536,0,13360,1113) -- during second part RNG AF2
-
-    -- Unbridled Passion
+     -- Unbridled Passion
     elseif (FireAndBrimstone == QUEST_COMPLETED and Job == 11 and UnbridledPassion == QUEST_AVAILABLE and UnbridledPassion == 0) then
         player:startEvent(541,0,13360) -- start RNG AF3
     elseif (UnbridledPassionCS > 0 and UnbridledPassionCS < 3) then
@@ -89,14 +86,14 @@ function onTrigger(player,npc)
         player:startEvent(542)-- during RNG AF3
     elseif (UnbridledPassionCS == 7) then
         player:startEvent(546,0,14099) -- complete RNG AF3
-
-    -- standard dialog
+     -- standard dialog
     else
         player:startEvent(338)
     end
 end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 351) then
         player:addQuest(WINDURST,THE_FANGED_ONE)
         player:setVar("TheFangedOneCS",1)

@@ -16,6 +16,7 @@ function onInitialize(zone)
 end;
 
 function onZoneIn(player,prevZone)
+
     local cs = -1;
 
     if (player:getCurrentMission(SANDORIA) == JOURNEY_TO_WINDURST and player:getVar("MissionStatus") == 3) then
@@ -30,6 +31,7 @@ function onZoneIn(player,prevZone)
 end;
 
 function onConquestUpdate(zone, updatetype)
+
     local players = zone:getPlayers();
 
     for name, player in pairs(players) do
@@ -38,6 +40,7 @@ function onConquestUpdate(zone, updatetype)
 end;
 
 function onRegionEnter(player,region)
+
     switch (region:GetRegionID()): caseof
     {
         ---------------------------------
@@ -59,7 +62,8 @@ function onEventUpdate(player,csid,option)
 end;
 
 function onEventFinish(player,csid,option)
-    if (csid == 41) then
+    
+	if (csid == 41) then
         player:setPos(0,-17,135,60,239);
     elseif (csid == 335) then
         player:setVar("MissionStatus",2);

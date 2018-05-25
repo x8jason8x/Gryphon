@@ -5,6 +5,7 @@
 -----------------------------------
 package.loaded["scripts/zones/Heavens_Tower/TextIDs"] = nil;
 -----------------------------------
+require("scripts/globals/settings");
 require("scripts/globals/titles");
 require("scripts/globals/keyitems");
 require("scripts/globals/missions");
@@ -44,14 +45,16 @@ function onTrigger(player,npc)
             player:setVar("Flagwindurst",0);
             player:addItem(181);
             player:messageSpecial(ITEM_OBTAINED,181);
-		end	
+        end	
     elseif (CurrentMission == MOON_READING and MissionStatus == 0) then
         player:startEvent(384);
-	elseif (CurrentMission == MOON_READING and player:hasKeyItem(ANCIENT_VERSE_OF_ALTEPA and ANCIENT_VERSE_OF_ROMAEVE and ANCIENT_VERSE_OF_UGGALEPIH)) then
+    elseif (CurrentMission == MOON_READING and
+        player:hasKeyItem(dsp.ki.ANCIENT_VERSE_OF_ALTEPA and
+		dsp.ki.ANCIENT_VERSE_OF_ROMAEVE and dsp.ki.ANCIENT_VERSE_OF_UGGALEPIH)) then
         player:startEvent(385);
-	elseif (CurrentMission == MOON_READING and MissionStatus == 3) then
+    elseif (CurrentMission == MOON_READING and MissionStatus == 3) then
         player:startEvent(386);
-	elseif (CurrentMission == MOON_READING and MissionStatus == 4) then
+    elseif (CurrentMission == MOON_READING and MissionStatus == 4) then
         player:startEvent(407);	
     else
         player:startEvent(154);
@@ -83,30 +86,32 @@ function onEventFinish(player,csid,option)
         player:addTitle(dsp.title.STARORDAINED_WARRIOR);
     elseif (csid == 310) then
         player:setVar("MissionStatus",1);
-        player:addTitle(dsp.title.HERO_ON_BEHALF_OF_WINDURST);
         player:addKeyItem(dsp.ki.HOLY_ONES_INVITATION);
         player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.HOLY_ONES_INVITATION);
     elseif (csid == 312) then
         finishMissionTimeline(player,3,csid,option);
+        player:delKeyItem(dsp.ki.HOLY_ONES_OATH);
+        player:addTitle(dsp.title.HERO_ON_BEHALF_OF_WINDURST);
     elseif (csid == 192 or csid == 216) then
         finishMissionTimeline(player,1,csid,option);
     elseif (csid == 362) then
         player:setVar("MissionStatus",3);
     elseif (csid == 384) then
         player:setVar("MissionStatus",1);
-	elseif (csid == 385) then
-		player:delKeyItem(ANCIENT_VERSE_OF_ALTEPA);
-		player:delKeyItem(ANCIENT_VERSE_OF_ROMAEVE);
-		player:delKeyItem(ANCIENT_VERSE_OF_UGGALEPIH);
-		player:setVar("MissionStatus",2);
-	elseif (csid == 386) then
+    elseif (csid == 385) then
+        player:delKeyItem(dsp.ki.ANCIENT_VERSE_OF_ALTEPA);
+        player:delKeyItem(dsp.ki.ANCIENT_VERSE_OF_ROMAEVE);
+        player:delKeyItem(dsp.ki.ANCIENT_VERSE_OF_UGGALEPIH);
+        player:setVar("MissionStatus",2);
+    elseif (csid == 386) then
         player:setVar("MissionStatus",4);
-	elseif (csid == 407) then
+    elseif (csid == 407) then
         if (player:getFreeSlotsCount() == 0) then
+            player:setPos(0,-50,35,64,242); -- workaround, hooks freeze client on CS end
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,183);
             player:setVar("Flagwindurst",1);
         else
-		    player:setPos(0,-50,35,64,242);
+            player:setPos(0,-50,35,64,242); -- workaround, hooks freeze client on CS end
             player:addItem(183);
             player:messageSpecial(ITEM_OBTAINED,183);
         end
@@ -115,7 +120,7 @@ function onEventFinish(player,csid,option)
         player:setRank(10);
         player:addGil(GIL_RATE*100000);
         player:messageSpecial(GIL_OBTAINED,GIL_RATE*100000);
-        player:setTitle(300);
+        player:setTitle(dsp.title.VESTAL_CHAMBERLAIN);
         player:setVar("WindyEpilogue",1);
     end
 end;

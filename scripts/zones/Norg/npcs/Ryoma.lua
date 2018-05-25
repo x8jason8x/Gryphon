@@ -18,6 +18,7 @@ require("scripts/zones/Norg/TextIDs")
 local wsQuest = dsp.wsquest.blade_ku
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if (wsQuestEvent ~= nil) then
@@ -26,6 +27,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local twentyInPirateYears = player:getQuestStatus(OUTLANDS,TWENTY_IN_PIRATE_YEARS)
     local illTakeTheBigBox = player:getQuestStatus(OUTLANDS,I_LL_TAKE_THE_BIG_BOX)
@@ -56,10 +58,10 @@ function onTrigger(player,npc)
     else
         player:startEvent(94)
     end
-
 end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 95) then
         player:addKeyItem(dsp.ki.SEALED_DAGGER)
         player:messageSpecial(KEYITEM_OBTAINED, dsp.ki.SEALED_DAGGER)

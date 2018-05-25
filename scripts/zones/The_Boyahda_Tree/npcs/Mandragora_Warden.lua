@@ -25,7 +25,7 @@ local dialog = player:getVar ("mandialog");
         if (dialog == 0) then
             player:startEvent(10);
             player:setVar("mandialog",1);
-            player:PrintToPlayer("Seems like he wants something. . .");
+            player:PrintToPlayer("Seems like he wants something....");
         elseif (dialog == 1) then
             player:startEvent(11);
             player:setVar("mandialog",2);

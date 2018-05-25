@@ -6,7 +6,6 @@
 package.loaded["scripts/zones/Stellar_Fulcrum/TextIDs"] = nil;
 package.loaded["scripts/globals/bcnm"] = nil;
 -------------------------------------
-
 require("scripts/globals/bcnm");
 require("scripts/globals/missions");
 require("scripts/zones/Stellar_Fulcrum/TextIDs");
@@ -36,21 +35,13 @@ function onTrigger(player,npc)
 end;
 
 function onEventUpdate(player,csid,option)
-    -- printf("onUpdate CSID: %u",csid);
-    -- printf("onUpdate RESULT: %u",option);
 
     if (EventUpdateBCNM(player,csid,option)) then
         return;
     end
 end;
 
------------------------------------
--- onEventFinish Action
------------------------------------
-
 function onEventFinish(player,csid,option)
-    -- printf("onFinish CSID: %u",csid);
-    -- printf("onFinish RESULT: %u",option);
 
     if (csid == 12) then
         player:setVar("ACP_Ode_CS", 1);

@@ -17,21 +17,20 @@ require("scripts/zones/Windurst_Walls/TextIDs")
 local wsQuest = dsp.wsquest.retribution
 
 function onTrade(player,npc,trade)
-    local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
+    
+	local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
     local count = trade:getItemCount()
 
     if wsQuestEvent ~= nil then
         player:startEvent(wsQuestEvent)
-
-    -- Curses Foiled Again!
+     -- Curses Foiled Again!
     elseif (player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_1) == QUEST_ACCEPTED) then
         if (trade:hasItemQty(928,1) and trade:hasItemQty(880,2) and count == 3) then
             player:startEvent(173,0,0,0,0,0,0,928,880) -- Correct items given, complete quest.
         else
             player:startEvent(172,0,0,0,0,0,0,928,880) -- Incorrect or not enough items
         end
-
-    -- Curses,Foiled ... Again!?
+     -- Curses,Foiled ... Again!?
     elseif (player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_2) == QUEST_ACCEPTED) then
         if (trade:hasItemQty(17316,2) and trade:hasItemQty(940,1) and trade:hasItemQty(552,1) and count == 4) then
             player:startEvent(183) -- Correct items given, complete quest.
@@ -42,6 +41,7 @@ function onTrade(player,npc,trade)
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local foiledAgain = player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_1)
     local CFA2 = player:getQuestStatus(WINDURST,CURSES_FOILED_AGAIN_2)
@@ -54,24 +54,23 @@ function onTrigger(player,npc)
         player:startEvent(wsQuestEvent)
     elseif (player:getCurrentMission(WINDURST) == THE_JESTER_WHO_D_BE_KING and player:getVar("MissionStatus") == 7) then
         player:startEvent(397,0,0,0,282)
+    elseif (player:hasCompletedMission(WINDURST,THE_JESTER_WHO_D_BE_KING) and player:getVar("ShantottoCS") == 1) then
+        player:startEvent(399,0,0,282)
     elseif (player:getQuestStatus(WINDURST,LURE_OF_THE_WILDCAT_WINDURST) == QUEST_ACCEPTED and player:getMaskBit(WildcatWindurst,6) == false) then
         player:startEvent(498)
     elseif (player:getQuestStatus(WINDURST,CLASS_REUNION) == QUEST_ACCEPTED and player:getVar("ClassReunionProgress") == 3) then
         player:startEvent(409) -- she mentions that Sunny-Pabonny left for San d'Oria
-    -------------------------------------------------------
-    -- Curses Foiled Again!
+     -- Curses Foiled Again!
     elseif (foiledAgain == QUEST_AVAILABLE) then
         player:startEvent(171,0,0,0,0,0,0,928,880)
     elseif (foiledAgain == QUEST_ACCEPTED) then
         player:startEvent(172,0,0,0,0,0,0,928,880)
     elseif (foiledAgain == QUEST_COMPLETED and CFA2 == QUEST_AVAILABLE and CFAtimer == 0) then
-        local cDay = VanadielDayOfTheYear()
+        
+		local cDay = VanadielDayOfTheYear()
         local cYear = VanadielYear()
         local dFinished = player:getVar("CursesFoiledAgainDay")
         local yFinished = player:getVar("CursesFoiledAgainYear")
-
-        -- player:PrintToPlayer("Vana Day and year:  "..cDay..", "..cYear)
-        -- player:PrintToPlayer("Database Day and year:  "..dFinished..", "..yFinished)
 
         if (cDay == dFinished and cYear == yFinished) then
             player:startEvent(174)
@@ -80,38 +79,30 @@ function onTrigger(player,npc)
         elseif ((cDay >= dFinished + 2 and cYear == yFinished) or (cYear > yFinished)) then
             player:startEvent(179)
         end
-
-
-    -- Curses,Foiled...Again!?
+     -- Curses,Foiled...Again!?
     elseif (foiledAgain == QUEST_COMPLETED and CFA2 == QUEST_AVAILABLE and player:getFameLevel(WINDURST) >= 2 and player:getMainLvl() >= 5 and CFAtimer == 1) then
-        player:startEvent(180,0,0,0,0,928,880,17316,940)        -- Quest Start
+        player:startEvent(180,0,0,0,0,928,880,17316,940) -- Quest Start
     elseif (CFA2 == QUEST_ACCEPTED) then
-        player:startEvent(181,0,0,0,0,0,0,17316,940)  -- Reminder dialog
-
-
-    -- Curses,Foiled A-Golem!?
+        player:startEvent(181,0,0,0,0,0,0,17316,940) -- Reminder dialog
+     -- Curses,Foiled A-Golem!?
     elseif (CFA2 == QUEST_COMPLETED and FoiledAGolem == QUEST_AVAILABLE and player:getFameLevel(WINDURST) >= 4 and player:getMainLvl() >= 10) then
-        player:startEvent(340)  --quest start
+        player:startEvent(340) --quest start
     elseif (golemdelivery == 1) then
-        player:startEvent(342)  -- finish
+        player:startEvent(342) -- finish
     elseif (FoiledAGolem == QUEST_ACCEPTED) then
-        player:startEvent(341)  -- reminder dialog
-
-
-    -- Standard dialog
+        player:startEvent(341) -- reminder dialog
+     -- Standard dialog
     elseif (FoiledAGolem == QUEST_COMPLETED) then
-        player:startEvent(343)  -- new standard dialog after Curses,Foiled A-Golem!?
-
+        player:startEvent(343) -- new standard dialog after Curses,Foiled A-Golem!?
     elseif (CFA2 == QUEST_COMPLETED) then
-        player:startEvent(184)     -- New standard dialog after CFA2
-    elseif (player:hasCompletedMission(WINDURST,THE_JESTER_WHO_D_BE_KING) and player:getVar("ShantottoCS") == 1) then
-        player:startEvent(399,0,0,282)
+        player:startEvent(184) -- New standard dialog after CFA2
     else
         player:startEvent(164)
     end
 end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 173) then
         if (player:getFreeSlotsCount() == 0) then
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17081)
@@ -126,7 +117,6 @@ function onEventFinish(player,csid,option)
         end
     elseif (csid == 171 and option ~= 1) then
         player:addQuest(WINDURST,CURSES_FOILED_AGAIN_1)
-
     elseif (csid == 179) then
         player:setVar("CursesFoiledAgainDayFinished",0)
         player:setVar("CursesFoiledAgainYearFinished",0)
@@ -134,12 +124,10 @@ function onEventFinish(player,csid,option)
         player:setVar("CursesFoiledAgainYear",0)
         player:setVar("CursesFoiledAgain",1) -- Used to acknowledge that the two days have passed, Use this to initiate next quest
         player:needToZone(true)
-
     elseif (csid == 180 and option == 3) then
         player:setVar("CursesFoiledAgain",0)
         player:addQuest(WINDURST,CURSES_FOILED_AGAIN_2)
         player:setTitle(dsp.title.TARUTARU_MURDER_SUSPECT)
-
     elseif (csid == 183) then
         if (player:getFreeSlotsCount() == 0) then
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,17116)
@@ -152,14 +140,12 @@ function onEventFinish(player,csid,option)
             player:needToZone(true)
             player:addFame(WINDURST,90)
         end
-
     elseif (csid == 340) then
         if (option == 1) then
             player:addQuest(WINDURST,CURSES_FOILED_A_GOLEM)
         else
             player:setTitle(dsp.title.TOTAL_LOSER)
         end
-
     elseif (csid == 342) then
         if (player:getFreeSlotsCount() == 0) then
             player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,4870)
@@ -176,6 +162,11 @@ function onEventFinish(player,csid,option)
     elseif (csid == 498) then
         player:setMaskBit(player:getVar("WildcatWindurst"),"WildcatWindurst",6,true)
     elseif (csid == 397) then
+        player:delKeyItem(dsp.ki.OPTISTERY_RING)
+        player:delKeyItem(dsp.ki.RHINOSTERY_RING)
+        player:delKeyItem(dsp.ki.ORASTERY_RING)
+        player:delKeyItem(dsp.ki.AURASTERY_RING)
+        player:delKeyItem(dsp.ki.MANUSTERY_RING)
         player:addKeyItem(dsp.ki.GLOVE_OF_PERPETUAL_TWILIGHT)
         player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.GLOVE_OF_PERPETUAL_TWILIGHT)
         player:setVar("MissionStatus",8)

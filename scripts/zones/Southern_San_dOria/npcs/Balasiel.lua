@@ -18,6 +18,7 @@ require("scripts/globals/wsquest")
 local wsQuest = dsp.wsquest.impulse_drive
 
 function onTrade(player,npc,trade)
+
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
 
     if (wsQuestEvent ~= nil) then
@@ -27,10 +28,10 @@ function onTrade(player,npc,trade)
             player:startEvent(617)
         end
     end
-
 end
 
 function onTrigger(player,npc)
+
     local wsQuestEvent = dsp.wsquest.getTriggerEvent(wsQuest,player)
     local lvl = player:getMainLvl()
     local aSquiresTest = player:getQuestStatus(SANDORIA, A_SQUIRE_S_TEST)
@@ -56,7 +57,7 @@ function onTrigger(player,npc)
     elseif (lvl >= 7 and lvl < 15) then
         player:startEvent(671)
     elseif (lvl >= 15 and aSquiresTestII ~= QUEST_COMPLETED) then
-        local StalactiteDew = player:hasKeyItem(dsp.ki.STALACTITE_DEW)
+        local StalactiteDew = player:hasKeyItem(dsp.ki.STALACTITE_DEW);
 
         if (aSquiresTestII == QUEST_AVAILABLE) then
             player:startEvent(625)
@@ -87,6 +88,7 @@ function onTrigger(player,npc)
 end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 616) then
         if (option == 0) then
             player:addQuest(SANDORIA,A_SQUIRE_S_TEST)
@@ -99,7 +101,7 @@ function onEventFinish(player,csid,option)
     elseif (csid == 617) then
         if (player:getFreeSlotsCount(0) >= 1) then
             player:tradeComplete()
-            player:addTitle(dsp.title.KNIGHT_IN_TRAINING)
+            player:addTitle(dsp.title.KNIGHT_IN_TRAINING);
             player:addItem(16565)
             player:messageSpecial(ITEM_OBTAINED, 16565) -- Spatha
             player:addFame(SANDORIA,30)
@@ -144,13 +146,11 @@ function onEventFinish(player,csid,option)
             player:addFame(SANDORIA,30)
             player:completeQuest(SANDORIA,A_KNIGHT_S_TEST)
         else
-           player:messageSpecial(ITEM_CANNOT_BE_OBTAINED, 12306) -- Kite Shield
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED, 12306) -- Kite Shield
         end
     elseif (csid == 63) then
         player:setVar("KnightStalker_Progress",3)
     else
         dsp.wsquest.handleEventFinish(wsQuest,player,csid,option,IMPULSE_DRIVE_LEARNED)
     end
-
 end
---    player:startEvent(32690)     -- starlight celebration

@@ -87,13 +87,13 @@ function onMobDeath(mob, player, isKiller)
         DespawnMob(mob:getID()+offset+1);
     end
     
-	local dahaAtma = player:hasKeyItem(1325);
+	local dahaAtma = player:hasKeyItem(dsp.ki.ATMA_OF_THE_RAPID_REPTILIAN);
 	
 	if dahaAtma == true then
 	    return
 	elseif dahaAtma == false then
-	    player:addKeyItem(1325);
-		player:messageSpecial(KEYITEM_OBTAINED, 1325);
+	    player:addKeyItem(dsp.ki.ATMA_OF_THE_RAPID_REPTILIAN);
+		player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.ATMA_OF_THE_RAPID_REPTILIAN);
     end
 end;	
 

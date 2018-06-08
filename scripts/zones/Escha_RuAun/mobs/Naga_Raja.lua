@@ -109,13 +109,13 @@ function onMobDeath(mob, player, isKiller)
         DespawnMob(mob:getID()+offset+1);
     end
     
-	local rajaAtma = player:hasKeyItem(1326);
+	local rajaAtma = player:hasKeyItem(dsp.ki.ATMA_OF_THE_WINGED_ENIGMA);
 	
 	if rajaAtma == true then
 	    return
 	elseif rajaAtma == false then
-	    player:addKeyItem(1326);
-		player:messageSpecial(KEYITEM_OBTAINED, 1326);
+	    player:addKeyItem(dsp.ki.ATMA_OF_THE_WINGED_ENIGMA);
+		player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.ATMA_OF_THE_WINGED_ENIGMA);
     end
 end;	
 

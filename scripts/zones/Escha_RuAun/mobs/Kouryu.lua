@@ -67,7 +67,7 @@ function onMobFight(mob, target)
             mob:setLocalVar("twohourTime", twohourTime);
         end
 
-        if (mob:AnimationSub() == 2) and (mob:getBattleTime()/15 > twohourTime) then
+        if (mob:getBattleTime()/15 > twohourTime) then
             mob:useMobAbility(694);
             mob:setLocalVar("twohourTime", (mob:getBattleTime()/15)+20);
 		

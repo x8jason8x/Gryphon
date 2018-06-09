@@ -24,7 +24,9 @@ end;
 
 function onTrigger(player,npc)
 
-    if (EventTriggerBCNM(player,npc)) then
+    if (player:getCurrentMission(ASA) == FOUNTAIN_OF_TROUBLE and player:hasKeyItem(dsp.ki.DARK_SAP_CRYSTAL)) then
+        player:startEvent(63);
+    elseif (EventTriggerBCNM(player,npc)) then
         return 1;
     end
 end;
@@ -38,7 +40,10 @@ end;
 
 function onEventFinish(player,csid,option)
 
-    if (EventFinishBCNM(player,csid,option)) then
+    if (csid == 63) then
+        player:completeMission(ASA,FOUNTAIN_OF_TROUBLE);
+        player:addMission(ASA,BATTARU_ROYALE);
+    elseif (EventFinishBCNM(player,csid,option)) then
         return;
     end
 end;

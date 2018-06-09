@@ -542,7 +542,8 @@ function checkNonTradeBCNM(player, npc, mode)
                 },
         [170] = {
                     [224] = function() return (player:hasKeyItem(dsp.ki.MOON_BAUBLE))  end, -- The Moonlit Path
-                    [225] = function() return (player:getCurrentMission(WINDURST) == MOON_READING and player:getVar("MissionStatus") == 2) end, -- Moon reading
+                    [225] = function() return (player:getCurrentMission(WINDURST) == MOON_READING and player:getVar("MissionStatus") == 2) end, -- Moon Reading
+                    [227] = function() return (player:getCurrentMission(ASA) == BATTARU_ROYALE and player:hasKeyItem(dsp.ki.DARK_SAP_CRYSTAL)) end, -- Battaru Royale
                 },
         [179] = {
                     [256] = function() return (player:getCurrentMission(ZILART) == RETURN_TO_DELKFUTTS_TOWER and player:getVar("ZilartStatus") == 3)  end, -- Zilart Mission 8

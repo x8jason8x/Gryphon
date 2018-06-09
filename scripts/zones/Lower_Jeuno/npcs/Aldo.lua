@@ -30,6 +30,8 @@ function onTrigger(player,npc)
         player:startEvent(111);
     elseif (player:getCurrentMission(ASA) == SUGAR_COATED_SUBTERFUGE) then
         player:startEvent(10100);
+    elseif (player:getCurrentMission(ASA) == ROMANCING_THE_CLONE) then
+        player:startEvent(10101);
     end
 end;
 
@@ -48,5 +50,8 @@ function onEventFinish(player,csid,option)
     elseif (csid == 10100) then
 	    player:completeMission(ASA,SUGAR_COATED_SUBTERFUGE);
 		player:addMission(ASA,SHANTOTTO_IN_CHAINS);
+    elseif (csid == 10101) then
+	    player:completeMission(ASA,ROMANCING_THE_CLONE);
+		player:addMission(ASA,SISTERS_IN_ARMS);
     end
 end;

@@ -27,7 +27,7 @@ function onTrigger(player,npc)
         player:setVar("empireiiCS", 0);
         player:completeMission(ASA,ENEMY_OF_THE_EMPIRE_II);
         player:addMission(ASA,SUGAR_COATED_SUBTERFUGE);
-        player:PrintToPlayer("Mission complete! Go talk to Aldo in Jeuno!")
+        player:PrintToPlayer("Mission complete! Go talk to Aldo in Jeuno!");
     end
 end;
 

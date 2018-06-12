@@ -6,6 +6,7 @@ ITEM_CANNOT_BE_OBTAINED  = 6381; -- You cannot obtain the item <item> come back 
         ITEM_OBTAINEDX   = 6396; -- You obtain <number> <item>!
            GIL_OBTAINED  = 6388; -- Obtained <number> gil
        KEYITEM_OBTAINED  = 6390; -- Obtained key item: <keyitem>
+           KEYITEM_LOST  = 6391; -- Lost key item: <keyitem>
     NOT_HAVE_ENOUGH_GIL  = 6394; -- You do not have enough gil
 MOGLOCKER_MESSAGE_OFFSET = 7511; -- Your particular paid period of Mog Locker patronage has been extended until the following time, kupo!
  FISHING_MESSAGE_OFFSET  = 7207; -- You can't fish here

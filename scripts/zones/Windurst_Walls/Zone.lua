@@ -28,6 +28,9 @@ function onZoneIn(player,prevZone)
     elseif (ENABLE_ASA == 1 and player:getCurrentMission(ASA) == A_SHANTOTTO_ASCENSION
         and (prevZone == 238 or prevZone == 241) and player:getMainLvl()>=10) then
         cs = 510;
+    elseif player:getCurrentMission(ASA) == AN_UNEASY_PEACE
+        and (prevZone == 238 or prevZone == 241)then
+        cs = 511;
     end
 
     return cs;
@@ -68,5 +71,10 @@ function onEventFinish(player,csid,option)
         player:completeMission(ASA,A_SHANTOTTO_ASCENSION);
         player:addMission(ASA,BURGEONING_DREAD);
         player:setVar("ASA_Status",0);
+    elseif (csid == 511) then
+        player:completeMission(ASA,AN_UNEASY_PEACE);
+        player:addMission(ASA,A_SHANTOTTO_ASCENSION_FIN);
+        player:addKeyItem(dsp.ki.BEHEMOTH_KEY);
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.BEHEMOTH_KEY);
     end
 end;

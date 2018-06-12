@@ -531,7 +531,8 @@ function checkNonTradeBCNM(player, npc, mode)
                     [99] = function() return ((player:getCurrentMission(WINDURST) == SAINTLY_INVITATION) and (player:getVar("MissionStatus") == 1))  end, -- Mission 6-2
                 },
         [163] = {
-                    [128] = function() return (player:getCurrentMission(ZILART) == THE_TEMPLE_OF_UGGALEPIH)  end, -- Zilart Mission 4
+                    [128] = function() return (player:getCurrentMission(ZILART) == THE_TEMPLE_OF_UGGALEPIH) end, -- Zilart Mission 4
+                    [131] = function() return (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION) end, -- ASA Project Shantottofication
                 },
         [165] = {
                     [160] = function() return (player:getCurrentMission(player:getNation()) == 15 and player:getVar("MissionStatus") == 3)  end, -- Mission 5-2

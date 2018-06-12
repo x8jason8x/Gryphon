@@ -32,8 +32,16 @@ function onTrade(player,npc,trade)
                 player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,19219);
 		    else	
                 player:tradeComplete();
-                player:addItem(19219,1,514,4,515,5,39,4,1,19);
+                player:addItem(19219,1,514,4,54,2,39,4,1,19);
 	            player:messageSpecial(ITEM_OBTAINED,19219);
+            end
+	    elseif (trade:getItemCount() == 1) and (trade:hasItemQty(18121,1)) then -- Bullseye Grip
+            if (player:getFreeSlotsCount() < 1) then
+                player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,19029);
+		    else	
+                player:tradeComplete();
+                player:addItem(19029,1,515,5,27,2,29,2,211,2);
+	            player:messageSpecial(ITEM_OBTAINED,19029);
             end
         end	
     end

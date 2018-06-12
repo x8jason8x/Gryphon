@@ -11,9 +11,12 @@ end;
 function onTrigger(player,npc)
 
     player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Alienor: High Quality craft items~", 0xD);
+    player:PrintToPlayer("Alienor: High Quality craft items and tools~", 0xD);
     local stock =
     {
+        605,100,          -- Pickaxe
+        1020,100,         -- Sickle
+        1021,100,         -- Hatchet
         0x520,10000,      -- Angel Skin
         0x35c,10000,      -- Behemoth Hide
         0x6b1,10000,      -- Cashmere Thread

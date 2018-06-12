@@ -38,7 +38,6 @@ function onBcnmLeave(player,instance,leavecode)
     elseif (leavecode == 4) then
         player:startEvent(32002);
     end
-
 end;
 
 function onEventUpdate(player,csid,option)
@@ -51,6 +50,6 @@ function onEventFinish(player,csid,option)
     if (csid == 32001) then
         player:addExp(400);
         player:setVar("ASA4_Azure","1");
+        player:setPos(556,0.5,595,209,203);
     end
-
 end;

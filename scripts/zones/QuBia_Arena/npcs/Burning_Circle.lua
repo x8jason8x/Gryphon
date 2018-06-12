@@ -46,7 +46,7 @@ end;
 
 function onTrigger(player,npc)
 
-    if (player:hasKeyItem(MARK_OF_SEED) and player:getCurrentMission(ACP) == THOSE_WHO_LURK_IN_SHADOWS_II) then
+    if (player:hasKeyItem(dsp.ki.MARK_OF_SEED) and player:getCurrentMission(ACP) == THOSE_WHO_LURK_IN_SHADOWS_II) then
         player:startEvent(5);
     elseif (EventTriggerBCNM(player,npc)) then
         return;

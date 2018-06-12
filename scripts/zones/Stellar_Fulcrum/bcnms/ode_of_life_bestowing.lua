@@ -1,7 +1,6 @@
 -----------------------------------
 -- Area: Stellar Fulcrum
--- Name: ACP ODE_OF_LIFE_BESTOWING
--- !pos -520 -4 17 179
+-- Name: ACP Ode of Life Bestowing
 -----------------------------------
 package.loaded["scripts/zones/Stellar_Fulcrum/TextIDs"] = nil;
 -------------------------------------
@@ -27,7 +26,7 @@ end;
 function onBcnmLeave(player,instance,leavecode)
 
     if (leavecode == 2) then
-        if (player:getCurrentMission(ACP) == ODE_OF_LIFE_BESTOWING and player:hasKeyItem(1104)) then
+        if (player:getCurrentMission(ACP) == ODE_OF_LIFE_BESTOWING and player:hasKeyItem(dsp.ki.OMNIS_STONE)) then
             player:startEvent(32001,1,1,1,instance:getTimeInside(),1,0,1);
         else
             player:startEvent(32001,1,1,1,instance:getTimeInside(),1,0,0);
@@ -44,9 +43,9 @@ function onEventFinish(player,csid,option)
 
     if (csid == 32001) then
         if (player:getCurrentMission(ACP) == ODE_OF_LIFE_BESTOWING) then
-            player:delKeyItem(1104);
-            player:addKeyItem(1127);
-            player:messageSpecial(KEYITEM_OBTAINED, 1127);
+            player:delKeyItem(dsp.ki.OMNIS_STONE);
+            player:addKeyItem(dsp.ki.PRISMATIC_KEY);
+            player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.PRISMATIC_KEY);
             player:setVar("ACP_Ode_CS", 0);
         end
         -- Play last CS if not skipped.

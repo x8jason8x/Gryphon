@@ -2,19 +2,19 @@
 -- Area: Sacrificial Chamber
 -- Name: Project: Shantottofication
 -----------------------------------
-package.loaded["scripts/zones/Sacrificial_Chamber/TextIDs"] = nil;
+package.loaded["scripts/zones/Sacrificial_Chamber/TextIDs"] = nil
 -------------------------------------
-require("scripts/globals/titles");
-require("scripts/globals/keyitems");
-require("scripts/globals/missions");
-require("scripts/zones/Sacrificial_Chamber/TextIDs");
+require("scripts/globals/titles")
+require("scripts/globals/keyitems")
+require("scripts/globals/missions")
+require("scripts/zones/Sacrificial_Chamber/TextIDs")
 -------------------------------------
 
 function onBcnmRegister(player,instance)
-end;
+end
 
 function onBcnmEnter(player,instance)
-end;
+end
 
 -- Leaving the BCNM by every mean possible, given by the LeaveCode
 -- 1=Select Exit on circle
@@ -28,29 +28,30 @@ function onBcnmLeave(player,instance,leavecode)
     
     if (leavecode == 2) then -- play end CS. Need time and battle id for record keeping + storage
         if (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION) then
-            player:startEvent(5,1,1,1,0,1,0,0);
+            player:startEvent(5,1,1,1,0,1,0,0)
         else
-            player:startEvent(5,1,1,1,0,1,1,0);
+            player:startEvent(5,1,1,1,0,1,1,0)
         end
     elseif (leavecode == 4) then
-        player:startEvent(32002);
+        player:startEvent(32002)
     end
-end;
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
 
     if (csid == 5) then
         if (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION) then
-            player:completeMission(ASA,PROJECT_SHANTOTTOFICATION);
-            player:addMission(ASA,AN_UNEASY_PEACE);
-            player:setPos(299,0,349,60,163);
-            player:addKeyItem(1189);
-            player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.TONBERRY_KEY);
+            player:completeMission(ASA,PROJECT_SHANTOTTOFICATION)
+            player:addMission(ASA,AN_UNEASY_PEACE)
+            player:setPos(299,0,349,60,163)
+            player:delKeyItem(dsp.ki.TABLET_OF_HEXES_MALICE)
+            player:addKeyItem(1189)
+            player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.TONBERRY_KEY)
         else
-            player:setPos(299,0,349,60,163);
+            player:setPos(299,0,349,60,163)
         end
     end
-end;
+end

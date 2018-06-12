@@ -4,11 +4,9 @@
 ----------------------------------------
 package.loaded["scripts/zones/Cloister_of_Storms/TextIDs"] = nil;
 ----------------------------------------
-
 require("scripts/globals/keyitems");
 require("scripts/globals/quests");
 require("scripts/zones/Cloister_of_Storms/TextIDs");
-
 ----------------------------------------
 
 -- After registering the BCNM via bcnmRegister(bcnmid)
@@ -38,8 +36,7 @@ function onBcnmLeave(player,instance,leavecode)
         end
     elseif (leavecode == 4) then
         player:startEvent(32002);
-    end
-    
+    end    
 end;
 
 function onEventUpdate(player,csid,option)
@@ -52,6 +49,6 @@ function onEventFinish(player,csid,option)
     if (csid == 32001) then
         player:addExp(400);
         player:setVar("ASA4_Violet","1");
+        player:setPos(536,-13,498,74,202);
     end
-    
 end;

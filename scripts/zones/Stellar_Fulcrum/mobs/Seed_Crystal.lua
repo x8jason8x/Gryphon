@@ -33,7 +33,7 @@ function onMobFight(mob, target)
 
         if (mob:getBattleTime()/15 > spawnTime) then
             for i, offset in ipairs(offsets) do
-                if (GetMobAction(mob:getID()+offset) == ACTION_SPAWN or GetMobAction(mob:getID()+offset) == ACTION_NONE) then
+                if (GetMobAction(mob:getID()+offset) == dsp.act.SPAWN or GetMobAction(mob:getID()+offset) == dsp.act.NONE) then
                     local pet = SpawnMob(mob:getID()+offset, 60):updateEnmity(target);
                     local pet = SpawnMob(mob:getID()+offset+1, 60):updateEnmity(target);
                     break;

@@ -27,10 +27,11 @@ end
 function onBcnmLeave(player,instance,leavecode)
     
     if (leavecode == 2) then -- play end CS. Need time and battle id for record keeping + storage
-        if (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION) then
+        if (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION and
+            player:hasKeyItem(dsp.ki.TABLET_OF_HEXES_MALICE)) then
             player:startEvent(5,1,1,1,0,1,0,0)
         else
-            player:startEvent(5,1,1,1,0,1,1,0)
+            player:startEvent(32001,1,1,1,0,1,1,0)
         end
     elseif (leavecode == 4) then
         player:startEvent(32002)

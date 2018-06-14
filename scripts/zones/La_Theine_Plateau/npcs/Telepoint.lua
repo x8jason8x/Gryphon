@@ -2,41 +2,44 @@
 -- Area: La Theine Plateau
 --  NPC: Telepoint
 -----------------------------------
-package.loaded["scripts/zones/La_Theine_Plateau/TextIDs"] = nil;
+package.loaded["scripts/zones/La_Theine_Plateau/TextIDs"] = nil
 -----------------------------------
-require("scripts/globals/keyitems");
-require("scripts/zones/La_Theine_Plateau/TextIDs");
+require("scripts/globals/keyitems")
+require("scripts/zones/La_Theine_Plateau/TextIDs")
 -----------------------------------
 
 function onTrade(player,npc,trade)
 
-    local item = trade:getItemId();
+    local item = trade:getItemId()
 
     if (trade:getItemCount() == 1 and item > 4095 and item < 4104) then
         if (player:getFreeSlotsCount() > 0 and player:hasItem(613) == false) then
-            player:tradeComplete();
-            player:addItem(613);
-            player:messageSpecial(ITEM_OBTAINED,613); -- Faded Crystal
+            player:tradeComplete()
+            player:addItem(613)
+            player:messageSpecial(ITEM_OBTAINED,613) -- Faded Crystal
         else
-            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,613); -- Faded Crystal
+            player:messageSpecial(ITEM_CANNOT_BE_OBTAINED,613) -- Faded Crystal
         end
     end
-
-end;
+end
 
 function onTrigger(player,npc)
 
-    if (player:hasKeyItem(dsp.ki.HOLLA_GATE_CRYSTAL) == false) then
-        player:addKeyItem(dsp.ki.HOLLA_GATE_CRYSTAL);
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.HOLLA_GATE_CRYSTAL);
+    if player:hasKeyItem(dsp.ki.MOLDY_WORMEATEN_CHEST) then
+        return
+    elseif player:getCurrentMission(AMK) == SHOCK_ARRANT_ABUSE_OF_AUTHORITY then
+        player:addKeyItem(dsp.ki.MOLDY_WORMEATEN_CHEST)
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.MOLDY_WORMEATEN_CHEST)
+    elseif (player:hasKeyItem(dsp.ki.HOLLA_GATE_CRYSTAL) == false) then
+        player:addKeyItem(dsp.ki.HOLLA_GATE_CRYSTAL)
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.HOLLA_GATE_CRYSTAL)
     else
-        player:messageSpecial(ALREADY_OBTAINED_TELE);
+        player:messageSpecial(ALREADY_OBTAINED_TELE)
     end
-
-end;
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
-end;
+end

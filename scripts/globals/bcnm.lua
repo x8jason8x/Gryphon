@@ -535,11 +535,13 @@ function checkNonTradeBCNM(player, npc, mode)
                     [131] = function() return (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION) end, -- ASA Project Shantottofication
                 },
         [165] = {
-                    [160] = function() return (player:getCurrentMission(player:getNation()) == 15 and player:getVar("MissionStatus") == 3)  end, -- Mission 5-2
-                    [161] = function() return (player:getCurrentMission(BASTOK) == WHERE_TWO_PATHS_CONVERGE and player:getVar("BASTOK92") == 1)  end, -- bastok 9-2
+                    [160] = function() return (player:getCurrentMission(player:getNation()) == 15 and player:getVar("MissionStatus") == 3) end, -- Mission 5-2
+                    [161] = function() return (player:getCurrentMission(BASTOK) == WHERE_TWO_PATHS_CONVERGE and player:getVar("BASTOK92") == 1) end, -- bastok 9-2
+                    [164] = function() return (player:getCurrentMission(AMK) == SMASH_A_MALEVOLENT_MENACE and player:hasKeyItem(dsp.ki.MEGA_BONANZA_KUPON)) end, -- AMK Mission 13
                 },
         [168] = {
-                    [192] = function() return (player:getCurrentMission(ZILART) == THROUGH_THE_QUICKSAND_CAVES or player:getCurrentMission(ZILART) == THE_CHAMBER_OF_ORACLES)  end, -- Zilart Mission 6
+                    [192] = function() return (player:getCurrentMission(ZILART) == THROUGH_THE_QUICKSAND_CAVES or player:getCurrentMission(ZILART) == THE_CHAMBER_OF_ORACLES) end, -- Zilart Mission 6
+                    [200] = function() return (player:getCurrentMission(AMK) == ROAR_A_CAT_BURGLAR_BARES_HER_FANGS and player:hasKeyItem(dsp.ki.NAVARATNA_TALISMAN)) end, -- AMK Mission 9
                 },
         [170] = {
                     [224] = function() return (player:hasKeyItem(dsp.ki.MOON_BAUBLE))  end, -- The Moonlit Path

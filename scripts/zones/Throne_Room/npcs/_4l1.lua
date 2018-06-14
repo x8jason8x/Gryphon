@@ -4,14 +4,13 @@
 -- Type: Door
 -- !pos -111 -6 0 165
 -------------------------------------
-package.loaded["scripts/zones/Throne_Room/TextIDs"] = nil;
+package.loaded["scripts/zones/Throne_Room/TextIDs"] = nil
 -------------------------------------
-
-require("scripts/globals/keyitems");
-require("scripts/globals/bcnm");
-require("scripts/globals/missions");
-require("scripts/zones/Throne_Room/TextIDs");
-
+require("scripts/globals/keyitems")
+require("scripts/globals/bcnm")
+require("scripts/globals/missions")
+require("scripts/zones/Throne_Room/TextIDs")
+-------------------------------------
     -- events:
     -- 7D00 : BC menu
     -- Param 4 is a bitmask for the choice of battlefields in the menu:
@@ -34,43 +33,36 @@ require("scripts/zones/Throne_Room/TextIDs");
 function onTrade(player,npc,trade)
 
     if (TradeBCNM(player,player:getZoneID(),trade,npc)) then
-        return;
+        return
     end
-
-end;
+end
 
 function onTrigger(player,npc)
 
-    if (player:getCurrentMission(player:getNation()) == 15 and player:getVar("MissionStatus") == 2) then
-        player:startEvent(6);
+    if player:getCurrentMission(AMK) == A_CHALLENGE_YOU_COULD_BE_A_WINNER then
+        player:startEvent(4)
+    elseif (player:getCurrentMission(player:getNation()) == 15 and player:getVar("MissionStatus") == 2) then
+        player:startEvent(6)
     elseif (EventTriggerBCNM(player,npc)) then
-        return 1;
+        return 1
     end
-
-end;
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("onUpdate CSID: %u",csid);
-    -- printf("onUpdate RESULT: %u",option);
 
     if (EventUpdateBCNM(player,csid,option)) then
-        return;
+        return
     end
-
-end;
-
------------------------------------
--- onEventFinish Action
------------------------------------
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("onFinish CSID: %u",csid);
-    -- printf("onFinish RESULT: %u",option);
 
-    if (csid == 6) then
-        player:setVar("MissionStatus",3);
+    if (csid == 4) then
+        player:completeMission(AMK,A_CHALLENGE_YOU_COULD_BE_A_WINNER)
+		player:addMission(AMK,SMASH_A_MALEVOLENT_MENACE)
+    elseif (csid == 6) then
+        player:setVar("MissionStatus",3)
     elseif (EventFinishBCNM(player,csid,option)) then
-        return;
+        return
     end
-
-end;
+end

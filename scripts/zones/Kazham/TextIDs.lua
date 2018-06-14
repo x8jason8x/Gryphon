@@ -32,4 +32,3 @@ GHEMISENTERILO_SHOP_DIALOG = 10043 -- Can you really get everything that you wan
 		
 -- WS Quest
       EVISCERATION_LEARNED = 10645 -- You have learned the weapon skill "Evisceration"!
-

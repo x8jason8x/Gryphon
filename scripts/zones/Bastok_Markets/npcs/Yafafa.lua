@@ -16,9 +16,9 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local RegionOwner = GetRegionOwner(KOLSHUSHU);
+    local RegionOwner = GetRegionOwner(dsp.region.KOLSHUSHU);
 
-    if (RegionOwner ~= NATION_BASTOK) then
+    if (RegionOwner ~= dsp.nation.BASTOK) then
         player:showText(npc,YAFAFA_CLOSED_DIALOG);
     else
         player:showText(npc,YAFAFA_OPEN_DIALOG);
@@ -31,7 +31,7 @@ function onTrigger(player,npc)
             0x0266,  72,     --Mhaura Garlic
             0x115d,  40      --Yagudo Cherry
         }
-        showShop(player,BASTOK,stock);
+        dsp.shop.general(player, stock, BASTOK);
 
     end
 

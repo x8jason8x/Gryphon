@@ -66,7 +66,7 @@ dsp.status =
     NORMAL          =  0,
     UPDATE          =  1,
     DISAPPEAR       =  2,
-    STATUS_3        =  3,
+    INVISIBLE       =  3,
     STATUS_4        =  4,
     CUTSCENE_ONLY   =  6,
     STATUS_18       = 18,
@@ -1386,6 +1386,7 @@ dsp.mod =
     SNEAK_ATK_DEX                   = 874, -- % DEX boost to Sneak Attack (if gear mod, needs to be equipped on hit)
     TRICK_ATK_AGI                   = 520, -- % AGI boost to Trick Attack (if gear mod, needs to be equipped on hit)
     NIN_NUKE_BONUS                  = 522, -- magic attack bonus for NIN nukes
+    DAKEN                           = 911, -- Chance to throw shuriken on attack
     AMMO_SWING                      = 523, -- Extra swing rate w/ ammo (ie. Jailer weapons). Use gearsets, and does nothing for non-players.
     AMMO_SWING_TYPE                 = 826, -- For the handedness of the weapon - 1h (1) vs. 2h/h2h (2). h2h can safely use the same function as 2h.
     ROLL_RANGE                      = 528, -- Additional range for COR roll abilities.
@@ -1422,6 +1423,8 @@ dsp.mod =
     ENHANCES_ALLIES_ROLL            = 894, -- Allies' Roll Bonus % chance
     ENHANCES_TACTICIANS_ROLL        = 895, -- Tactician's Roll Bonus % chance
     OCCULT_ACUMEN                   = 902, -- Grants bonus TP when dealing damage with elemental or dark magic
+
+    QUICK_MAGIC                     = 909, -- Percent chance spells cast instantly (also reduces recast to 0, similar to Chainspell)
 
     -- Automaton mods
     AUTO_DECISION_DELAY             = 842, -- Reduces the Automaton's global decision delay
@@ -1465,6 +1468,7 @@ dsp.mod =
 
     -- Other
     CURE2MP_PERCENT                 = 860, -- Converts % of "Cure" amount to MP
+    DIVINE_BENISON                  = 910, -- Adds fast cast and enmity reduction to -Na spells (includes Erase). Enmity reduction is half of the fast cast amount
     SAVETP                          = 880, -- SAVETP Effect for Miser's Roll / ATMA / Hagakure.
     SMITE                           = 898, -- Att increase with H2H or 2H weapons
     TACTICAL_GUARD                  = 899, -- Tp gain increase when guarding
@@ -1474,9 +1478,9 @@ dsp.mod =
 
     -- The spares take care of finding the next ID to use so long as we don't forget to list IDs that have been freed up by refactoring.
     -- 570 - 825 used by WS DMG mods these are not spares.
-    -- SPARE = 909, -- stuff
-    -- SPARE = 910, -- stuff
-    -- SPARE = 911, -- stuff
+    -- SPARE = 912, -- stuff
+    -- SPARE = 913, -- stuff
+    -- SPARE = 914, -- stuff
 };
 
 ------------------------------------
@@ -2231,6 +2235,31 @@ dsp.skill =
     -- 60~63 unused
     -- MAX_SKILLTYPE = 64
 };
+
+------------------------------------
+-- Craft Skill Ranks
+------------------------------------
+
+dsp.craftRank =
+{
+    AMATEUR     = 0,
+    RECRUIT     = 1,
+    INITIATE    = 2,
+    NOVICE      = 3,
+    APPRENTICE  = 4,
+    JOURNEYMAN  = 5,
+    CRAFTSMAN   = 6,
+    ARTISAN     = 7,
+    ADEPT       = 8,
+    VETERAN     = 9,
+    EXPERT      = 10,
+    AUTHORITY   = 11,
+    LUMINARY    = 12,
+    MASTER      = 13,
+    GRANDMASTER = 14,
+    LEGEND      = 15
+    -- 16+ invalid
+}
 
 ------------------------------------
 -- Recast IDs

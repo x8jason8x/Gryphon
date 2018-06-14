@@ -17,8 +17,8 @@ end;
 
 function onTrigger(player,npc)
 
-    local RegionOwner = GetRegionOwner(ARAGONEU);
-    if (RegionOwner ~= NATION_BASTOK) then
+    local RegionOwner = GetRegionOwner(dsp.region.ARAGONEU);
+    if (RegionOwner ~= dsp.nation.BASTOK) then
         player:showText(npc,OGGODETT_CLOSED_DIALOG);
     else
         player:showText(npc,OGGODETT_OPEN_DIALOG);
@@ -31,7 +31,7 @@ function onTrigger(player,npc)
             4505,   92,  -- Sunflower Seeds
             841,    36   -- Yagudo Feather
         }
-        showShop(player,BASTOK,stock);
+        dsp.shop.general(player, stock, BASTOK);
 
     end
 

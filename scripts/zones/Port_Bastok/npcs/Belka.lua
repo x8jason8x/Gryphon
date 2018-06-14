@@ -15,8 +15,8 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local RegionOwner = GetRegionOwner(DERFLAND);
-    if (RegionOwner ~= NATION_BASTOK) then
+    local RegionOwner = GetRegionOwner(dsp.region.DERFLAND);
+    if (RegionOwner ~= dsp.nation.BASTOK) then
         player:showText(npc,BELKA_CLOSED_DIALOG);
     else
         player:showText(npc,BELKA_OPEN_DIALOG);
@@ -29,7 +29,7 @@ function onTrigger(player,npc)
             633,     14,  -- Olive Oil
             951,    110   -- Wijnruit
         }
-        showShop(player,BASTOK,stock);
+        dsp.shop.general(player, stock, BASTOK);
 
     end
 

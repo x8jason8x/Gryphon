@@ -26,9 +26,9 @@ end;
 
 function onTrigger(player,npc)
 
-RegionOwner = GetRegionOwner(LITELOR);
+RegionOwner = GetRegionOwner(dsp.region.LITELOR);
 
-        if (RegionOwner ~= NATION_SANDORIA) then
+        if (RegionOwner ~= dsp.nation.SANDORIA) then
                 player:showText(npc,ATTARENA_CLOSED_DIALOG);
         else
                 player:showText(npc,ATTARENA_OPEN_DIALOG);
@@ -36,7 +36,7 @@ RegionOwner = GetRegionOwner(LITELOR);
                 local stock = {0x026f,119,            -- Bay Leaves
                                  0x103a,6440}           -- Holy Water
 
-                showShop(player,SANDORIA,stock);
+                dsp.shop.general(player, stock, SANDORIA);
         end
 end;
 

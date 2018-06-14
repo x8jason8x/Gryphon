@@ -17,11 +17,11 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local RegionOwner = GetRegionOwner(TAVNAZIANARCH);
+    local RegionOwner = GetRegionOwner(dsp.region.TAVNAZIANARCH);
     local cop = 40; -- player:getVar("chainsOfPromathiaMissions");
 
     if (cop >= 40) then
-        if (RegionOwner ~= NATION_BASTOK) then
+        if (RegionOwner ~= dsp.nation.BASTOK) then
             player:showText(npc,EMALIVEULAUX_CLOSED_DIALOG);
         else
             player:showText(npc,EMALIVEULAUX_OPEN_DIALOG);
@@ -33,7 +33,7 @@ function onTrigger(player,npc)
                 17005, 99,   -- Lufaise Fly
                 5195,  233   -- Misareaux Parsley
             }
-            showShop(player,BASTOK,stock);
+            dsp.shop.general(player, stock, BASTOK);
         end
     else
         player:showText(npc,EMALIVEULAUX_COP_NOT_COMPLETED);

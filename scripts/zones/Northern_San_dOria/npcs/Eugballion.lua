@@ -24,14 +24,14 @@ end;
 
 function onTrigger(player,npc)
 
-    if (GetRegionOwner(QUFIMISLAND) ~= NATION_SANDORIA) then
+    if (GetRegionOwner(dsp.region.QUFIMISLAND) ~= dsp.nation.SANDORIA) then
         player:showText(npc,EUGBALLION_CLOSED_DIALOG);
     else
         player:showText(npc,EUGBALLION_OPEN_DIALOG);
 
         local stock = {954, 4121} -- Magic Pot Shard
 
-        showShop(player,SANDORIA,stock);
+        dsp.shop.general(player, stock, SANDORIA);
     end
 
 end;

@@ -27,9 +27,9 @@ end;
 
 function onTrigger(player,npc)
 
-    local RegionOwner = GetRegionOwner(ARAGONEU);
+    local RegionOwner = GetRegionOwner(dsp.region.ARAGONEU);
 
-    if (RegionOwner ~= NATION_SANDORIA) then
+    if (RegionOwner ~= dsp.nation.SANDORIA) then
         player:showText(npc,ANTONIAN_CLOSED_DIALOG);
     else
         player:showText(npc,ANTONIAN_OPEN_DIALOG);
@@ -42,7 +42,7 @@ function onTrigger(player,npc)
             841,  36,  -- Yagudo Feather
             4505, 90   -- Sunflower Seeds
         }
-        showShop(player,SANDORIA,stock);
+        dsp.shop.general(player, stock, SANDORIA);
     end
 end;
 

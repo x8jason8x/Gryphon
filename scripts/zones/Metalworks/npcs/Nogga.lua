@@ -23,7 +23,7 @@ function onTrigger(player,npc)
      0x43A1,1083,3,        -- Grenade
      0x0ae8,92,3}        -- Catalytic Oil
 
-showNationShop(player, NATION_BASTOK, stock);
+dsp.shop.nation(player, stock, dsp.nation.BASTOK);
 end;
 
 function onEventUpdate(player,csid,option)

@@ -20,7 +20,7 @@ function onTrigger(player,npc)
     stock = {
         0x3F9D,   375        --Pendant Compass
     }
-    showShop(player, STATIC, stock);
+    dsp.shop.general(player, stock);
 
 end;
 

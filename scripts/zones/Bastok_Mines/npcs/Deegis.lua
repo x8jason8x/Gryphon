@@ -34,7 +34,7 @@ function onTrigger(player,npc)
         0x31A0,   126,3,     --Bronze Mittens
         0x3188,  7614,3         --Chain Mittens
     }
-    showNationShop(player, NATION_BASTOK, stock);
+    dsp.shop.nation(player, stock, dsp.nation.BASTOK);
 
 end;
 

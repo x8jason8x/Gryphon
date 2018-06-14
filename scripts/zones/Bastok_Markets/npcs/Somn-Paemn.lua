@@ -16,9 +16,9 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local RegionOwner = GetRegionOwner(SARUTABARUTA);
+    local RegionOwner = GetRegionOwner(dsp.region.SARUTABARUTA);
 
-    if (RegionOwner ~= NATION_BASTOK) then
+    if (RegionOwner ~= dsp.nation.BASTOK) then
         player:showText(npc,SOMNPAEMN_CLOSED_DIALOG);
     else
         player:showText(npc,SOMNPAEMN_OPEN_DIALOG);
@@ -31,7 +31,7 @@ function onTrigger(player,npc)
             0x1128,  29,     --Saruta Orange
             0x027b,  18      --Windurstian Tea Leaves
         }
-        showShop(player,BASTOK,stock);
+        dsp.shop.general(player, stock, BASTOK);
 
     end
 

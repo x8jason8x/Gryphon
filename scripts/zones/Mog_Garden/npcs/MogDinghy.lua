@@ -3,9 +3,10 @@
 -- NPC: Mog Dinghy
 -- Add-on completion NPC
 -----------------------------------
-require("scripts/globals/settings")
-require("scripts/globals/keyitems")
+package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil
+-----------------------------------
 require("scripts/zones/Mog_Garden/TextIDs")
+require("scripts/globals/settings")
 -----------------------------------
 
 function onTrade(player,npc,trade)

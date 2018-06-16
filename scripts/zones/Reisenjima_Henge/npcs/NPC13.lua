@@ -3,16 +3,20 @@
 -- NPC: Tenzen (NPC13)
 -- AF1 NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-	player:PrintToPlayer("Tenzen: AF shop - Dancer to Ninja~", 0xD);
+    player:showText(npc,NPC_BLANK)
+	player:PrintToPlayer("Tenzen: AF shop - Dancer to Ninja~", 0xD)
 		local stock =
 	{
         0x4b03,10000,      -- War Hoop
@@ -47,15 +51,11 @@ function onTrigger(player,npc)
         0x3792,10000,      -- Ninja Hakama
 		0x3715,10000,      -- Ninja Kyahan
 	}
-	showShop(player, STATIC, stock);
-end;
+	dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

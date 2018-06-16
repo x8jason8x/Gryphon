@@ -3,27 +3,20 @@
 -- NPC: Iroha (NPC16)
 -- NIN tools NPC
 -----------------------------------
-
-
-require("scripts/globals/settings");
-package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil;
-require("scripts/zones/Mog_Garden/TextIDs");
-
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
 -----------------------------------
--- onTrade Action
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
-
------------------------------------
--- onTrigger Action
------------------------------------
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Iroha: Ninja tools for your journey.", 0xD);
+    player:showText(npc,NPC_BLANK)
+    player:PrintToPlayer("Iroha: Ninja tools for your journey.", 0xD)
 		local stock =
 	{
         0x16eb,100,      -- Inoshishinofuda bag 
@@ -33,23 +26,11 @@ function onTrigger(player,npc)
         0x1529,100,      -- Sanjaku-Tengui bag
         0x14c7,100,      -- Shinobi-Tabi bag
     }
-    showShop(player, STATIC, stock);
-end;
-
------------------------------------
--- onEventUpdate
------------------------------------
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
-
------------------------------------
--- onEventFinish
------------------------------------
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

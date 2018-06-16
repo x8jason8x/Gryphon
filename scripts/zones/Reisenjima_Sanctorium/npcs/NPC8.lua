@@ -3,26 +3,30 @@
 -- NPC8
 -- Cooking NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
         
     if (trade:hasItemQty(4245,1)) then -- Trade Twilight Crystal
-        player:tradeComplete();
-        player:setPos(-103,-2,48,175,238);
+        player:tradeComplete()
+        player:setPos(-103,-2,48,175,238)
     elseif (trade:hasItemQty(4244,1)) then -- Trade Aurora Crystal
-        player:tradeComplete();
-        player:PrintToPlayer("You are now receiving Cooking support.", 0xD);
-        player:addStatusEffect(dsp.effect.COOKING_IMAGERY,3,0,480);
+        player:tradeComplete()
+        player:PrintToPlayer("You are now receiving Cooking support.", 0xD)
+        player:addStatusEffect(dsp.effect.COOKING_IMAGERY,3,0,480)
     end
 end;
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Qhum: Trade me an Aurora Crystal for advanced Cooking support.", 0xD);
-    player:PrintToPlayer("Qhum: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD);
+    player:showText(npc,NPC_BLANK)
+    player:PrintToPlayer("Qhum: Trade me an Aurora Crystal for advanced Cooking support.", 0xD)
+    player:PrintToPlayer("Qhum: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD)
         local stock =
     {
         0x119d,100,     -- Distilled Water
@@ -76,15 +80,11 @@ function onTrigger(player,npc)
         0x15c0,100,     -- Apkallu Egg
         0x161d,100,     -- Walnut
     }
-    showShop(player, STATIC, stock);
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

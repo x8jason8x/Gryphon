@@ -3,16 +3,20 @@
 -- NPC: Nashmeira (NPC14)
 -- AF1 NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-	player:PrintToPlayer("Nashmeira: AF shop - Paladin to Samurai~", 0xD);
+    player:showText(npc,NPC_BLANK)
+	player:PrintToPlayer("Nashmeira: AF shop - Paladin to Samurai~", 0xD)
 		local stock =
 	{
         0x44eb,10000,      -- Honor Sword
@@ -46,15 +50,11 @@ function onTrigger(player,npc)
         0x3791,10000,      -- Myochin Haidate
         0x3714,10000,      -- Myochin Sune-Ate
 	}
-	showShop(player, STATIC, stock);
-end;
+	dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

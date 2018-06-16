@@ -3,15 +3,19 @@
 -- NPC: Kuyin Hathdenna
 -- Meds NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Mog_Garden/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:PrintToPlayer("Kuyin: Dia? Curse? I can cure what ails you!", 0xD);
+    player:PrintToPlayer("Kuyin: Dia? Curse? I can cure what ails you!", 0xD)
     local stock =
     {
         0x1035,100,      -- Panacea
@@ -28,15 +32,11 @@ function onTrigger(player,npc)
         0x1030,50000,    -- Hi-Elixir
         0x104f,200000,   -- Vile Elixir +1
     }
-    showShop(player, STATIC, stock);
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

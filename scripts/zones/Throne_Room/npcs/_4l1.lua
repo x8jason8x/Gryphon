@@ -39,7 +39,9 @@ end
 
 function onTrigger(player,npc)
 
-    if player:getCurrentMission(AMK) == A_CHALLENGE_YOU_COULD_BE_A_WINNER then
+    local couldWin = player:getVar("AMK_Winner")
+
+    if player:getCurrentMission(AMK) == A_CHALLENGE_YOU_COULD_BE_A_WINNER and couldWin == 3 then
         player:startEvent(4)
     elseif (player:getCurrentMission(player:getNation()) == 15 and player:getVar("MissionStatus") == 2) then
         player:startEvent(6)
@@ -60,6 +62,7 @@ function onEventFinish(player,csid,option)
     if (csid == 4) then
         player:completeMission(AMK,A_CHALLENGE_YOU_COULD_BE_A_WINNER)
 		player:addMission(AMK,SMASH_A_MALEVOLENT_MENACE)
+        player:setVar("AMK_Winner", 0)
     elseif (csid == 6) then
         player:setVar("MissionStatus",3)
     elseif (EventFinishBCNM(player,csid,option)) then

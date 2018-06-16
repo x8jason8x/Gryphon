@@ -1,6 +1,9 @@
 -----------------------------------
 -- Green Thumb Moogle (Mog Garden)
 -----------------------------------
+package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Mog_Garden/TextIDs")
 require("scripts/globals/settings")
 -----------------------------------
 

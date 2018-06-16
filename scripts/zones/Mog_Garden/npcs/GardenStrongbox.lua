@@ -1,9 +1,14 @@
 -----------------------------------
 -- Garden Strongbox (75cap spell unlocks) (Mog Garden)
 -----------------------------------
+package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Mog_Garden/TextIDs")
+require("scripts/globals/settings")
+-----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
@@ -22,32 +27,35 @@ function onTrigger(player,npc)
         402,403,404,405,406,407,408,409,410,412,414,415,419,420,421,422,424,425,426,427,428,429,430,431,432,433,
         434,435,436,437,438,439,440,441,442,443,444,445,454,455,456,457,458,459,460,461,462,463,464,465,466,467,
         841,845
-    };
+    }
      -- validate target
-    local targ;
-    if (target == nil) then
-        targ = player;
+    local targ
+    if player:hasSpell(1) then
+        player:PrintToPlayer("You already have your spells!")
+        return
+    elseif (target == nil) then
+        targ = player
     else
-        targ = GetPlayerByName(target);
+        targ = GetPlayerByName(target)
         if (targ == nil) then
-            error(player, string.format("Player named '%s' not found!", target));
-            return;
+            error(player, string.format("Player named '%s' not found!", target))
+            return
         end
     end
      -- add all 75 cap spells (no avatars or blu magic)
-    local save = true;
-    local silent = true;    -- prevent packet spam
+    local save = true
+    local silent = true -- prevent packet spam
     for i = 1, #ValidSpells do
         if i == #ValidSpells then
-            silent = false;
+            silent = false
         end
-        targ:addSpell(ValidSpells[i], silent, save);
+        targ:addSpell(ValidSpells[i], silent, save)
     end
-    player:PrintToPlayer("All non-BLU or SMN avatar spells now unlocked!", 0xD);
-end;
+    player:PrintToPlayer("All non-BLU or SMN avatar spells now unlocked!", 0xD)
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
-end;
+end

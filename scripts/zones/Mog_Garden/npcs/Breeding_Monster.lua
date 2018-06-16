@@ -3,17 +3,21 @@
 -- NPC: Breeding Monster
 -- Ammo NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Mog_Garden/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
 
-    player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Breeding Monster: Just don't shoot me! Baaaaa!", 0xD);
+    player:showText(npc,NPC_BLANK)
+    player:PrintToPlayer("Breeding Monster: Just don't shoot me! Baaaaa!", 0xD)
     local stock =
     {
         0x14de,9900,     -- Corsair Bullet 
@@ -31,15 +35,11 @@ function onTrigger(player,npc)
         0xb9e,100,       -- Trump Card
         0x16ee,100,	     -- Trump Card Case
     }
-    showShop(player, STATIC, stock);
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

@@ -3,26 +3,30 @@
 -- NPC2
 -- Bonecraft NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
         
     if (trade:hasItemQty(4245,1)) then -- Trade Twilight Crystal
-        player:tradeComplete();
-        player:setPos(6,-4,-137,128,241);
+        player:tradeComplete()
+        player:setPos(6,-4,-137,128,241)
     elseif (trade:hasItemQty(4244,1)) then -- Trade Aurora Crystal
-        player:tradeComplete();
-        player:PrintToPlayer("You are now receiving Bonecraft support.", 0xD);
-        player:addStatusEffect(dsp.effect.BONECRAFT_IMAGERY,3,0,480);
+        player:tradeComplete()
+        player:PrintToPlayer("You are now receiving Bonecraft support.", 0xD)
+        player:addStatusEffect(dsp.effect.BONECRAFT_IMAGERY,3,0,480)
     end
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Samigo: Trade me an Aurora Crystal for advanced Bonecraft support.", 0xD);
-    player:PrintToPlayer("Samigo: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD);
+    player:showText(npc,NPC_BLANK)
+    player:PrintToPlayer("Samigo: Trade me an Aurora Crystal for advanced Bonecraft support.", 0xD)
+    player:PrintToPlayer("Samigo: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD)
         local stock =
     {
         0x370,100,      -- Bone Chip
@@ -58,15 +62,11 @@ function onTrigger(player,npc)
        	0x5ed,100,      -- Giant Frozen Head
         0x5ee,100,      -- Colossal Skull
     }
-    showShop(player, STATIC, stock);	
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

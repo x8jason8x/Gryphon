@@ -1,26 +1,22 @@
 -----------------------------------
--- Area: !base
+-- Area: !stage
 -- NPC: Gilgamesh (NPC15)
 -- AF1 NPC
 -----------------------------------
-
-require("scripts/globals/settings");
-
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
 -----------------------------------
--- onTrade Action
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
-
------------------------------------
--- onTrigger Action
------------------------------------
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-	player:PrintToPlayer("Gilgamesh: AF shop - Bard to Corsair~", 0xD);
+    player:showText(npc,NPC_BLANK)
+	player:PrintToPlayer("Gilgamesh: AF shop - Bard to Corsair~", 0xD)
 		local stock =
 	{
         0x417e,10000,      -- Paper Knife
@@ -54,23 +50,11 @@ function onTrigger(player,npc)
         0x3cf1,10000,      -- Corsairs Culottes
         0x3d45,10000,      -- Corsairs Bottes
 	}
-	showShop(player, STATIC, stock);
-end;
-
------------------------------------
--- onEventUpdate
------------------------------------
+	dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
-
------------------------------------
--- onEventFinish
------------------------------------
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

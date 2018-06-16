@@ -2,15 +2,19 @@
 -- NPC 21 Aldo
 -- desc: Custom NPC for buying CoP/Zilart accessories
 -------------------------------------
-require("scripts/globals/settings");
--------------------------------------
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
+-----------------------------------
 
 function onTrigger(player)
 
     -- Must have RoZ, CoP, and Storms of Fate complete
     if player:hasKeyItem(dsp.ki.WHISPER_OF_THE_WYRMKING) then
-        player:showText(npc,NPC_BLANK);
-        player:PrintToPlayer("Aldo: I see you have defeated the Wyrmking! Let's talk accessories!", 0xD);
+        player:showText(npc,NPC_BLANK)
+        player:PrintToPlayer("Aldo: I see you have defeated the Wyrmking! Let's talk accessories!", 0xD)
         local stock = 
         { 
             14739, 5000000, -- Suppanomimi
@@ -25,9 +29,9 @@ function onTrigger(player)
             15543, 5000000, -- Rajas Ring
             15544, 5000000, -- Sattva Ring
             15545, 5000000, -- Tamas Ring
-        };
-        showShop(player, STATIC, stock);
+        }
+        dsp.shop.general(player, stock)
     else
-        player:PrintToPlayer("Aldo: You must kill Bahamut before we can do business friend...", 0xD);
+        player:PrintToPlayer("Aldo: You must kill Bahamut before we can do business friend...", 0xD)
     end
-end;
+end

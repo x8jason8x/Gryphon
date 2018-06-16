@@ -3,7 +3,11 @@
 -- NPC: Susuroon
 -- Food NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Mog_Garden/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Mog_Garden/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
@@ -11,7 +15,7 @@ end;
 
 function onTrigger(player,npc)
 
-    player:PrintToPlayer("Susuroon: Hungry? I've got all the best foods here!", 0xD);
+    player:PrintToPlayer("Susuroon: Hungry? I've got all the best foods here!", 0xD)
     local stock =
     {
         0x11ce,100,      -- Yagudo Drink
@@ -30,15 +34,11 @@ function onTrigger(player,npc)
         0x1450,100,	     -- Pescatora +1
         0x1679,100,      -- Pot-au-Feu +1		
     }
-    showShop(player, STATIC, stock);
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

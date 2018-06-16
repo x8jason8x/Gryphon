@@ -18,7 +18,6 @@ function onTrigger(player,npc)
 
     if player:getCurrentMission(AMK) == JOY_SUMMONED_TO_A_FABULOUS_FETE then
         player:startEvent(88)
-        player:PrintToPlayer("This mission is mostly not implemented. Proceed to Throne Room BC.")
     end
 end
 
@@ -30,7 +29,5 @@ function onEventFinish(player,csid,option)
     if (csid == 88) then
         player:completeMission(AMK,JOY_SUMMONED_TO_A_FABULOUS_FETE)
 		player:addMission(AMK,A_CHALLENGE_YOU_COULD_BE_A_WINNER)
-        player:addKeyItem(dsp.ki.MEGA_BONANZA_KUPON)
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.MEGA_BONANZA_KUPON)
     end
 end

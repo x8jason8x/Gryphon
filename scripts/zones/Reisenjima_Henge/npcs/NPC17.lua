@@ -3,16 +3,20 @@
 -- NPC: Star Sibyl (NPC17)
 -- AF1 NPC
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-	player:PrintToPlayer("Star Sibyl: AF shop - Scholar to White Mage~", 0xD);
+    player:showText(npc,NPC_BLANK)
+	player:PrintToPlayer("Star Sibyl: AF shop - Scholar to White Mage~", 0xD)
 		local stock =
 	{
         0x17aa,10000,      -- Klimaform
@@ -46,15 +50,11 @@ function onTrigger(player,npc)
         0x3788,10000,      -- Healers Pantaloons
         0x370b,10000,      -- Healers Duckbills
 	}
-	showShop(player, STATIC, stock);
-end;
+	dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

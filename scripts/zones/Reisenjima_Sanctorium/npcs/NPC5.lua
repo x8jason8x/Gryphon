@@ -3,30 +3,30 @@
 -- NPC5
 -- Smithing NPC
 -----------------------------------
-
-require("scripts/globals/settings");
-
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
 -----------------------------------
--- onTrade Action
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
         
     if (trade:hasItemQty(4245,1)) then -- Trade Twilight Crystal
-        player:tradeComplete();
-        player:setPos(-92,2,26,171,237);
+        player:tradeComplete()
+        player:setPos(-92,2,26,171,237)
     elseif (trade:hasItemQty(4244,1)) then -- Trade Aurora Crystal
-        player:tradeComplete();
-        player:PrintToPlayer("You are now receiving Smithing support.", 0xD);
-        player:addStatusEffect(dsp.effect.SMITHING_IMAGERY,3,0,480);
+        player:tradeComplete()
+        player:PrintToPlayer("You are now receiving Smithing support.", 0xD)
+        player:addStatusEffect(dsp.effect.SMITHING_IMAGERY,3,0,480)
     end
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Lorena: Trade me an Aurora Crystal for advanced Smithing support.", 0xD);
-    player:PrintToPlayer("Lorena: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD);
+    player:showText(npc,NPC_BLANK)
+    player:PrintToPlayer("Lorena: Trade me an Aurora Crystal for advanced Smithing support.", 0xD)
+    player:PrintToPlayer("Lorena: Trade me a Twilight Crystal for an instant warp to my guild.", 0xD)
         local stock =
     {
         0x289,100,      -- Bronze Ingot
@@ -60,15 +60,11 @@ function onTrigger(player,npc)
         0x5ba,100,      -- Relic Iron
         0x2de,100,      -- Thokcha Ore
     }
-    showShop(player, STATIC, stock);
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

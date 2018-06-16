@@ -2,16 +2,20 @@
 -- NPC9 (ReiSan)
 -- desc: sells HQ craft items
 -----------------------------------
-require("scripts/globals/settings");
+package.loaded["scripts/zones/Reisenjima_Henge/TextIDs"] = nil
+-----------------------------------
+require("scripts/zones/Reisenjima_Henge/TextIDs")
+require("scripts/globals/settings")
+require("scripts/globals/shop")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
-    player:showText(npc,NPC_BLANK);
-    player:PrintToPlayer("Alienor: High Quality craft items and tools~", 0xD);
+    player:showText(npc,NPC_BLANK)
+    player:PrintToPlayer("Alienor: High Quality craft items and tools~", 0xD)
     local stock =
     {
         605,100,          -- Pickaxe
@@ -32,15 +36,11 @@ function onTrigger(player,npc)
         0x521,10000,      -- Siren's Hair
         0x385,10000,      -- Venomous Claw
     }
-    showShop(player, STATIC, stock);
-end;
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
+end

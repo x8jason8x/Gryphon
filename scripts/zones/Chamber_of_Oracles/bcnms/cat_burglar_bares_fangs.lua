@@ -27,6 +27,8 @@ function onBcnmLeave(player,instance,leavecode)
         end
     elseif (leavecode == 4) then
         player:startEvent(32002)
+        player:delKeyItem(dsp.ki.NAVARATNA_TALISMAN)
+        player:messageSpecial(KEYITEM_LOST,dsp.ki.NAVARATNA_TALISMAN)
     end
 end
 
@@ -35,7 +37,7 @@ end
 
 function onEventFinish(player,csid,option)
 
-    if (csid == 32001) then
+    if (csid == 6) then
         player:completeMission(AMK,ROAR_A_CAT_BURGLAR_BARES_HER_FANGS)
 		player:addMission(AMK,RELIEF_A_TRIUMPHANT_RETURN)
         player:setPos(-220,0,7,62,168)

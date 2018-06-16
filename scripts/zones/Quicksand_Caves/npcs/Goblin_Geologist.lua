@@ -20,6 +20,7 @@ function onTrigger(player,npc)
         return
     elseif player:getCurrentMission(AMK) == ROAR_A_CAT_BURGLAR_BARES_HER_FANGS then
         player:addKeyItem(dsp.ki.NAVARATNA_TALISMAN)
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.NAVARATNA_TALISMAN)
     elseif player:getCurrentMission(AMK) == RESCUE_A_MOOGLES_LABOR_OF_LOVE then
         player:startEvent(100)
         player:PrintToPlayer("Ignore the Gob, here's your KI! Proceed to Chamber of Oracles.")

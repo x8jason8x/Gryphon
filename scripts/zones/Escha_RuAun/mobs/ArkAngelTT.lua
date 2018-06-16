@@ -2,86 +2,53 @@
 -- Area: Escha-Ru'Aun (zone 289)
 -- NM: ArkAngel TT
 -----------------------------------
-package.loaded["scripts/zones/Escha_RuAun/TextIDs"] = nil;
+package.loaded["scripts/zones/Escha_RuAun/TextIDs"] = nil
 -----------------------------------
-require("scripts/zones/Escha_RuAun/TextIDs");
-require("scripts/zones/Escha_RuAun/MobIDs");
-require("scripts/mixins/job_special");
-require("scripts/globals/status");
+require("scripts/zones/Escha_RuAun/TextIDs")
+require("scripts/mixins/job_special")
+require("scripts/globals/status")
 -----------------------------------
 
 function onMobInitialize(mob)
 
-    mob:addMod(dsp.mod.UFASTCAST, 30);
-end;
-
------------------------------------
--- onMobSpawn Action
------------------------------------
+    mob:addMod(dsp.mod.UFASTCAST, 30)
+end
 
 function onMobSpawn(mob)
-
-end;
-
------------------------------------
--- onMobEngaged Action
------------------------------------
+end
 
 function onMobEngaged(mob,target)
 
-    local hp = math.random(1,60);
-    mob:setLocalVar("BldWep", hp);
-end;
-
------------------------------------
--- onMobFight Action
------------------------------------
+    local hp = math.random(1,60)
+    mob:setLocalVar("BldWep", hp)
+end
 
 function onMobFight(mob, target)
 
-    local battletime = mob:getBattleTime();
-    local mstime = mob:getLocalVar("Mfont");
-    local mghp = mob:getLocalVar("BldWep");
+    local battletime = mob:getBattleTime()
+    local mstime = mob:getLocalVar("Mfont")
+    local mghp = mob:getLocalVar("BldWep")
 
     if (battletime > mstime + 150) then
-        mob:useMobAbility(691);
-        mob:setLocalVar("Mfont", battletime);
+        mob:useMobAbility(691)
+        mob:setLocalVar("Mfont", battletime)
     elseif (mob:getHPP() < mghp) then
-        mob:useMobAbility(695);
-        mob:setLocalVar("BldWep", 0);
+        mob:useMobAbility(695)
+        mob:setLocalVar("BldWep", 0)
     end
-end;
-
------------------------------------
--- onMobWeaponSkill Action
------------------------------------
+end
 
 function onMobWeaponSkill(target, mob, skill)
-
-end;
-
------------------------------------
--- onMobDisengage Action
------------------------------------
+end
 
 function onMobDisengage(mob)
-    
-end;
-
------------------------------------
--- onMobDeath Action
------------------------------------
+end
 
 function onMobDeath(mob, player, isKiller)
 
-    player:PrintToPlayer("<GryphonMsg> Ark Angel MR has spawned!", 0xE);
-    SpawnMob(17961602);
-end;
-
------------------------------------
--- onMobDespawn Action
------------------------------------
+    player:PrintToPlayer("<GryphonMsg> Ark Angel MR has spawned!", 0xE)
+    SpawnMob(17961602)
+end
 
 function onMobDespawn(mob)
-
-end;
+end

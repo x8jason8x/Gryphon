@@ -1,42 +1,26 @@
 -----------------------------------
 -- Undulating Confluence (Escha-Zi) Qufim gate
 -----------------------------------
-
-require("scripts/globals/settings");
-
+package.loaded["scripts/zones/Escha_ZiTah/TextIDs"] = nil
 -----------------------------------
--- onTrade Action
+require("scripts/zones/Escha_ZiTah/TextIDs")
+require("scripts/globals/status")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;	
------------------------------------
--- onTrigger Action
------------------------------------
+end
 
 function onTrigger(player,npc)
 
-    player:startEvent(4);
-end;
------------------------------------
--- onEventUpdate Action
------------------------------------
+    player:startEvent(4)
+end
 
 function onEventUpdate(player,csid,option)
---print("onEventUpdate");
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
-end;
-
------------------------------------
--- onEventFinish Action
------------------------------------
+end
 
 function onEventFinish(player,csid,option)
---print("onEventFinish");
-    -- printf("CSID: %u",csid);
-    -- printf("RESULT: %u",option);
+
 	if (csid == 4 and option == 1) then
-	    player:setPos(-206,-20,76,172,126);
+	    player:setPos(-206,-20,76,172,126)
 	end
-end;
+end

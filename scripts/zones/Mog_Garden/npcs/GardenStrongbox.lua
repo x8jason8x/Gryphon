@@ -31,7 +31,7 @@ function onTrigger(player,npc)
      -- validate target
     local targ
     if player:hasSpell(1) then
-        player:PrintToPlayer("You already have your spells!")
+        player:PrintToPlayer("<GryphonMsg> You already have your spells!", 0xE)
         return
     elseif (target == nil) then
         targ = player
@@ -51,7 +51,7 @@ function onTrigger(player,npc)
         end
         targ:addSpell(ValidSpells[i], silent, save)
     end
-    player:PrintToPlayer("All non-BLU or SMN avatar spells now unlocked!", 0xD)
+    player:PrintToPlayer("<GryphonMsg> All non-BLU or SMN avatar spells now unlocked!", 0xE)
 end
 
 function onEventUpdate(player,csid,option)

@@ -3,86 +3,51 @@
 -- NM: Balamor (17961639)
 -- !pos 0 -55 -595
 -----------------------------------
-package.loaded["scripts/zones/Escha_RuAun/TextIDs"] = nil;
+package.loaded["scripts/zones/Escha_RuAun/TextIDs"] = nil
 -----------------------------------
-require("scripts/zones/Escha_RuAun/TextIDs");
-require("scripts/zones/Escha_RuAun/MobIDs");
-require("scripts/mixins/job_special");
-require("scripts/globals/status");
+require("scripts/zones/Escha_RuAun/TextIDs")
+require("scripts/mixins/job_special")
+require("scripts/globals/status")
 -----------------------------------
 
 function onMobInitialize(mob)
-
-end;
-
------------------------------------
--- onMobSpawn Action
------------------------------------
+end
 
 function onMobSpawn(mob)
-
-end;
-
------------------------------------
--- onMobEngaged Action
------------------------------------
+end
 
 function onMobEngaged(mob,target)
-
-end;
-
------------------------------------
--- onMobFight Action
------------------------------------
+end
 
 function onMobFight(mob, target)
 
     if (mob:hasStatusEffect(dsp.effect.BLOOD_WEAPON) == false and mob:actionQueueEmpty() == true) then
         
-		local twohourTime = mob:getLocalVar("twohourTime");
+		local twohourTime = mob:getLocalVar("twohourTime")
     
         if (twohourTime == 0) then
-            twohourTime = math.random(8, 14);
-            mob:setLocalVar("twohourTime", twohourTime);
+            twohourTime = math.random(8, 14)
+            mob:setLocalVar("twohourTime", twohourTime)
         end
 	
 	    if (mob:getBattleTime()/15 > twohourTime) then
-            mob:useMobAbility(695);
-            mob:setLocalVar("twohourTime", (mob:getBattleTime()/15)+20);
+            mob:useMobAbility(695)
+            mob:setLocalVar("twohourTime", (mob:getBattleTime()/15)+20)
 		end
     end
-end;
-
------------------------------------
--- onMobWeaponSkill Action
------------------------------------
+end
 
 function onMobWeaponSkill(target, mob, skill)
-
-end;
-
------------------------------------
--- onMobDisengage Action
------------------------------------
+end
 
 function onMobDisengage(mob)
-
-end;
-
------------------------------------
--- onMobDeath Action
------------------------------------
+end
 
 function onMobDeath(mob, player, isKiller)
 
-    player:PrintToPlayer("<GryphonMsg> Naga Raja has spawned!", 0xE);
-    SpawnMob(17961640);
-end;
-
------------------------------------
--- onMobDespawn Action
------------------------------------
+    player:PrintToPlayer("<GryphonMsg> Naga Raja has spawned!", 0xE)
+    SpawnMob(17961640)
+end
 
 function onMobDespawn(mob)
-
-end;
+end

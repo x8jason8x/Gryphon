@@ -6,81 +6,79 @@
 -- !pos 257.650 -5.180 -699.999 35 | Tarutaru Tower
 -- !pos 577.648 -5.180 -700.000 35 | Galka Tower
 -----------------------------------
-package.loaded["scripts/zones/The_Garden_of_RuHmet/TextIDs"] = nil
+package.loaded["scripts/zones/The_Garden_of_RuHmet/TextIDs"] = nil;
 -----------------------------------
-require("scripts/zones/The_Garden_of_RuHmet/TextIDs")
-require("scripts/globals/missions")
-require("scripts/globals/titles")
-require("scripts/globals/keyitems")
+require("scripts/zones/The_Garden_of_RuHmet/TextIDs");
+require("scripts/globals/missions");
+require("scripts/globals/titles");
+require("scripts/globals/keyitems");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end
+end;
 
 function onTrigger(player,npc)
-
-    local Race = player:getRace()
-    local xPos = npc:getXPos()
+    local Race = player:getRace();
+    local xPos = npc:getXPos();
 
     if (player:getCurrentMission(COP) == WHEN_ANGELS_FALL  and player:getVar("PromathiaStatus") == 1) then
-        player:startEvent(202)
+        player:startEvent(202);
     elseif (player:getCurrentMission(COP) == WHEN_ANGELS_FALL  and player:getVar("PromathiaStatus") == 2) then
-        if (xPos > 99 and xPos < 101) then
-            if (Race == 7) then
-                player:startEvent(124)
+        if (xPos > 99 and xPos < 101) then -- Mithra Tower
+            if ( Race==7 ) then
+                player:startEvent(124);
             else
-                player:messageSpecial(NO_NEED_INVESTIGATE)
+                player:messageSpecial(NO_NEED_INVESTIGATE);
             end
-        elseif (xPos > 739 and xPos < 741) then
+        elseif (xPos > 739 and xPos < 741) then -- Elvaan Tower
             if ( Race==3 or Race==4) then
-                player:startEvent(121)
+                player:startEvent(121);
             else
-                player:messageSpecial(NO_NEED_INVESTIGATE)
+                player:messageSpecial(NO_NEED_INVESTIGATE);
             end
-        elseif (xPos > 256 and xPos < 258) then
-            if (Race == 5 or Race == 6) then
-                player:startEvent(123)
+        elseif (xPos > 256 and xPos < 258) then -- Tarutaru Tower
+            if ( Race==5 or Race==6  ) then
+                player:startEvent(123);
             else
-                player:messageSpecial(NO_NEED_INVESTIGATE)
+                player:messageSpecial(NO_NEED_INVESTIGATE);
             end
-        elseif (xPos > 576 and xPos < 578) then
-            if (Race == 8) then
-                player:startEvent(122)
+        elseif (xPos > 576 and xPos < 578) then -- Galka Tower
+            if ( Race==8) then
+                player:startEvent(122);
             else
-                player:messageSpecial(NO_NEED_INVESTIGATE)
+                player:messageSpecial(NO_NEED_INVESTIGATE);
             end
         end
     else
-        player:messageSpecial(NO_NEED_INVESTIGATE)
+        player:messageSpecial(NO_NEED_INVESTIGATE);
     end
-end
+end;
 
 function onEventUpdate(player,csid,option)
-end
+end;
 
 function onEventFinish(player,csid,option)
-
     if (csid == 202) then
-        player:setVar("PromathiaStatus",2)
+        player:setVar("PromathiaStatus",2);
     elseif (124 and option ~=0) then -- Mithra
-        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL)
-        player:setVar("PromathiaStatus",3)
-        player:addKeyItem(dsp.ki.LIGHT_OF_DEM)
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_DEM)
+        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL);
+        player:setVar("PromathiaStatus",3);
+        player:addKeyItem(dsp.ki.LIGHT_OF_DEM);
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_DEM);
     elseif (121 and option ~=0) then -- Elvaan
-        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL)
-        player:setVar("PromathiaStatus",3)
-        player:addKeyItem(dsp.ki.LIGHT_OF_MEA)
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_MEA)
+        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL);
+        player:setVar("PromathiaStatus",3);
+        player:addKeyItem(dsp.ki.LIGHT_OF_MEA);
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_MEA);
     elseif (123 and option ~=0) then -- Tarutaru
-        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL)
-        player:setVar("PromathiaStatus",3)
-        player:addKeyItem(dsp.ki.LIGHT_OF_HOLLA)
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_HOLLA)
+        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL);
+        player:setVar("PromathiaStatus",3);
+        player:addKeyItem(dsp.ki.LIGHT_OF_HOLLA);
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_HOLLA);
     elseif (122 and option ~=0) then -- Galka
-        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL)
-        player:setVar("PromathiaStatus",3)
-        player:addKeyItem(dsp.ki.LIGHT_OF_ALTAIEU)
-        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_ALTAIEU)
+        player:addTitle(dsp.title.WARRIOR_OF_THE_CRYSTAL);
+        player:setVar("PromathiaStatus",3);
+        player:addKeyItem(dsp.ki.LIGHT_OF_ALTAIEU);
+        player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.LIGHT_OF_ALTAIEU);
     end
-end
+end;

@@ -1,0 +1,5 @@
+---------- escha zitah (288)
+
+BUCCA = 17957337
+WEPWAWET = 17957298
+AZI_DAHAKA = 17957397

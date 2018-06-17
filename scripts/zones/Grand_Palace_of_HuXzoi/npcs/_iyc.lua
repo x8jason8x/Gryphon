@@ -3,22 +3,21 @@
 --  NPC: Particle Gate
 -- !pos -39 0 -319 34
 -----------------------------------
-package.loaded["scripts/zones/Grand_Palace_of_HuXzoi/TextIDs"] = nil
+package.loaded["scripts/zones/Grand_Palace_of_HuXzoi/TextIDs"] = nil;
 -----------------------------------
-require("scripts/zones/Grand_Palace_of_HuXzoi/TextIDs")
-require("scripts/globals/settings")
+require("scripts/zones/Grand_Palace_of_HuXzoi/TextIDs");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end
+end;
 
 function onTrigger(player,npc)
-
-    player:startEvent(172)
-end
+    player:startEvent(172);
+    return 1;
+end;
 
 function onEventUpdate(player,csid,option)
-end
+end;
 
 function onEventFinish(player,csid,option)
-end
+end;

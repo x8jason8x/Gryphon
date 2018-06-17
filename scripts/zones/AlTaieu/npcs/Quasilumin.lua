@@ -4,22 +4,21 @@
 -- Type: Standard NPC
 -- !pos -27.443 -1 -636.850 33
 -----------------------------------
-package.loaded["scripts/zones/AlTaieu/TextIDs"] = nil
+package.loaded["scripts/zones/AlTaieu/TextIDs"] = nil;
 -----------------------------------
-require("scripts/zones/AlTaieu/TextIDs")
-require("scripts/globals/settings")
+require("scripts/zones/AlTaieu/TextIDs");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end
+end;
 
 function onTrigger(player,npc)
-    player:showText(npc, QUASILUMIN_01)
-end
+    player:showText(npc, QUASILUMIN_01);
+end;
 
 function onEventUpdate(player,csid,option)
-end
+end;
 
 function onEventFinish(player,csid,option)
-end
+end;
 

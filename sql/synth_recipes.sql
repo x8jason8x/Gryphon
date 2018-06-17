@@ -4649,9 +4649,6 @@ INSERT INTO `synth_recipes` VALUES (4534,0,0,0,0,0,0,31,0,0,0,4100,4242,18868,0,
 INSERT INTO `synth_recipes` VALUES (4535,0,0,0,0,0,0,85,0,0,0,4100,4242,13356,0,0,0,0,0,0,0,746,812,0,0,1,1,0,0); -- Death Earring (desynth)
 INSERT INTO `synth_recipes` VALUES (4536,0,0,0,0,19,0,0,0,0,0,4100,4242,12849,0,0,0,0,0,0,0,850,818,818,818,1,5,6,7); -- Cotton Brais (desynth)
 
--- custom
-INSERT INTO `synth_recipes` VALUES (4800,1,0,60,0,0,100,0,0,0,0,4099,4241,17546,17548,17550,17552,17554,17556,17558,17560,18633,18633,18633,18633,1,1,1,1); -- Chatoyant Staff
-
 -- INSERT INTO `synth_recipes` VALUES (ID,Type,KeyItem,AL,BO,CL,CK,GO,LE,SM,WD,Crystal,HQCrystal,I1,I2,I3,I4,I5,I6,I7,I8,R1,R2,R3,R4,Q1,Q2,Q3,Q4); -- template
 -- crystals = fire(4096,4238) ice(4097,4239) wind(4098,4240) earth(4099,4241) lightning(4100,4242) water(4101,4243) light(4102,4244) dark(4103,4245)
 

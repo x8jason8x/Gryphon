@@ -6537,11 +6537,6 @@ INSERT INTO `nm_spawn_points` VALUES (17649822,48,19.666,6.000,160.166);
 INSERT INTO `nm_spawn_points` VALUES (17649822,49,39.591,5.000,165.616);
 INSERT INTO `nm_spawn_points` VALUES (17109296,0,168,0,-440);
 
--- custom
-INSERT INTO `nm_spawn_points` VALUES (17137705,0,678.599,-10.219,532.811); -- Ankabut
-INSERT INTO `nm_spawn_points` VALUES (17166705,0,93.736,-1.104,-204.736); -- Ramponneau
-INSERT INTO `nm_spawn_points` VALUES (17269016,0,-178.000,1.680,165.000); -- Blighting Brand
-
 /*!40000 ALTER TABLE `nm_spawn_points` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

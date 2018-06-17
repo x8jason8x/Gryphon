@@ -1,6 +1,6 @@
 -----------------------------------------
--- Spell: Odin
--- Summons Odin to fight by your side
+-- Spell: Alexander
+-- Summons Alexander to fight by your side
 -----------------------------------------
 require("scripts/globals/summon");
 require("scripts/globals/bcnm");

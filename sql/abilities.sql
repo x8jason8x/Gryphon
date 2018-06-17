@@ -407,8 +407,6 @@ INSERT INTO `abilities` VALUES (643,'ultimate_terror',15,37,4,60,174,0,0,27,2000
 INSERT INTO `abilities` VALUES (644,'noctoshield',15,49,1,60,174,0,0,92,2000,0,6,18.0,0,1,60,0,0,NULL);
 INSERT INTO `abilities` VALUES (645,'dream_shroud',15,56,1,60,174,0,0,121,2000,0,6,18.0,0,1,60,0,0,NULL);
 INSERT INTO `abilities` VALUES (646,'nether_blast',15,65,4,60,173,0,0,109,2000,0,6,18.0,0,1,60,0,0,NULL);
-INSERT INTO `abilities` VALUES (654,'zantetsuken',15,75,4,0,0,0,0,0,2000,0,6,18.0,1,0,0,0,0,NULL); -- custom
-INSERT INTO `abilities` VALUES (655,'perfect_defense',15,75,1,0,0,0,0,0,2000,0,6,18.0,1,0,0,0,0,NULL); -- custom
 INSERT INTO `abilities` VALUES (656,'foot_kick',9,25,257,1,102,0,0,0,2000,0,6,18.0,0,1,60,0,0,NULL);
 INSERT INTO `abilities` VALUES (657,'dust_cloud',9,25,257,1,102,0,0,0,2000,0,6,18.0,0,1,60,0,0,NULL);
 INSERT INTO `abilities` VALUES (658,'whirl_claws',9,25,257,1,102,0,0,0,2000,0,6,18.0,0,1,60,0,0,NULL);

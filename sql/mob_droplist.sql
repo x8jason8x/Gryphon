@@ -32943,7 +32943,6 @@ INSERT INTO `mob_droplist` VALUES (4597,0,0,1000,926,200); -- Lizard Tail (20%)
 INSERT INTO `mob_droplist` VALUES (4597,0,0,1000,3552,70); -- Squamous Hide (7%)
 INSERT INTO `mob_droplist` VALUES (4597,0,0,1000,4362,60); -- Lizard Egg (6%)
 
-
 /*!40000 ALTER TABLE `mob_droplist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

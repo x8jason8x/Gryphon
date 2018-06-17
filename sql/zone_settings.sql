@@ -123,7 +123,7 @@ INSERT INTO `zone_settings` VALUES (74,6,'127.0.0.1',54230,'Arrapago_Remnants',1
 INSERT INTO `zone_settings` VALUES (75,6,'127.0.0.1',54230,'Bhaflau_Remnants',148,148,115,139,0,0.00,145);
 INSERT INTO `zone_settings` VALUES (76,6,'127.0.0.1',54230,'Silver_Sea_Remnants',148,148,115,139,0,0.00,145);
 INSERT INTO `zone_settings` VALUES (77,6,'127.0.0.1',54230,'Nyzul_Isle',148,148,144,144,0,0.00,145);
-INSERT INTO `zone_settings` VALUES (78,4,'127.0.0.1',54230,'Hazhalm_Testing_Grounds',148,148,144,144,0,0.00,128); -- custom
+INSERT INTO `zone_settings` VALUES (78,4,'127.0.0.1',54230,'Hazhalm_Testing_Grounds',0,0,0,0,0,0.00,144);
 INSERT INTO `zone_settings` VALUES (79,2,'127.0.0.1',54230,'Caedarva_Mire',173,173,101,138,0,0.00,156);
 INSERT INTO `zone_settings` VALUES (80,1,'127.0.0.1',54230,'Southern_San_dOria_[S]',254,254,254,254,0,0.00,72);
 INSERT INTO `zone_settings` VALUES (81,2,'127.0.0.1',54230,'East_Ronfaure_[S]',251,251,101,215,0,0.00,156);
@@ -333,17 +333,16 @@ INSERT INTO `zone_settings` VALUES (284,1,'127.0.0.1',54230,'Celennia_Memorial_L
 INSERT INTO `zone_settings` VALUES (285,1,'127.0.0.1',54230,'Feretory',0,0,0,0,0,0.00,32);
 INSERT INTO `zone_settings` VALUES (286,0,'127.0.0.1',0,'286',0,0,0,0,0,0.00,0);
 INSERT INTO `zone_settings` VALUES (287,0,'127.0.0.1',0,'287',0,0,0,0,0,0.00,0);
-INSERT INTO `zone_settings` VALUES (288,2,'127.0.0.1',54230,'Escha_ZiTah',73,73,62,62,0,0.00,128);
-INSERT INTO `zone_settings` VALUES (289,2,'127.0.0.1',54230,'Escha_RuAun',73,73,62,62,0,0.00,128);
+INSERT INTO `zone_settings` VALUES (288,2,'127.0.0.1',54230,'Escha_ZiTah',80,80,80,80,0,0.00,0);
+INSERT INTO `zone_settings` VALUES (289,2,'127.0.0.1',54230,'Escha_RuAun',80,80,80,80,0,0.00,0);
 INSERT INTO `zone_settings` VALUES (290,0,'127.0.0.1',54230,'Desuetia_Empyreal_Paradox',0,0,0,0,0,0.00,128);
 INSERT INTO `zone_settings` VALUES (291,0,'127.0.0.1',54230,'Reisenjima',79,79,79,79,0,0.00,128);
-INSERT INTO `zone_settings` VALUES (292,0,'127.0.0.1',54230,'Reisenjima_Henge',88,88,88,88,0,0.00,32);
-INSERT INTO `zone_settings` VALUES (293,0,'127.0.0.1',54230,'Reisenjima_Sanctorium',56,56,62,62,0,0.00,128);
+INSERT INTO `zone_settings` VALUES (292,0,'127.0.0.1',54230,'Reisenjima_Henge',0,0,0,0,0,0.00,0);
+INSERT INTO `zone_settings` VALUES (293,0,'127.0.0.1',54230,'Reisenjima_Sanctorium',0,0,0,0,0,0.00,128);
 INSERT INTO `zone_settings` VALUES (294,5,'127.0.0.1',54230,'Dynamis-San_dOria_[D]',88,88,88,88,0,0.00,400);
 INSERT INTO `zone_settings` VALUES (295,5,'127.0.0.1',54230,'Dynamis-Bastok_[D]',88,88,88,88,0,0.00,400);
 INSERT INTO `zone_settings` VALUES (296,5,'127.0.0.1',54230,'Dynamis-Windurst_[D]',88,88,88,88,0,0.00,400);
 INSERT INTO `zone_settings` VALUES (297,5,'127.0.0.1',54230,'Dynamis-Jeuno_[D]',88,88,88,88,0,0.00,400);
-
 /*!40000 ALTER TABLE `zone_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

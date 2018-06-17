@@ -28,9 +28,9 @@ end;
 
 function onTrigger(player,npc)
 
-    local RegionOwner = GetRegionOwner(VOLLBOW);
+    local RegionOwner = GetRegionOwner(dsp.region.VOLLBOW);
 
-    if (RegionOwner ~= NATION_SANDORIA) then
+    if (RegionOwner ~= dsp.nation.SANDORIA) then
         player:showText(npc,MILLECHUCA_CLOSED_DIALOG);
     else
         player:showText(npc,MILLECHUCA_OPEN_DIALOG);
@@ -42,7 +42,7 @@ function onTrigger(player,npc)
             936,    14, -- Rock Salt
             1410, 1656  -- Sweet William
         }
-        showShop(player,SANDORIA,stock);
+        dsp.shop.general(player, stock, SANDORIA);
     end
 
 end;

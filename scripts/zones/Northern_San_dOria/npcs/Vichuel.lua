@@ -25,9 +25,9 @@ function onTrade(player,npc,trade)
 end;
 
 function onTrigger(player,npc)
-    local RegionOwner = GetRegionOwner(FAUREGANDI);
+    local RegionOwner = GetRegionOwner(dsp.region.FAUREGANDI);
 
-    if (RegionOwner ~= NATION_SANDORIA) then
+    if (RegionOwner ~= dsp.nation.SANDORIA) then
         player:showText(npc,VICHUEL_CLOSED_DIALOG);
     else
         player:showText(npc,VICHUEL_OPEN_DIALOG);
@@ -37,7 +37,7 @@ function onTrigger(player,npc)
             0x110b,39, -- Faerie Apple
             0x02b3,54  -- Maple Log
         }
-        showShop(player,SANDORIA,stock);
+        dsp.shop.general(player, stock, SANDORIA);
     end
 end;
 

@@ -1,8 +1,8 @@
 ------------------------------------------------------------------------
 -- This file holds all global (not zone specific) text references
 ------------------------------------------------------------------------
-dsp = dsp or {};
-dsp.msg = dsp.msg or {};
+dsp = dsp or {}
+dsp.msg = dsp.msg or {}
 
 ------------------------------------
 -- Message Channels
@@ -41,7 +41,7 @@ dsp.msg.channel =
     NS_LINKSHELL3  = 31, -- (assumed as it follows pattern and color)
     UNKNOWN_32     = 32, -- Looks the same as 31
     UNITY          = 33
-};
+}
 
 ------------------------------------
 -- Message Basic
@@ -159,6 +159,8 @@ dsp.msg.basic =
     MUG_SUCCESS            = 129, -- <user> uses <ability>. <user> mugs <amount> gil from <target>.
     MUG_FAIL               = 244, -- <user> fails to mug <target>.
     FULL_INVENTORY         = 356, --  Cannot execute command. Your inventory is full.
+    OBTAINED_KEY_ITEM      = 758, -- Obtained key item: <key item>.
+    ALREADY_HAVE_KEY_ITEM  = 759, -- You already have key item: <key item>.
 
     -- Distance
     TARG_OUT_OF_RANGE      = 4,   -- <target> is out of range.
@@ -281,4 +283,4 @@ dsp.msg.basic =
     DESPOIL_EVA_DOWN        = 597,  -- ${actor} uses ${ability}.${lb}${actor} steals a ${item} from ${target}.${lb}Additional effect: ${target} is afflicted with Evasion Down.
     DESPOIL_ACC_DOWN        = 598,  -- ${actor} uses ${ability}.${lb}${actor} steals a ${item} from ${target}.${lb}Additional effect: ${target} is afflicted with Accuracy Down.
     DESPOIL_SLOW            = 599,  -- ${actor} uses ${ability}.${lb}${actor} steals a ${item} from ${target}.${lb}Additional effect: ${target} is afflicted with Slow.
-};
+}

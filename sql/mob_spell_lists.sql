@@ -2485,63 +2485,6 @@ INSERT INTO `mob_spell_lists` VALUES ('Gotoh_Zha_the_Redolent_WHM',297,59,1,255)
 INSERT INTO `mob_spell_lists` VALUES ('Gotoh_Zha_the_Redolent_WHM',297,61,1,255);  -- Barblizzard
 INSERT INTO `mob_spell_lists` VALUES ('Gotoh_Zha_the_Redolent_WHM',297,112,1,255); -- Flash
 
--- custom
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,152,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,172,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,181,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,201,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,250,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,356,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,359,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,360,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,362,110,255);
-INSERT INTO `mob_spell_lists` VALUES ('Naga_Raja',356,497,110,255);
-
-INSERT INTO `mob_spell_lists` VALUES ('Kammavaca',357,5,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kammavaca',357,207,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kammavaca',357,213,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kammavaca',357,218,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kammavaca',357,497,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kammavaca',357,500,99,255);
-
-INSERT INTO `mob_spell_lists` VALUES ('Balamor',358,233,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Balamor',358,246,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Balamor',358,248,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Balamor',358,242,99,255);
-INSERT INTO `mob_spell_lists` VALUES ('Balamor',358,277,99,255);
-
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,47,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,52,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,54,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,191,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,192,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,357,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Kouryu',359,499,1,255);
-
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,182,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,183,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,273,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,357,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,359,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,360,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,362,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,365,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,366,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Odin',360,497,1,255);
-
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,6,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,22,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,31,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,32,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,35,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,41,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,47,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,52,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,286,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,356,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,357,1,255);
-INSERT INTO `mob_spell_lists` VALUES ('Alexander',361,360,1,255);
-
 /*!40000 ALTER TABLE `mob_spell_lists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

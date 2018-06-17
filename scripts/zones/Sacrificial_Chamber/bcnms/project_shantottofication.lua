@@ -4,10 +4,9 @@
 -----------------------------------
 package.loaded["scripts/zones/Sacrificial_Chamber/TextIDs"] = nil
 -------------------------------------
-require("scripts/globals/titles")
+require("scripts/zones/Sacrificial_Chamber/TextIDs")
 require("scripts/globals/keyitems")
 require("scripts/globals/missions")
-require("scripts/zones/Sacrificial_Chamber/TextIDs")
 -------------------------------------
 
 function onBcnmRegister(player,instance)
@@ -16,17 +15,14 @@ end
 function onBcnmEnter(player,instance)
 end
 
--- Leaving the BCNM by every mean possible, given by the LeaveCode
--- 1=Select Exit on circle
--- 2=Winning the BC
--- 3=Disconnected or warped out
--- 4=Losing the BC
--- via bcnmLeave(1) or bcnmLeave(2). LeaveCodes 3 and 4 are called
--- from the core when a player disconnects or the time limit is up, etc
-
 function onBcnmLeave(player,instance,leavecode)
-    
-    if (leavecode == 2) then -- play end CS. Need time and battle id for record keeping + storage
+
+    if (player:hasKeyItem(dsp.ki.TABLET_OF_HEXES_MALICE)) then
+        player:delKeyItem(dsp.ki.TABLET_OF_HEXES_MALICE)
+        player:messageSpecial(KEYITEM_LOST,dsp.ki.TABLET_OF_HEXES_MALICE)
+    end
+	
+    if (leavecode == 2) then
         if (player:getCurrentMission(ASA) == PROJECT_SHANTOTTOFICATION and
             player:hasKeyItem(dsp.ki.TABLET_OF_HEXES_MALICE)) then
             player:startEvent(5,1,1,1,0,1,0,0)
@@ -48,11 +44,8 @@ function onEventFinish(player,csid,option)
             player:completeMission(ASA,PROJECT_SHANTOTTOFICATION)
             player:addMission(ASA,AN_UNEASY_PEACE)
             player:setPos(299,0,349,60,163)
-            player:delKeyItem(dsp.ki.TABLET_OF_HEXES_MALICE)
             player:addKeyItem(1189)
             player:messageSpecial(KEYITEM_OBTAINED,dsp.ki.TONBERRY_KEY)
-        else
-            player:setPos(299,0,349,60,163)
         end
     end
 end

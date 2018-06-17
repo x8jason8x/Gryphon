@@ -3,31 +3,34 @@
 --  NPC: cermet portal
 -- !pos 420 0 401 34
 -----------------------------------
-require("scripts/zones/Grand_Palace_of_HuXzoi/MobIDs");
-require("scripts/globals/missions");
+require("scripts/zones/Grand_Palace_of_HuXzoi/MobIDs")
+require("scripts/globals/missions")
+require("scripts/globals/settings")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
-    local cop = player:getCurrentMission(COP);
-    local copStat = player:getVar("PromathiaStatus");
+
+    local cop = player:getCurrentMission(COP)
+    local copStat = player:getVar("PromathiaStatus")
     
     if (cop == A_FATE_DECIDED and copStat == 1 and not GetMobByID(IXGHRAH):isSpawned()) then
-        SpawnMob(IXGHRAH):updateClaim(player);
+        SpawnMob(IXGHRAH):updateClaim(player)
     elseif (cop == A_FATE_DECIDED and copStat == 2) then
-        player:startEvent(3);
+        player:startEvent(3)
     end
-end;
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
+
     if (csid == 3) then
-        player:setVar("PromathiaStatus", 0);
-        player:completeMission(COP, A_FATE_DECIDED);
-        player:addMission(COP, WHEN_ANGELS_FALL);
+        player:setVar("PromathiaStatus", 0)
+        player:completeMission(COP, A_FATE_DECIDED)
+        player:addMission(COP, WHEN_ANGELS_FALL)
     end
-end;
+end

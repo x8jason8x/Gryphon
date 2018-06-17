@@ -11,26 +11,19 @@ require("scripts/zones/AlTaieu/MobIDs");
 -----------------------------------
 
 function onTrade(player,npc,trade)
-    -- JAILER OF JUSTICE
-    if (not GetMobByID(JAILER_OF_JUSTICE):isSpawned() and
-        trade:hasItemQty(1853,1) and -- second_virtue
-        trade:hasItemQty(1854,1) and -- deed_of_moderation
-        trade:hasItemQty(1855,1) and -- hq_xzomit_organ
-        trade:getItemCount() == 3) then
-        player:tradeComplete();
-        SpawnMob(JAILER_OF_JUSTICE):updateClaim(player);
+
+    if (not GetMobByID(JAILER_OF_JUSTICE):isSpawned() and trade:hasItemQty(1853,1) and
+        trade:hasItemQty(1854,1) and trade:hasItemQty(1855,1) and trade:getItemCount() == 3) then
+        player:tradeComplete()
+        SpawnMob(JAILER_OF_JUSTICE):updateClaim(player)
     end
-end;
+end
 
 function onTrigger(player,npc)
-end;
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("onUpdate CSID: %u",csid);
-    -- printf("onUpdate RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("onFinish CSID: %u",csid);
-    -- printf("onFinish RESULT: %u",option);
-end;
+end

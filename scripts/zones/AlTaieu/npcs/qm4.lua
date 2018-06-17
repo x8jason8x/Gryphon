@@ -5,34 +5,28 @@
 -- Allows players to spawn Absolute Virtue by killing Jailer of Love.
 -- !pos , 431 -0 -603
 -----------------------------------
-package.loaded["scripts/zones/AlTaieu/TextIDs"] = nil;
+package.loaded["scripts/zones/AlTaieu/TextIDs"] = nil
 -----------------------------------
-require("scripts/zones/AlTaieu/TextIDs");
-require("scripts/zones/AlTaieu/MobIDs");
+require("scripts/zones/AlTaieu/TextIDs")
+require("scripts/zones/AlTaieu/MobIDs")
+require("scripts/globals/settings")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-    -- JAILER OF LOVE
-    if (not GetMobByID(JAILER_OF_LOVE):isSpawned() and
-        not GetMobByID(ABSOLUTE_VIRTUE):isSpawned() and
-        trade:hasItemQty(1848,1) and -- fourth_virtue
-        trade:hasItemQty(1847,1) and -- fifth_virtue
-        trade:hasItemQty(1849,1) and -- sixth_virtue
+
+    if (not GetMobByID(JAILER_OF_LOVE):isSpawned() and not GetMobByID(ABSOLUTE_VIRTUE):isSpawned() and
+        trade:hasItemQty(1848,1) and trade:hasItemQty(1847,1) and trade:hasItemQty(1849,1) and
         trade:getItemCount() == 3) then
-        player:tradeComplete();
-        SpawnMob(JAILER_OF_LOVE):updateClaim(player);
+        player:tradeComplete()
+        SpawnMob(JAILER_OF_LOVE):updateClaim(player)
     end
-end;
+end
 
 function onTrigger(player,npc)
-end;
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("onUpdate CSID: %u",csid);
-    -- printf("onUpdate RESULT: %u",option);
-end;
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("onFinish CSID: %u",csid);
-    -- printf("onFinish RESULT: %u",option);
-end;
+end

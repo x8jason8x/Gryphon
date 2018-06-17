@@ -3,33 +3,32 @@
 --  NPC: HomePoint#3
 -- !pos -12 0.5 -288 34
 -----------------------------------
-package.loaded["scripts/zones/Grand_Palace_of_HuXzoi/TextIDs"] = nil;
+package.loaded["scripts/zones/Grand_Palace_of_HuXzoi/TextIDs"] = nil
 -----------------------------------
-require("scripts/globals/settings");
-require("scripts/zones/Grand_Palace_of_HuXzoi/TextIDs");
-require("scripts/globals/homepoint");
+require("scripts/globals/settings")
+require("scripts/zones/Grand_Palace_of_HuXzoi/TextIDs")
+require("scripts/globals/homepoint")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
 
-    homepointMenu(player, 8700, 88);
-end;
+    homepointMenu(player, 8700, 88)
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
 
     if (csid == 8700) then
-
         if (option == 1) then
-            player:setHomePoint();
-            player:messageSpecial(HOMEPOINT_SET);
+            player:setHomePoint()
+            player:messageSpecial(HOMEPOINT_SET)
         else
-            hpTeleport(player, option);
+            hpTeleport(player, option)
         end
     end
-end;
+end

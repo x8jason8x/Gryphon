@@ -1,51 +1,46 @@
 -----------------------------------
--- Area: Empyreal_Paradox
--- NPC:  Transcendental
+-- Area: Empyreal Paradox
+-- NPC: Transcendental
 -----------------------------------
-package.loaded["scripts/zones/Empyreal_Paradox/TextIDs"] = nil;
+package.loaded["scripts/zones/Empyreal_Paradox/TextIDs"] = nil
 -----------------------------------
-
-require("scripts/globals/settings");
-require("scripts/zones/Empyreal_Paradox/TextIDs");
-require("scripts/globals/missions");
-require("scripts/globals/keyitems");
-require("scripts/globals/bcnm");
+require("scripts/globals/settings")
+require("scripts/zones/Empyreal_Paradox/TextIDs")
+require("scripts/globals/missions")
+require("scripts/globals/keyitems")
+require("scripts/globals/bcnm")
+-----------------------------------
 
 function onTrade(player,npc,trade)
-    
-    if (TradeBCNM(player,player:getZoneID(),trade,npc)) then
-        return;
-    end
 
-end;
+    if (TradeBCNM(player,npc,trade)) then
+        return
+    end
+end
 
 function onTrigger(player,npc)
-    --player:addMission(COP, DAWN);
-    --player:setVar("PromathiaStatus",3);
-   if (player:getCurrentMission(COP) == DAWN and player:getVar("PromathiaStatus")==1) then
-      player:startEvent(2);
+
+    local pm92Dawn = player:getVar("PromathiaStatus")
+
+    if player:getCurrentMission(COP) == DAWN and pm92Dawn == 1 then
+        player:startEvent(2)
     elseif (EventTriggerBCNM(player,npc)) then
+        return
     end
-end;
+end
 
 function onEventUpdate(player,csid,option)
-    -- printf("onUpdate CSID: %u",csid);
-    -- printf("onUpdate RESULT: %u",option);
-    
-    EventUpdateBCNM(player,csid,option)
-end;
 
------------------------------------
--- onEventFinish Action
------------------------------------
+    if (EventUpdateBCNM(player,csid,option)) then
+        return
+    end
+end
 
 function onEventFinish(player,csid,option)
-    -- printf("onFinish CSID: %u",csid);
-    -- printf("onFinish RESULT: %u",option);
-    if ( csid == 2) then
-     player:setVar("PromathiaStatus",2);
-    elseif (EventFinishBCNM(player,csid,option)) then
-        return;
-    end
 
-    end;
+    if (csid == 2) then
+        player:setVar("PromathiaStatus",2)
+    elseif (EventFinishBCNM(player,csid,option)) then
+        return
+    end
+end

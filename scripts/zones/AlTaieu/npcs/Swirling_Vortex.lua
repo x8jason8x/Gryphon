@@ -4,31 +4,36 @@
 -- Type: Standard NPC
 -- !pos ? ? ? 33
 -----------------------------------
-package.loaded["scripts/zones/AlTaieu/TextIDs"] = nil;
+package.loaded["scripts/zones/AlTaieu/TextIDs"] = nil
 -----------------------------------
-require("scripts/zones/AlTaieu/TextIDs");
-require("scripts/zones/AlTaieu/MobIDs");
-require("scripts/globals/limbus");
+require("scripts/zones/AlTaieu/TextIDs")
+require("scripts/zones/AlTaieu/MobIDs")
+require("scripts/globals/limbus")
+require("scripts/globals/settings")
+-----------------------------------
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
-    local offset = npc:getID() - SWIRLING_VORTEX_OFFSET;
+
+    local offset = npc:getID() - SWIRLING_VORTEX_OFFSET
+
     if (offset >= 0 and offset <= 1) then
-        player:startEvent(159 + offset);
+        player:startEvent(159 + offset)
     end
-end;
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
-    if (csid == 160 and option == 1 ) then
-        ResetPlayerLimbusVariable(player);
-        LimbusEntrance(player,APOLLYON_NW_SW);
-    elseif (csid == 159 and option == 1 ) then
-        ResetPlayerLimbusVariable(player);
-        LimbusEntrance(player,APOLLYON_SE_NE);
+
+    if (csid == 160 and option == 1) then
+        ResetPlayerLimbusVariable(player)
+        LimbusEntrance(player,APOLLYON_NW_SW)
+    elseif (csid == 159 and option == 1) then
+        ResetPlayerLimbusVariable(player)
+        LimbusEntrance(player,APOLLYON_SE_NE)
     end
-end;
+end

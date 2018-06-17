@@ -4,54 +4,52 @@
 -- Note: Spawns Ix'Aern (MNK)
 -- !pos 460 0 540
 -----------------------------------
-package.loaded["scripts/zones/Grand_Palace_of_HuXzoi/TextIDs"] = nil;
+package.loaded["scripts/zones/Grand_Palace_of_HuXzoi/TextIDs"] = nil
 -----------------------------------
-require("scripts/zones/Grand_Palace_of_HuXzoi/TextIDs");
-require("scripts/zones/Grand_Palace_of_HuXzoi/MobIDs");
-require("scripts/globals/npc_util");
-require("scripts/globals/status");
+require("scripts/zones/Grand_Palace_of_HuXzoi/TextIDs")
+require("scripts/zones/Grand_Palace_of_HuXzoi/MobIDs")
+require("scripts/globals/npc_util")
+require("scripts/globals/status")
 -----------------------------------
 
 function onTrade(player,npc,trade)
-    local nm = GetMobByID(IXAERN_MNK);
-    
+
+    local nm = GetMobByID(IXAERN_MNK)
+
     if (not nm:isSpawned()) then
-        local chance = 0; -- percent chance that an item will drop.
+        local chance = 0
 
         if (npcUtil.tradeHas(trade, {{1900,3}})) then
-            chance = 100;
+            chance = 100
         elseif (npcUtil.tradeHas(trade, {{1900,2}})) then
-            chance = 66;
+            chance = 66
         elseif (npcUtil.tradeHas(trade, 1900)) then
-            chance = 33;
+            chance = 33
         end
 
         if (chance > 0) then
             player:confirmTrade();
-            npc:setLocalVar("[SEA]IxAern_DropRate", chance); -- adjusts drops in IxAern (MNK)'s onMobSpawn.
-            npc:setStatus(dsp.status.DISAPPEAR);
-
-            -- spawn Ix'Aern (MNK) and minions
-            nm:setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos());
-            SpawnMob(IXAERN_MNK):updateClaim(player);
+            npc:setLocalVar("[SEA]IxAern_DropRate", chance)
+            npc:setStatus(dsp.status.DISAPPEAR)
+            nm:setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos())
+            SpawnMob(IXAERN_MNK):updateClaim(player)
             if (chance >= 66) then
-                GetMobByID(IXAERN_MNK + 1):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos()-4);
-                SpawnMob(IXAERN_MNK + 1):updateClaim(player);
+                GetMobByID(IXAERN_MNK + 1):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos()-4)
+                SpawnMob(IXAERN_MNK + 1):updateClaim(player)
             end
             if (chance == 100) then
-                GetMobByID(IXAERN_MNK + 2):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos()+4);
-                SpawnMob(IXAERN_MNK + 2):updateClaim(player);
+                GetMobByID(IXAERN_MNK + 2):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos()+4)
+                SpawnMob(IXAERN_MNK + 2):updateClaim(player)
             end
-
-        end;
+        end
     end
-end;
+end
 
 function onTrigger(player,npc)
-end;
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
-end;
+end

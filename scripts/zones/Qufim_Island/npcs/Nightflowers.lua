@@ -17,7 +17,7 @@ function onTrigger(player,npc)
 
     local currentTime = VanadielHour();
 
-    if (currentTime >= 22 or currentTime <= 4) then
+    if (currentTime >= 21 or currentTime <= 6) then
         if (player:getQuestStatus(JEUNO,SAVE_MY_SON) == QUEST_ACCEPTED and player:getVar("SaveMySon_Event") == 0) then
             player:startEvent(0);
         else

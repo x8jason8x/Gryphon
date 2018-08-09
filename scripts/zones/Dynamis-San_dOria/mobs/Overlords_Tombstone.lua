@@ -26,7 +26,7 @@ function onMobDeath(mob, player, isKiller)
         local npc = GetNPCByID(17535224); -- Spawn ???
         npc:setPos(mob:getXPos(),mob:getYPos(),mob:getZPos());
         npc:setStatus(0);
-        player:launchDynamisSecondPart(); -- Spawn dynamis second part
+        --player:launchDynamisSecondPart(); -- Spawn dynamis second part
     end
 
     for i = 17534978, 17534979 do

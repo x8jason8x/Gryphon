@@ -34,9 +34,8 @@ function onTrigger(player,npc)
         0x145c,100,      -- Arrabbiata +1
 		0x1450,100,		 -- Pescatora +1
 		0x1679,100,      -- Pot-au-Feu +1
-		
     }
-    dsp.shop.general(player, STATIC, stock)
+    dsp.shop.general(player, stock)
 end
 
 function onEventUpdate(player,csid,option)

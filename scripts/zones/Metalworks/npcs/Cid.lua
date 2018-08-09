@@ -19,6 +19,14 @@ require("scripts/zones/Metalworks/TextIDs")
 
 local wsQuest = dsp.wsquest.detonator
 
+local function checkThreePaths(player)
+    if player:getVar("COP_Tenzen_s_Path") == 11 and player:getVar("COP_Ulmia_s_Path") == 8 and player:getVar("COP_Louverance_s_Path") == 10 then
+        player:completeMission(COP, THREE_PATHS)
+        player:addMission(COP, FOR_WHOM_THE_VERSE_IS_SUNG)
+        player:setVar("PromathiaStatus", 0)
+    end
+end
+
 function onTrade(player,npc,trade)
 
     local wsQuestEvent = dsp.wsquest.getTradeEvent(wsQuest,player,trade)
@@ -57,16 +65,16 @@ function onTrigger(player,npc)
     elseif (currentCOPMission == FIRE_IN_THE_EYES_OF_MEN and player:getVar("PromathiaStatus") == 2 and
         player:getVar("Promathia_CID_timer") ~= VanadielDayOfTheYear ()) then
         player:startEvent(890) -- COP event
-    elseif (currentCOPMission == FIRE_IN_THE_EYES_OF_MEN and player:getVar("PromathiaStatus") == 1) then
-          player:startEvent(857) -- COP event
+    elseif (currentCOPMission == FIRE_IN_THE_EYES_OF_MEN and player:getVar("PromathiaStatus")==1) then
+        player:startEvent(857) -- COP event
     elseif (currentCOPMission == ONE_TO_BE_FEARED and player:getVar("PromathiaStatus") == 0) then
         player:startEvent(856) -- COP event
     elseif (currentCOPMission == THREE_PATHS and LouverancePath == 6) then
         player:startEvent(852) -- COP event
     elseif (currentCOPMission == THREE_PATHS and LouverancePath == 9) then
-        if (TenzenPath==11 and UlmiaPath==8) then
+        if (TenzenPath == 11 and UlmiaPath == 8) then
            TreePathAv = 6
-        elseif (TenzenPath==11) then
+        elseif (TenzenPath == 11) then
            TreePathAv = 2
         elseif (UlmiaPath == 8) then
            TreePathAv = 4
@@ -77,9 +85,9 @@ function onTrigger(player,npc)
     elseif (currentCOPMission == THREE_PATHS and TenzenPath == 10) then
         if (UlmiaPath == 8 and LouverancePath == 10) then
            TreePathAv = 5
-        elseif (LouverancePath==10) then
+        elseif (LouverancePath == 10) then
            TreePathAv = 3
-        elseif (UlmiaPath==8) then
+        elseif (UlmiaPath == 8) then
            TreePathAv = 4
         else
            TreePathAv = 1
@@ -156,10 +164,13 @@ function onEventFinish(player,csid,option)
         player:setVar("Promathia_CID_timer",VanadielDayOfTheYear())
     elseif (csid == 855) then
         player:setVar("COP_Ulmia_s_Path",8)
+        checkThreePaths(player)
     elseif (csid == 854) then
         player:setVar("COP_Tenzen_s_Path",11)
+        checkThreePaths(player)
     elseif (csid == 853) then
         player:setVar("COP_Louverance_s_Path",10)
+        checkThreePaths(player)
     elseif (csid == 852) then
         player:setVar("COP_Louverance_s_Path",7)
     elseif (csid == 850) then

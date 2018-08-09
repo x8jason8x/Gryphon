@@ -4,27 +4,27 @@
 -- Linkshell merchant
 -- !pos -142 -1 -25 236
 -----------------------------------
-package.loaded["scripts/zones/Southern_San_dOria/TextIDs"] = nil;
+package.loaded["scripts/zones/Southern_San_dOria/TextIDs"] = nil
 -----------------------------------
-require("scripts/globals/shop");
-require("scripts/zones/Southern_San_dOria/TextIDs");
------------------------------------
+require("scripts/zones/Southern_San_dOria/TextIDs")
+require("scripts/globals/shop")
+
 
 function onTrade(player,npc,trade)
-end;
+end
 
 function onTrigger(player,npc)
-
-    player:showText(npc,PAUNELIE_SHOP_DIALOG,513);
-    stock =
+    local stock =
     {
         0x3f9d,375   -- Pendant Compass
     }
-    dsp.shop.general(player, stock);
-end;
+
+    player:showText(npc, PAUNELIE_SHOP_DIALOG, 513)
+    dsp.shop.general(player, stock)
+end
 
 function onEventUpdate(player,csid,option)
-end;
+end
 
 function onEventFinish(player,csid,option)
-end;
+end

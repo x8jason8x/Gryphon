@@ -28,19 +28,19 @@ function onMobFight(mob, target)
         local changeTime = mob:getLocalVar("changeTime")
         local twohourTime = mob:getLocalVar("twohourTime")
 
-        if (mob:getHPP() < math.random(20) and (GetMobByID(17961564):isSpawned()) == false) then
+        if (mob:getHPP() < math.random(40) and (GetMobByID(17961564):isSpawned()) == false) then
             SpawnMob(17961564):updateEnmity(target)
         end
 
-        if (mob:getHPP() < math.random(15) and (GetMobByID(17961567):isSpawned()) == false) then
+        if (mob:getHPP() < math.random(30) and (GetMobByID(17961567):isSpawned()) == false) then
             SpawnMob(17961567):updateEnmity(target)
         end
 
-        if (mob:getHPP() < math.random(10) and (GetMobByID(17961570):isSpawned()) == false) then
+        if (mob:getHPP() < math.random(20) and (GetMobByID(17961570):isSpawned()) == false) then
             SpawnMob(17961570):updateEnmity(target)
         end
 	
-        if (mob:getHPP() < math.random(5) and (GetMobByID(17961561):isSpawned()) == false) then
+        if (mob:getHPP() < math.random(10) and (GetMobByID(17961561):isSpawned()) == false) then
             SpawnMob(17961561):updateEnmity(target)
         end
 		
@@ -53,18 +53,18 @@ function onMobFight(mob, target)
             mob:useMobAbility(694)
             mob:setLocalVar("twohourTime", (mob:getBattleTime()/15)+20)
 		
-        elseif (mob:AnimationSub() == 0) and (mob:getBattleTime() - changeTime > 120) then
+        elseif (mob:AnimationSub() == 0) and (mob:getBattleTime() - changeTime > 60) then
             mob:AnimationSub(1)
             mob:addStatusEffectEx(dsp.effect.ALL_MISS, 0, 1, 0, 0)
             mob:SetMobSkillAttack(731)
             mob:setLocalVar("changeTime", mob:getBattleTime())
 			
-        elseif (mob:AnimationSub() == 1) and (mob:getBattleTime() - changeTime > 60) then
+        elseif (mob:AnimationSub() == 1) and (mob:getBattleTime() - changeTime > 30) then
             mob:useMobAbility(1304)
             mob:useMobAbility(1302)
             mob:setLocalVar("changeTime", mob:getBattleTime())
 
-        elseif (mob:AnimationSub() == 2) and (mob:getBattleTime() - changeTime > 120) then
+        elseif (mob:AnimationSub() == 2) and (mob:getBattleTime() - changeTime > 60) then
             mob:AnimationSub(1)
             mob:addStatusEffectEx(dsp.effect.ALL_MISS, 0, 1, 0, 0)
             mob:SetMobSkillAttack(731)

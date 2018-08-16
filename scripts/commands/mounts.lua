@@ -18,6 +18,6 @@ cmdprops =
 
 function onTrigger(player)
 
-    player:PrintToPlayer("~ !beetle !blucrab !bomb !crawler !detect !fenrir !gryphon !magipot !morbol", 0xE);
-	player:PrintToPlayer("~ !moogle !omega !ram !raptor !redcrab !tank !tiger !tulfy !warden !xzomit", 0xE);
+    player:PrintToPlayer("~ !beetle !blucrab !bomb !crawler !detect !fenrir !gryphon !magipot !moogle", 0xE);
+	player:PrintToPlayer("~ !morbol !omega !ram !raptor !redcrab !tank !tiger !tulfy !warden !xzomit", 0xE);
 end;
